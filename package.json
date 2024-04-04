@@ -1,0 +1,63 @@
+{
+  "name": "tree-sitter-metamodelica",
+  "version": "0.1.0",
+  "description": "MetaModelica grammar for tree-sitter",
+  "main": "index.js",
+  "types": "bindings/node",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "build": "tree-sitter generate && tree-sitter build-wasm --docker .",
+    "test": "tree-sitter test",
+    "preinstall": "tree-sitter generate",
+    "install": "node-gyp-build",
+    "prebuildify": "prebuildify --napi --strip"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OpenModelica/tree-sitter-metamodelica.git"
+  },
+  "keywords": [
+    "tree-sitter",
+    "metamodelica"
+  ],
+  "files": [
+    "grammar.js",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**"
+  ],
+  "author": "AnHeuermann",
+  "license": "SEE LICENSE IN OSMC-License.txt",
+  "bugs": {
+    "url": "https://github.com/OpenModelica/tree-sitter-metamodelica/issues"
+  },
+  "homepage": "https://github.com/OpenModelica/tree-sitter-metamodelica#readme",
+  "dependencies": {
+    "node-addon-api": "^7.1.0",
+    "node-gyp-build": "^4.8.0"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.0"
+  },
+  "peerDependenciesMeta": {
+    "tree_sitter": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "prebuildify": "^6.0.0",
+    "tree-sitter-cli": "0.22.1"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.metamodelica",
+      "file-types": [
+        "mo"
+      ]
+    }
+  ]
+}
