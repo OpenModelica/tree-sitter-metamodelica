@@ -41,7 +41,31 @@ module.exports = grammar({
   name: "metamodelica",
 
   rules: {
-   ...require("./rules/classAndMainGrammar"),
-   ...require("./rules/lexicalConventions")
+    ...require("./rules/a0-lexicalConventions"),
+    ...require("./rules/a1-classAndMainGrammar"),
+
+    name_path: $ => "undefined",
+    DER: $ => "undefined",
+    CODE: $ => "undefined",
+    EQUALITY: $ => "undefined",
+    INITIAL: $ => "undefined",
+    class_modification: $ => "undefined",
+    string_comment: $ => "undefined",
+    type_specifier: $ => "undefined",
+    type_prefix: $ => "undefined",
+    initial_equation_clause: $ => "undefined",
+    initial_algorithm_clause: $ => "undefined",
+    equation_clause: $ => "undefined",
+    constraint_clause: $ => "undefined",
+    algorithm_clause: $ => "undefined",
+    element_list: $ => "undefined",
+    component_reference: $ => "undefined",
+    expression_list: $ => "undefined",
+    annotation: $ => "undefined",
+    importClause: $ => "undefined",
+    extendsClause: $ => "undefined",
+    component_clause: $ => "undefined",
+    constraining_clause_comment: $ => "undefined",
+    name_path_star: $ => "undefined",
   }
 });
