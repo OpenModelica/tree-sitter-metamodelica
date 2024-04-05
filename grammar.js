@@ -41,7 +41,174 @@ module.exports = grammar({
   name: "metamodelica",
 
   rules: {
-    // TODO: add the actual grammar rules
-    source_file: $ => 'hello'
+    // A.1 Class and Main Grammar Elements
+    stored_definitions: $ => seq(
+      optional(field("withinClause", seq($.within_clause, ";"))),
+      optional(field("classDefinitionList", $.class_definition_list))
+    ),
+
+    within_clause: $ => seq(
+      field("within", "within"),
+      optional(field("namePath", $.name_path))
+    ),
+
+    class_definition_list: $ => repeat1(
+      seq(
+        optional(field("final", "final")),
+        field("classDefinition", $.class_definition),
+        ";"
+      )
+    ),
+
+    class_definition: $ => seq(
+      optional(field("encapsulated", "encapsulated")),
+      optional(field("partial", "partial")),
+      field("classType", $.class_type),
+      field("classSpecifier", $.class_specifier)
+    ),
+
+    class_type: $ => choice(
+      field("class", "class"),
+      field("optimization", "optimization"),
+      field("model", "model"),
+      field("record", "record"),
+      field("block", "block"),
+      seq(
+        optional("expandable"),
+        field("connector", "connector")
+      ),
+      field("type", "type"),
+      field("package", "package"),
+      field("function", "function"),
+      field("uniontype", "uniontype"),
+      seq(
+        field("operator", "operator"),
+        optional(choice("function", "record"))
+      )
+    ),
+
+    identifier: $ => choice(
+      $.IDENT,
+      //$.DER,
+      //$.CODE,
+      //$.EQUALITY,
+      //$.INITIAL
+    ),
+
+    name_path: $ => "TODO",
+    class_specifier: $ => "TODO",
+
+    // A.0 Lexical conventions
+    IDENT: $ => token(
+      choice(
+        // NON-DIGIT { DIGIT | NON-DIGIT }
+        seq(
+          /[_a-zA-Z]/,
+          repeat(
+            /[_a-zA-Z0-9]/,
+          )
+        ),
+        // Q_IDENT
+        seq(
+          "'",
+          repeat(
+            choice(
+              // Q_CHAR
+              /[_a-zA-Z]/,
+              /[0-9]/,
+              "!", "#", "$", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/",
+              ":", ";", "<", ">", "=", "?", "@", "[", "]", "^", "{", "}", "|",
+              "~", " ",
+              "\"",
+              // S_ESCAPE
+              "\\'", "\\\"", "\\?", "\\\\", "\\a", "\\b", "\\f", "\\n", "\\r",
+              "\\t", "\\v",
+            )
+          ),
+          "'"
+        )
+      )
+    ),
+
+    STRING: $ => token(
+      seq(
+        "\"",
+        repeat(
+          choice(
+            // S_CHAR
+            /[^"\\]/,
+            // S_ESCAPE
+            "\\'", "\\\"", "\\?", "\\\\", "\\a", "\\b", "\\f", "\\n", "\\r",
+            "\\t", "\\v",
+          )
+        ),
+        "\""
+      )
+    ),
+
+    UNSIGNED_INTEGER: $ => token(
+      repeat1(
+        /[0-9]/
+        )
+    ),
+
+    UNSIGNED_REAL: $ => token(
+      choice(
+        seq(
+          // UNSIGNED_INTEGER,
+          /[0-9]+/,
+          ".",
+          optional(
+            // UNSIGNED_INTEGER
+            /[0-9]+/
+          )
+        ),
+        seq(
+          // UNSIGNED_INTEGER
+          /[0-9]+/,
+          optional(
+            seq(
+              ".",
+              optional(
+                // UNSIGNED_INTEGER
+                /[0-9]+/
+              )
+            )
+          ),
+          choice("e", "E"),
+          optional(choice("+", "-")),
+          // UNSIGNED_INTEGER
+          /[0-9]+/
+        ),
+        seq(
+          ".",
+          // UNSIGNED_INTEGER
+          /[0-9]+/,
+          optional(
+            seq(
+              choice("e", "E"),
+              optional(choice("+", "-")),
+              // UNSIGNED_INTEGER
+              /[0-9]+/
+            )
+          )
+        )
+      )
+    ),
+
+    BLOCK_COMMENT: $ => token(
+      seq(
+        "/*",
+        /[^*]*\*+([^/*][^*]*\*+)*/,
+        "/"
+      )
+    ),
+
+    comment: $ => token(
+      seq(
+        "//",
+        /[^\r\n]*/
+      )
+    ),
   }
 });

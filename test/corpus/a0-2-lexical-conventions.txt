@@ -1,0 +1,11 @@
+================================
+A.0.2 Lexical Conventions – String
+================================
+
+"This is a string"
+"This is \n a \"string\" with an UTF-8 smiley 😀"
+
+---
+
+(STRING)
+(STRING)
