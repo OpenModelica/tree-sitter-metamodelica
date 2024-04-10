@@ -45,6 +45,7 @@ module.exports = grammar({
     ...require("./rules/a1-classAndMainGrammar"),
     ...require("./rules/a2-extends"),
     ...require("./rules/a3-modification"),
+    ...require("./rules/a4-equations"),
     ...require("./rules/keywords"),
 
     name_path: $ => "undefined",
@@ -73,5 +74,7 @@ module.exports = grammar({
     expression: $ => "undefined",
     array_subscripts: $ => "undefined",
     modification: $ => "undefined",
+    simple_expression: $ => "undefined",
+    for_indices: $ => "undefined",
   }
 });

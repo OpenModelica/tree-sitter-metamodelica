@@ -41,8 +41,6 @@
 // https://liu.diva-portal.org/smash/record.jsf?pid=diva2%3A418188&dswid=-9758
 
 module.exports = {
-  // Modification
-
   modification: $ => choice(
     seq(
       field("classModification", $.class_modification),
