@@ -51,7 +51,7 @@ module.exports = {
 
   constraining_clause_comment: $ => seq(
     field("constrainingClause", $.constraining_clause),
-    field("comment", $.comment)
+    field("comment", optional($.comment))
   ),
 
   constraining_clause: $ => choice(
@@ -119,7 +119,7 @@ module.exports = {
   component_declaration: $ => seq(
     field("declaration", $.declaration),
     optional(field("conditionalAttribute", $.conditional_attribute)),
-    field("comment", $.comment)
+    field("comment", optional($.comment))
   ),
 
   conditional_attribute: $ => seq(

@@ -90,7 +90,7 @@ module.exports = {
   element_modification: $ => seq(
     field("componentReference", $.component_reference),
     optional(field("modification", $.modification)),
-    field("stringComment", $.string_comment)
+    field("stringComment", optional($.string_comment))
   ),
 
   element_redeclaration: $ => seq(
@@ -125,6 +125,6 @@ module.exports = {
 
   component_declaration1: $ => seq(
     field("declaration", $.declaration),
-    field("comment", $.comment)
+    field("comment", optional($.comment))
   )
 };

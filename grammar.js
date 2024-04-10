@@ -40,6 +40,12 @@
 module.exports = grammar({
   name: "metamodelica",
 
+  extras: $ => [
+    $.COMMENT,
+    $.BLOCK_COMMENT,
+    $._SPACE
+  ],
+
   rules: {
     ...require("./rules/a0-lexicalConventions"),
     ...require("./rules/a1-classAndMainGrammar"),

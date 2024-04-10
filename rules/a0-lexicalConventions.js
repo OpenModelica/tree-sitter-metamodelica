@@ -40,6 +40,8 @@
 // https://specification.modelica.org/master/modelica-concrete-syntax.html
 
 module.exports = {
+  BOM: $ => /\u00EF\u00BB\u00BF/,
+
   IDENT: $ => token(
     choice(
       // NON-DIGIT { DIGIT | NON-DIGIT }
@@ -145,10 +147,12 @@ module.exports = {
     )
   ),
 
-  comment: $ => token(
+  COMMENT: $ => token(
     seq(
       "//",
       /[^\r\n]*/
     )
-  )
+  ),
+
+  _SPACE: $ => /\s+/
 };

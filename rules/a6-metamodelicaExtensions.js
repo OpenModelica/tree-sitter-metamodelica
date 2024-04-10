@@ -45,7 +45,7 @@ module.exports = {
     seq(
       $.MATCHCONTINUE,
       $.expression,
-      $.string_comment,
+      optional($.string_comment),
       optional($.local_clause),
       $.cases,
       $.T_END,
@@ -54,7 +54,7 @@ module.exports = {
     seq(
       $.MATCH,
       $.expression,
-      $.string_comment,
+      optional($.string_comment),
       optional($.local_clause),
       $.cases,
       $.T_END,
@@ -76,7 +76,7 @@ module.exports = {
   cases2: $ => seq(
     $.ELSE,
     optional(seq(
-      $.string_comment,
+      optional($.string_comment),
       optional(seq(
         $.EQUATION,
         $.equation_list_then
@@ -90,7 +90,7 @@ module.exports = {
   onecase: $ => seq(
     $.CASE,
     $.pattern,
-    $.string_comment,
+    optional($.string_comment),
     optional(seq(
       $.EQUATION,
       $.equation_list_then

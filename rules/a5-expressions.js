@@ -418,13 +418,18 @@ module.exports = {
     $.COLON
   ),
 
-  comment: $ => seq(
-    $.string_comment,
-    optional($.annotation)
+  comment: $ => choice(
+    seq(
+      $.string_comment,
+      optional($.annotation)
+    ),
+    seq(
+      optional($.string_comment),
+      $.annotation
+    )
   ),
 
   // TODO: What is `(PLUS s2 = STRING)*`?
-  // TODO: can be empty
   string_comment: $ => seq(
     $.STRING
     //repeat(PLUS s2 = STRING)*

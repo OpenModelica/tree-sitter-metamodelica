@@ -41,8 +41,16 @@
 
 module.exports = {
   stored_definitions: $ => seq(
-    optional(field("withinClause", seq($.within_clause, $.SEMICOLON))),
-    optional(field("classDefinitionList", $.class_definition_list))
+    optional($.BOM),  // TODO: Remove?
+    optional(
+      field("withinClause",
+        seq(
+          $.within_clause,
+          $.SEMICOLON
+        )
+      )
+    ),
+    field("classDefinitionList", $.class_definition_list)
   ),
 
   within_clause: $ => seq(
@@ -102,7 +110,7 @@ module.exports = {
       $.EXTENDS,
       field("identifier", $.identifier),
       optional(field("classModification", $.class_modification)),
-      field("comment", $.string_comment),
+      field("comment", optional($.string_comment)),
       field("composition", optional($.composition)),
       $.T_END,
       field("endIdentifier", $.identifier)
@@ -120,7 +128,7 @@ module.exports = {
           )
         )
       ),
-      field("comment", $.string_comment),
+      field("comment", optional($.string_comment)),
       field("composition", optional($.composition)),
       $.T_END,
       field("endIdentifier", $.identifier)
@@ -132,7 +140,7 @@ module.exports = {
       optional(
         field("classModifier", $.class_modification)
       ),
-      field("comment", $.comment)
+      field("comment", optional($.comment))
     ),
     seq(
       $.EQUALS,
@@ -155,7 +163,7 @@ module.exports = {
     $.COMMA,
     $.ident_list,
     $.RPAR,
-    field("comment", $.comment)
+    field("comment", optional($.comment))
   ),
 
   ident_list: $ => seq(
@@ -171,7 +179,7 @@ module.exports = {
     $.LPAR,
     $.name_list,
     $.RPAR,
-    field("comment", $.comment)
+    field("comment", optional($.comment))
   ),
 
   base_prefix: $ => $.type_prefix,
@@ -192,7 +200,7 @@ module.exports = {
       $.COLON
     ),
     $.RPAR,
-    field("comment", $.comment)
+    field("comment", optional($.comment))
   ),
 
   enum_list: $ => seq(
@@ -205,10 +213,9 @@ module.exports = {
 
   enumeration_literal: $ => seq(
     $.IDENT,
-    field("comment", $.comment)
+    field("comment", optional($.comment))
   ),
 
-  // TODO: composition can be empty, make optional everywhere
   composition: $ => choice(
     seq(
       $.element_list1,
@@ -331,7 +338,7 @@ module.exports = {
       field("explicitImportName", $.explicit_import_name),
       field("implicitImportName", $.implicit_import_name)
     ),
-    field("comment", $.comment)
+    field("comment", optional($.comment))
   ),
 
   explicit_import_name: $ => seq(

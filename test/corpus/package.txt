@@ -1,0 +1,21 @@
+=======
+Package
+=======
+
+/*
+ * This is a comment over multiple lines
+ */
+
+encapsulated package Main
+" file:        Main.mo
+  package:     Main
+  description: Modelica main program
+
+
+  This is the main program in the Modelica specification.
+  It either translates a file given as a command line argument
+  or starts a server loop communicating through CORBA or sockets
+  (The Win32 implementation only implements CORBA)"
+end Main;
+
+---

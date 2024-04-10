@@ -130,7 +130,7 @@ module.exports = {
         $.RPAR
       )
     ),
-    $.comment
+    optional($.comment)
   ),
 
   constraint: $ => seq(
@@ -155,7 +155,7 @@ module.exports = {
         $.RPAR
       )
     ),
-    $.comment
+    optional($.comment)
   ),
 
   algorithm: $ => seq(
@@ -182,7 +182,7 @@ module.exports = {
         $.RPAR
       )
     ),
-    $.comment
+    optional($.comment)
   ),
 
   // TODO: What should `( ASSIGN | eq = EQUALS )` mean?
