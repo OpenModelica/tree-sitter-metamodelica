@@ -41,7 +41,6 @@
 // https://liu.diva-portal.org/smash/record.jsf?pid=diva2%3A418188&dswid=-9758
 
 module.exports = {
-
   // TODO: What the heck is `{ ... }?` ?
   // I'm just removing it
   initial_equation_clause: $ => seq(

@@ -46,6 +46,7 @@ module.exports = grammar({
     ...require("./rules/a2-extends"),
     ...require("./rules/a3-modification"),
     ...require("./rules/a4-equations"),
+    ...require("./rules/a5-expressions"),
     ...require("./rules/keywords"),
 
     name_path: $ => "undefined",
