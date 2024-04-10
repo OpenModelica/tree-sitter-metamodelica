@@ -37,6 +37,7 @@
 
 module.exports = {
   // Reserved characters
+  ALLWILD: $ => "__",
   ASSIGN: $ => ":=",
   COLON: $ => ":",
   COLONCOLON: $ => "::",
@@ -67,12 +68,12 @@ module.exports = {
   STAR_EW: $ => ".*",
   STAR: $ => "*",
   WILD: $ => "_",
-  ALLWILD: $ => "__",
 
   // keywords
   AS: $ => "as",
   BLOCK: $ => "block",
   BREAK: $ => "break",
+  CASE: $ => "case",
   CLASS: $ => "class",
   CONNECT: $ => "connect",
   CONNECTOR: $ => "connector",
@@ -101,7 +102,10 @@ module.exports = {
   IMPORT: $ => "import",
   INITIAL: $ => "initial",
   INNER: $ => "inner",
+  LOCAL: $ => "local",
   LOOP: $ => "loop",
+  MATCH: $ => "match",
+  MATCHCONTINUE: $ => "matchcontinue",
   MODEL: $ => "model",
   OPERATOR: $ => "operator",
   OPTIMIZATION: $ => "optimization",
@@ -117,8 +121,8 @@ module.exports = {
   RETURN: $ => "return",
   STREAM: $ => "stream",
   T_ALGORITHM: $ => "algorithm",
-  T_ANNOTATION: $ => "annotation",
   T_AND: $ => "and",
+  T_ANNOTATION: $ => "annotation",
   T_END: $ => "end",
   T_FALSE: $ => "false",
   T_IN: $ => "in",
@@ -134,4 +138,5 @@ module.exports = {
   WHEN: $ => "when",
   WHILE: $ => "while",
   WITHIN: $ => "within",
+  DER: $ => "der",
 }

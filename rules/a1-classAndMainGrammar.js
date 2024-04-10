@@ -103,7 +103,7 @@ module.exports = {
       field("identifier", $.identifier),
       optional(field("classModification", $.class_modification)),
       field("comment", $.string_comment),
-      field("composition", $.composition),
+      field("composition", optional($.composition)),
       $.T_END,
       field("endIdentifier", $.identifier)
     )
@@ -121,7 +121,7 @@ module.exports = {
         )
       ),
       field("comment", $.string_comment),
-      field("composition", $.composition),
+      field("composition", optional($.composition)),
       $.T_END,
       field("endIdentifier", $.identifier)
     ),
@@ -208,10 +208,34 @@ module.exports = {
     field("comment", $.comment)
   ),
 
-  composition: $ => seq(
-    $.element_list, // TODO: can be empty?
-    // composition2
-    optional(repeat(
+  // TODO: composition can be empty, make optional everywhere
+  composition: $ => choice(
+    seq(
+      $.element_list1,
+      optional($.composition2)
+    ),
+    seq(
+      optional($.element_list1),
+      $.composition2
+    )
+  ),
+
+  composition2: $ => choice(
+    choice(
+      repeat1(
+        choice(
+          $.public_element_list,
+          $.protected_element_list,
+          $.initial_equation_clause,
+          $.initial_algorithm_clause,
+          $.equation_clause,
+          $.constraint_clause,
+          $.algorithm_clause,
+        )
+      ),
+      $.external_clause
+    ),
+    repeat1(
       choice(
         $.public_element_list,
         $.protected_element_list,
@@ -219,14 +243,11 @@ module.exports = {
         $.initial_algorithm_clause,
         $.equation_clause,
         $.constraint_clause,
-        $.algorithm_clause,
+        $.algorithm_clause
       )
-    )),
-    optional($.external_clause)
+    ),
+    $.external_clause
   ),
-
-  // TODO: composition2 can be empty rule
-  // TODO: how to do the recursive part?
 
   external_clause: $ => seq(
     $.EXTERNAL,
@@ -280,8 +301,8 @@ module.exports = {
   ),
 
   element: $ => choice(
-    field("importClause", $.importClause),
-    field("extendsClause", $.extendsClause),
+    field("importClause", $.import_clause),
+    field("extendsClause", $.extends_clause),
     seq(
       optional($.REDECLARE),
       optional($.FINAL),

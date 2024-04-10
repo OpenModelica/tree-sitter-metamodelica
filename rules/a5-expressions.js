@@ -41,7 +41,6 @@
 // https://liu.diva-portal.org/smash/record.jsf?pid=diva2%3A418188&dswid=-9758
 
 module.exports = {
-
   expression: $ => choice(
     $.if_expression,
     $.simple_expression,
