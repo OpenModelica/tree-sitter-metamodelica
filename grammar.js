@@ -44,6 +44,7 @@ module.exports = grammar({
     ...require("./rules/a0-lexicalConventions"),
     ...require("./rules/a1-classAndMainGrammar"),
     ...require("./rules/a2-extends"),
+    ...require("./rules/a3-modification"),
     ...require("./rules/keywords"),
 
     name_path: $ => "undefined",

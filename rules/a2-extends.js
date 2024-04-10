@@ -41,7 +41,7 @@
 
 module.exports = {
 
-  // A2.2.3 Extends
+  // Extends
   extends_clause: $ => seq(
     $.EXTENDS,
     field("namePath", $.name_path),
@@ -58,17 +58,16 @@ module.exports = {
     seq(
       $.EXTENDS,
       field("namePath", $.name_path),
-      optional($.class_modification)
+      optional(field("classModification", $.class_modification))
     ),
     seq(
       $.CONSTRAINEDBY,
       field("namePath", $.name_path),
-      optional($.class_modification)
+      optional(field("classModification", $.class_modification))
     )
   ),
 
-  // 2.2.4 Component clause
-
+  // Component clause
   component_clause: $ => seq(
     field("typePrefix", $.type_prefix),
     field("typeSpecifier", $.type_specifier),
@@ -92,7 +91,7 @@ module.exports = {
   ),
 
   type_specifier: $ => seq(
-    $.name_path,
+    field("namePath", $.name_path),
     optional(seq(
       $.LESS,
       $.type_specifier_list,
@@ -102,7 +101,7 @@ module.exports = {
   ),
 
   type_specifier_list: $ => seq(
-    $.type_specifier,
+    field("typeSpecifier", $.type_specifier),
     optional(seq(
       $.COMMA,
       $.type_specifier_list
@@ -110,7 +109,7 @@ module.exports = {
   ),
 
   component_list: $ => seq(
-    $.component_declaration,
+    field("componentDeclaration", $.component_declaration),
     optional(seq(
       $.COMMA,
       $.component_list
@@ -118,14 +117,14 @@ module.exports = {
   ),
 
   component_declaration: $ => seq(
-    $.declaration,
-    optional($.conditional_attribute),
-    $.comment
+    field("declaration", $.declaration),
+    optional(field("conditionalAttribute", $.conditional_attribute)),
+    field("comment", $.comment)
   ),
 
   conditional_attribute: $ => seq(
     $.IF,
-    $.expression
+    field("expression", $.expression)
   ),
 
   declaration: $ => seq(
@@ -134,6 +133,6 @@ module.exports = {
       $.OPERATOR
     ),
     optional($.array_subscripts),
-    optional($.modification)
+    optional(field("modification", $.modification))
   )
 };
