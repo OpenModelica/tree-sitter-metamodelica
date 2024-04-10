@@ -41,47 +41,47 @@
 
 module.exports = {
   stored_definitions: $ => seq(
-    optional(field("withinClause", seq($.within_clause, ";"))),
+    optional(field("withinClause", seq($.within_clause, $.SEMICOLON))),
     optional(field("classDefinitionList", $.class_definition_list))
   ),
 
   within_clause: $ => seq(
-    field("within", "within"),
+    field("within", $.WITHIN),
     optional(field("namePath", $.name_path))
   ),
 
   class_definition_list: $ => repeat1(
     seq(
-      optional(field("final", "final")),
+      optional(field("final", $.FINAL)),
       field("classDefinition", $.class_definition),
-      ";"
+      $.SEMICOLON
     )
   ),
 
   class_definition: $ => seq(
-    optional(field("encapsulated", "encapsulated")),
-    optional(field("partial", "partial")),
+    optional(field("encapsulated", $.ENCAPSULATED)),
+    optional(field("partial", $.PARTIAL)),
     field("classType", $.class_type),
     field("classSpecifier", $.class_specifier)
   ),
 
   class_type: $ => choice(
-    field("class", "class"),
-    field("optimization", "optimization"),
-    field("model", "model"),
-    field("record", "record"),
-    field("block", "block"),
+    field("class", $.CLASS),
+    field("optimization", $.OPTIMIZATION),
+    field("model", $.MODEL),
+    field("record", $.RECORD),
+    field("block", $.BLOCK),
     seq(
-      optional("expandable"),
-      field("connector", "connector")
+      optional($.EXPANDABLE),
+      field("connector", $.CONNECTOR)
     ),
-    field("type", "type"),
-    field("package", "package"),
-    field("function", "function"),
-    field("uniontype", "uniontype"),
+    field("type", $.TYPE),
+    field("package", $.PACKAGE),
+    field("function", $.FUNCTION),
+    field("uniontype", $.UNIONTYPE),
     seq(
-      field("operator", "operator"),
-      optional(choice("function", "record"))
+      field("operator", $.OPERATOR),
+      optional(choice($.FUNCTION, $.RECORD))
     )
   ),
 
@@ -99,12 +99,12 @@ module.exports = {
       $.class_specifier2
     ),
     seq(
-      "extends",
+      $.EXTENDS,
       field("identifier", $.identifier),
       optional(field("classModification", $.class_modification)),
       field("comment", $.string_comment),
       field("composition", $.composition),
-      "end",
+      $.T_END,
       field("endIdentifier", $.identifier)
     )
   ),
@@ -114,19 +114,19 @@ module.exports = {
       optional(
         field("identList",
           seq(
-          "<",
+          $.LESS,
           $.ident_list,
-          ">"
+          $.GREATER,
           )
         )
       ),
       field("comment", $.string_comment),
       field("composition", $.composition),
-      "end",
+      $.T_END,
       field("endIdentifier", $.identifier)
     ),
     seq(
-      "=",
+      $.EQUALS,
       field("basePrefix", $.base_prefix),
       field("typeSpecifier", $.type_specifier),
       optional(
@@ -135,42 +135,42 @@ module.exports = {
       field("comment", $.comment)
     ),
     seq(
-      "=",
+      $.EQUALS,
       field("enumeration", $.enumeration)
     ),
     seq(
-      "=",
+      $.EQUALS,
       field("pder", $.pder)
     ),
     seq(
-      "=",
+      $.EQUALS,
       field("overloading", $.overloading)
     )
   ),
 
   pder: $ => seq(
     $.DER,
-    "(",
+    $.LPAR,
     field("namePath", $.name_path),
-    ",",
+    $.COMMA,
     $.ident_list,
-    ")",
+    $.RPAR,
     field("comment", $.comment)
   ),
 
   ident_list: $ => seq(
     field("ident", $.IDENT),
     repeat(seq(
-      ",",
+      $.COMMA,
       field("ident", $.IDENT)
     ))
   ),
 
   overloading: $ => seq(
-    "overload",
-    "(",
+    $.OVERLOAD,
+    $.LPAR,
     $.name_list,
-    ")",
+    $.RPAR,
     field("comment", $.comment)
   ),
 
@@ -179,26 +179,26 @@ module.exports = {
   name_list: $ => seq(
     field("namePath", $.name_path),
     repeat(seq(
-      ",",
+      $.COMMA,
       field("namePath", $.name_path),
     ))
   ),
 
   enumeration: $ => seq(
-    "enumeration",
-    "(",
+    $.ENUMERATION,
+    $.LPAR,
     choice(
       $.enum_list,
-      ":"
+      $.COLON
     ),
-    ")",
+    $.RPAR,
     field("comment", $.comment)
   ),
 
   enum_list: $ => seq(
     field("enumerationLiteral", $.enumeration_literal),
     repeat(seq(
-      ",",
+      $.COMMA,
       field("enumerationLiteral", $.enumeration_literal),
     ))
   ),
@@ -229,43 +229,43 @@ module.exports = {
   // TODO: how to do the recursive part?
 
   external_clause: $ => seq(
-    "external",
+    $.EXTERNAL,
     optional(field("languageSpecification", $.language_specification)),
     optional(
       seq(
         optional(seq(
           field("componentReference", $.component_reference),
-          "="
+          $.EQUALS
         )),
         $.IDENT,
-        "(",
+        $.LPAR,
         optional($.expression_list),
-        ")"
+        $.RPAR
       )
     ),
-    optional("annotation"),
-    ";",
+    optional($.annotation),
+    $.SEMICOLON,
     optional(field("externalAnnotation", $.external_annotation))
   ),
 
   external_annotation: $ => seq(
     field("externalAnnotation", $.annotation),
-    ";"
+    $.SEMICOLON
   ),
 
   public_element_list: $ => seq(
-    "public",
+    $.PUBLIC,
     optional($.element_list1)
   ),
 
   protected_element_list: $ => seq(
-    "protected",
+    $.PROTECTED,
     optional($.element_list1)
   ),
 
   language_specification: $ => seq(
     $.STRING,
-    ";"
+    $.SEMICOLON
   ),
 
   // element_list could be empty
@@ -275,7 +275,7 @@ module.exports = {
         field("element", $.element),
         field("annotation", $.annotation)
       ),
-      ";"
+      $.SEMICOLON
     )
   ),
 
@@ -283,17 +283,17 @@ module.exports = {
     field("importClause", $.importClause),
     field("extendsClause", $.extendsClause),
     seq(
-      optional("redeclare"),
-      optional("final"),
-      optional("inner"),
-      optional("outer"),
+      optional($.REDECLARE),
+      optional($.FINAL),
+      optional($.INNER),
+      optional($.T_OUTER),
       choice(
         choice(
           field("classDefinition", $.class_definition),
           field("componentClause", $.component_clause)
         ),
         seq(
-          "replaceable",
+          $.REPLACEABLE,
           choice(
             field("classDefinition", $.class_definition),
             field("componentClause", $.component_clause)
@@ -305,7 +305,7 @@ module.exports = {
   ),
 
   import_clause: $ => seq(
-    "import",
+    $.IMPORT,
     choice(
       field("explicitImportName", $.explicit_import_name),
       field("implicitImportName", $.implicit_import_name)
@@ -318,7 +318,7 @@ module.exports = {
       $.IDENT,
       $.CODE
     ),
-    "=",
+    $.EQUALS,
     field("namePath", $.name_path)
   ),
 

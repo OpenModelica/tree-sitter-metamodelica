@@ -33,44 +33,53 @@
  *
  */
 
-/**
- * @author AnHeuermann
- */
+// Keywords and special characters
 
-module.exports = grammar({
-  name: "metamodelica",
-
-  rules: {
-    ...require("./rules/a0-lexicalConventions"),
-    ...require("./rules/a1-classAndMainGrammar"),
-    ...require("./rules/a2-extends"),
-    ...require("./rules/keywords"),
-
-    name_path: $ => "undefined",
-    DER: $ => "undefined",
-    CODE: $ => "undefined",
-    EQUALITY: $ => "undefined",
-    INITIAL: $ => "undefined",
-    class_modification: $ => "undefined",
-    string_comment: $ => "undefined",
-    type_specifier: $ => "undefined",
-    type_prefix: $ => "undefined",
-    initial_equation_clause: $ => "undefined",
-    initial_algorithm_clause: $ => "undefined",
-    equation_clause: $ => "undefined",
-    constraint_clause: $ => "undefined",
-    algorithm_clause: $ => "undefined",
-    element_list: $ => "undefined",
-    component_reference: $ => "undefined",
-    expression_list: $ => "undefined",
-    annotation: $ => "undefined",
-    importClause: $ => "undefined",
-    extendsClause: $ => "undefined",
-    component_clause: $ => "undefined",
-    constraining_clause_comment: $ => "undefined",
-    name_path_star: $ => "undefined",
-    expression: $ => "undefined",
-    array_subscripts: $ => "undefined",
-    modification: $ => "undefined",
-  }
-});
+module.exports = {
+  BLOCK: $ => "block",
+  CLASS: $ => "class",
+  COLON: $ => ":",
+  COMMA: $ => ",",
+  CONNECTOR: $ => "connector",
+  CONSTRAINEDBY: $ => "constrainedby",
+  ENCAPSULATED:  $ => "encapsulated",
+  ENUMERATION: $ => "enumeration",
+  EQUALS: $ => "=",
+  EXPANDABLE: $ => "expandable",
+  EXTENDS: $ => "extends",
+  EXTERNAL: $ => "external",
+  FINAL: $ => "final",
+  FINAL: $ => "final",
+  FUNCTION: $ => "function",
+  GREATER: $ => ">",
+  IMPORT: $ => "import",
+  INNER: $ => "inner",
+  LESS: $ => "<",
+  LPAR: $ => "(",
+  MODEL: $ => "model",
+  OPERATOR: $ => "operator",
+  OPTIMIZATION: $ => "optimization",
+  OVERLOAD: $ => "overload",
+  PACKAGE: $ => "package",
+  PARTIAL: $ => "partial",
+  PROTECTED: $ => "protected",
+  PUBLIC: $ => "public",
+  RECORD: $ => "record",
+  REDECLARE: $ => "redeclare",
+  REPLACEABLE: $ => "replaceable",
+  RPAR: $ => ")",
+  SEMICOLON: $ => ";",
+  T_END: $ => "end",
+  T_OUTER: $ => "outer",
+  T_INPUT: $ => "input",
+  T_OUTPUT: $ => "output",
+  TYPE: $ => "type",
+  UNIONTYPE: $ => "uniontype",
+  WITHIN: $ => "within",
+  FLOW: $ => "flow",
+  STREAM: $ => "stream",
+  DISCRETE: $ => "discrete",
+  PARAMETER: $ => "parameter",
+  CONSTANT: $ => "constant",
+  IF: $ => "if"
+}
