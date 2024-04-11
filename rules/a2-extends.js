@@ -92,9 +92,9 @@ module.exports = {
   type_specifier: $ => seq(
     field("namePath", $.name_path),
     optional(seq(
-      $._LESS,
+      $.LESS,
       $.type_specifier_list,
-      $._GREATER
+      $.GREATER
     )),
     optional($.array_subscripts)
   ),
@@ -102,7 +102,7 @@ module.exports = {
   type_specifier_list: $ => seq(
     field("typeSpecifier", $.type_specifier),
     optional(seq(
-      $._COMMA,
+      $.COMMA,
       $.type_specifier_list
     ))
   ),
@@ -110,7 +110,7 @@ module.exports = {
   component_list: $ => seq(
     field("componentDeclaration", $.component_declaration),
     optional(seq(
-      $._COMMA,
+      $.COMMA,
       $.component_list
     ))
   ),

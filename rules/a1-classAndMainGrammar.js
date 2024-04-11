@@ -121,9 +121,9 @@ module.exports = {
       optional(
         field("identList",
           seq(
-          $._LESS,
+          $.LESS,
           $.ident_list,
-          $._GREATER,
+          $.GREATER,
           )
         )
       ),
@@ -133,7 +133,7 @@ module.exports = {
       field("endIdentifier", $.identifier)
     ),
     seq(
-      $._EQUALS,
+      $.EQUALS,
       field("basePrefix", $.base_prefix),
       field("typeSpecifier", $.type_specifier),
       optional(
@@ -142,42 +142,42 @@ module.exports = {
       field("comment", optional($.comment))
     ),
     seq(
-      $._EQUALS,
+      $.EQUALS,
       field("enumeration", $.enumeration)
     ),
     seq(
-      $._EQUALS,
+      $.EQUALS,
       field("pder", $.pder)
     ),
     seq(
-      $._EQUALS,
+      $.EQUALS,
       field("overloading", $.overloading)
     )
   ),
 
   pder: $ => seq(
     $.DER,
-    $._LPAR,
+    $.LPAR,
     field("namePath", $.name_path),
-    $._COMMA,
+    $.COMMA,
     $.ident_list,
-    $._RPAR,
+    $.RPAR,
     field("comment", optional($.comment))
   ),
 
   ident_list: $ => seq(
     field("ident", $.IDENT),
     repeat(seq(
-      $._COMMA,
+      $.COMMA,
       field("ident", $.IDENT)
     ))
   ),
 
   overloading: $ => seq(
     $.OVERLOAD,
-    $._LPAR,
+    $.LPAR,
     $.name_list,
-    $._RPAR,
+    $.RPAR,
     field("comment", optional($.comment))
   ),
 
@@ -186,26 +186,26 @@ module.exports = {
   name_list: $ => seq(
     field("namePath", $.name_path),
     repeat(seq(
-      $._COMMA,
+      $.COMMA,
       field("namePath", $.name_path),
     ))
   ),
 
   enumeration: $ => seq(
     $.ENUMERATION,
-    $._LPAR,
+    $.LPAR,
     choice(
       $.enum_list,
-      $._COLON
+      $.COLON
     ),
-    $._RPAR,
+    $.RPAR,
     field("comment", optional($.comment))
   ),
 
   enum_list: $ => seq(
     field("enumerationLiteral", $.enumeration_literal),
     repeat(seq(
-      $._COMMA,
+      $.COMMA,
       field("enumerationLiteral", $.enumeration_literal),
     ))
   ),
@@ -262,12 +262,12 @@ module.exports = {
       seq(
         optional(seq(
           field("componentReference", $.component_reference),
-          $._EQUALS
+          $.EQUALS
         )),
         $.IDENT,
-        $._LPAR,
+        $.LPAR,
         optional($.expression_list),
-        $._RPAR
+        $.RPAR
       )
     ),
     optional($.annotation),
@@ -346,7 +346,7 @@ module.exports = {
       $.IDENT,
       //$.CODE
     ),
-    $._EQUALS,
+    $.EQUALS,
     field("namePath", $.name_path)
   ),
 

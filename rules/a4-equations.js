@@ -120,17 +120,17 @@ module.exports = {
       $.when_clause_e,
       seq(
         $.FAILURE,
-        $._LPAR,
+        $.LPAR,
         field("equation", $.equation),
-        $._RPAR
+        $.RPAR
       ),
       seq(
         $.EQUALITY,
-        $._LPAR,
+        $.LPAR,
         field("leftExpression", $.expression),
-        $._EQUALS,
+        $.EQUALS,
         field("rightExpression", $.expression),
-        $._RPAR
+        $.RPAR
       )
     ),
     optional($.comment)
@@ -145,17 +145,17 @@ module.exports = {
       $.when_clause_e,
       seq(
         $.FAILURE,
-        $._LPAR,
+        $.LPAR,
         $.equation,
-        $._RPAR
+        $.RPAR
       ),
       seq(
         $.EQUALITY,
-        $._LPAR,
+        $.LPAR,
         $.expression,
-        $._EQUALS,
+        $.EQUALS,
         $.expression,
-        $._RPAR
+        $.RPAR
       )
     ),
     optional($.comment)
@@ -172,17 +172,17 @@ module.exports = {
       $.RETURN,
       seq(
         $.FAILURE,
-        $._LPAR,
+        $.LPAR,
         $.algorithm,
-        $._RPAR
+        $.RPAR
       ),
       seq(
         $.EQUALITY,
-        $._LPAR,
+        $.LPAR,
         $.expression,
-        $._ASSIGN,
+        $.ASSIGN,
         $.expression,
-        $._RPAR
+        $.RPAR
       )
     ),
     optional($.comment)
@@ -194,8 +194,8 @@ module.exports = {
     optional(
       seq(
         choice(
-          $._ASSIGN,
-          $._EQUALS
+          $.ASSIGN,
+          $.EQUALS
         ),
       $.expression
     ))
@@ -205,8 +205,8 @@ module.exports = {
   equality_or_noretcall_equation: $ => seq(
     $.simple_expression,
     choice(
-      $._EQUALS,
-      $._ASSIGN
+      $.EQUALS,
+      $.ASSIGN
     ),
     $.expression
   ),
@@ -361,10 +361,10 @@ module.exports = {
 
   connect_clause: $ => seq(
     $.CONNECT,
-    $._LPAR,
+    $.LPAR,
     $.component_reference,
-    $._COMMA,
+    $.COMMA,
     $.component_reference,
-    $._RPAR
+    $.RPAR
   )
 };

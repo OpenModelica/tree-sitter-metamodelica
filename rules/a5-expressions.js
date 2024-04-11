@@ -76,7 +76,7 @@ module.exports = {
   for_indices: $ => seq(
     $.for_index,
     optional(seq(
-      $._COMMA,
+      $.COMMA,
       $.for_indices
     ))
   ),
@@ -98,7 +98,7 @@ module.exports = {
     seq(
       $.simple_expr,
       optional(seq(
-        $._COLONCOLON,
+        $.COLONCOLON,
         $.simple_expression
       ))
     ),
@@ -112,11 +112,11 @@ module.exports = {
   simple_expr: $ => seq(
     $.logical_expression,
     optional(seq(
-      $._COLON,
+      $.COLON,
       $.logical_expression
     )),
     optional(seq(
-      $._COLON,
+      $.COLON,
       $.logical_expression
     ))
   ),
@@ -147,12 +147,12 @@ module.exports = {
     $.arithmetic_expression,
     optional(seq(
       choice(
-        $._LESS,
-        $._LESSEQ,
-        $._GREATER,
-        $._GREATEREQ,
-        $._EQEQ,
-        $._LESSGT
+        $.LESS,
+        $.LESSEQ,
+        $.GREATER,
+        $.GREATEREQ,
+        $.EQEQ,
+        $.LESSGT
       ),
       $.arithmetic_expression
     ))
@@ -162,10 +162,10 @@ module.exports = {
     $.unary_arithmetic_expression,
     repeat(seq(
       choice(
-        $._PLUS,
-        $._MINUS,
-        $._PLUS_EW,
-        $._MINUS_EW
+        $.PLUS,
+        $.MINUS,
+        $.PLUS_EW,
+        $.MINUS_EW
       ),
       $.term
     ))
@@ -173,19 +173,19 @@ module.exports = {
 
   unary_arithmetic_expression: $ => choice(
     seq(
-      $._PLUS,
+      $.PLUS,
       $.term
     ),
     seq(
-      $._MINUS,
+      $.MINUS,
       $.term
     ),
     seq(
-      $._PLUS_EW,
+      $.PLUS_EW,
       $.term
     ),
     seq(
-      $._MINUS_EW,
+      $.MINUS_EW,
       $.term
     ),
     $.term
@@ -195,10 +195,10 @@ module.exports = {
     $.factor,
     repeat(seq(
       choice(
-        $._STAR,
-        $._SLASH,
-        $._STAR_EW,
-        $._SLASH_EW
+        $.STAR,
+        $.SLASH,
+        $.STAR_EW,
+        $.SLASH_EW
       ),
       $.factor
     ))
@@ -208,8 +208,8 @@ module.exports = {
     $.primary,
     optional(seq(
       choice(
-        $._POWER,
-        $._POWER_EW
+        $.POWER,
+        $.POWER_EW
       ),
       $.primary
     ))
@@ -227,18 +227,18 @@ module.exports = {
       $.function_call
     ),
     seq(
-      $._LPAR,
+      $.LPAR,
       $.output_expression_list
     ),
     seq(
-      $._LBRACK,
+      $.LBRACK,
       $.matrix_expression_list,
-      $._RBRACK
+      $.RBRACK
     ),
     seq(
-      $._LBRACE,
+      $.LBRACE,
       $.for_or_expression_list,
-      $._RBRACE
+      $.RBRACE
     ),
     $.T_END
   )),
@@ -260,22 +260,22 @@ module.exports = {
     ),
     seq(
       $.INITIAL,
-      $._LPAR,
-      $._RPAR
+      $.LPAR,
+      $.RPAR
     )
   ),
 
   name_path: $ => seq(
-    optional($._DOT),
+    optional($.DOT),
     $.IDENT,
     repeat(seq(
-      $._DOT,
+      $.DOT,
       $.IDENT
     ))
   ),
 
   name_path_star: $ => seq(
-    optional($._DOT),
+    optional($.DOT),
     $.name_path_star2
   ),
 
@@ -285,17 +285,17 @@ module.exports = {
       $.IDENT,
       //$.CODE
     ),
-    $._DOT,
+    $.DOT,
     $.name_path_star2
   ),
 
   component_reference: $ => choice(
     seq(
-      optional($._DOT),
+      optional($.DOT),
       $.component_reference2
     ),
-    $._ALLWILD,
-    $._WILD
+    $.ALLWILD,
+    $.WILD
   ),
 
   // TODO: recursion
@@ -306,15 +306,15 @@ module.exports = {
     ),
     optional($.array_subscripts),
     optional(seq(
-      $._DOT,
+      $.DOT,
       $.component_reference2
     ))
   ),
 
   function_call: $ => seq(
-    $._LPAR,
+    $.LPAR,
     $.function_arguments,
-    $._RPAR
+    $.RPAR
   ),
 
   function_arguments: $ => seq(
@@ -327,7 +327,7 @@ module.exports = {
     $.expression,
     optional(choice(
       seq(
-        $._COMMA,
+        $.COMMA,
         $.for_or_expression_list2
       ),
       seq(
@@ -342,7 +342,7 @@ module.exports = {
   for_or_expression_list2: $ => seq(
     $.expression,
     optional(seq(
-      $._COMMA,
+      $.COMMA,
       $.for_or_expression_list2
     ))
   ),
@@ -351,7 +351,7 @@ module.exports = {
   named_arguments: $ => seq(
     $.named_argument,
     optional(seq(
-      $._COMMA,
+      $.COMMA,
       $.named_arguments
     ))
   ),
@@ -361,25 +361,25 @@ module.exports = {
       $.IDENT,
       $.OPERATOR
     ),
-    $._EQUALS,
+    $.EQUALS,
     $.expression
   ),
 
   // TODO: recursion
   output_expression_list: $ => choice(
-    $._RPAR,
+    $.RPAR,
     seq(
-      $._COMMA,
+      $.COMMA,
       $.output_expression_list
     ),
     seq(
       $.expression,
       choice(
         seq(
-          $._COMMA,
+          $.COMMA,
           $.output_expression_list
         ),
-        $._RPAR
+        $.RPAR
       )
     )
   ),
@@ -387,29 +387,29 @@ module.exports = {
   expression_list: $ => seq(
     $.expression,
     optional(seq(
-      $._COMMA,
+      $.COMMA,
       $.expression_list
     ))
   ),
 
   array_subscripts: $ => seq(
-    $._LBRACK,
+    $.LBRACK,
     $.subscript_list,
-    $._RBRACK
+    $.RBRACK
   ),
 
   // TODO: Recursion
   subscript_list: $ => seq(
     $.subscript,
     optional(seq(
-      $._COMMA,
+      $.COMMA,
       $.subscript_list
     ))
   ),
 
   subscript: $ => choice(
     $.expression,
-    $._COLON
+    $.COLON
   ),
 
   comment: $ => choice(
@@ -423,11 +423,11 @@ module.exports = {
     )
   ),
 
-  // TODO: What is `(_PLUS s2 = STRING)*`?
+  // TODO: What is `(PLUS s2 = STRING)*`?
   string_comment: $ => seq(
     $.STRING,
     repeat(seq(
-      $._PLUS,
+      $.PLUS,
       $.STRING
     ))
   ),
