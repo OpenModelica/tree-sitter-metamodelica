@@ -1,0 +1,16 @@
+=================================
+A.2.1 Stored Definition – Within3
+=================================
+
+within PackageA.PackageB.PackageC.PackageD;
+
+---
+
+(stored_definitions
+  (within_clause
+    (WITHIN)
+    (name_path
+      (IDENT)
+      (IDENT)
+      (IDENT)
+      (IDENT))))

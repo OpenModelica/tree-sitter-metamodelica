@@ -45,30 +45,30 @@ module.exports = {
     seq(
       field("classModification", $.class_modification),
       optional(seq(
-        $.EQUALS,
+        $._EQUALS,
         field("expression", $.expression)
       ))
     ),
     seq(
-      $.EQUALS,
+      $._EQUALS,
       field("expression", $.expression)
     ),
     seq(
-      $.ASSIGN,
+      $._ASSIGN,
       field("expression", $.expression)
     )
   ),
 
   class_modification: $ => seq(
-    $.LPAR,
+    $._LPAR,
     optional($.argument_list),
-    $.RPAR
+    $._RPAR
   ),
 
   argument_list: $ => seq(
     field("argument", $.argument),
     optional(seq(
-      $.COMMA,
+      $._COMMA,
       $.argument_list
     ))
   ),

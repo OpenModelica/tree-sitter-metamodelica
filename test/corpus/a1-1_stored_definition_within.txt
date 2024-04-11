@@ -1,0 +1,11 @@
+================================
+A.2.1 Stored Definition – Within
+================================
+
+within;
+
+---
+
+(stored_definitions
+  (within_clause
+    (WITHIN)))

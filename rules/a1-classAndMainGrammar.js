@@ -42,11 +42,12 @@
 module.exports = {
   stored_definitions: $ => seq(
     optional($.BOM),  // TODO: Remove?
+
     optional(
       field("withinClause",
         seq(
           $.within_clause,
-          $.SEMICOLON
+          $._SEMICOLON
         )
       )
     ),
@@ -62,7 +63,7 @@ module.exports = {
     seq(
       optional(field("final", $.FINAL)),
       field("classDefinition", $.class_definition),
-      $.SEMICOLON
+      $._SEMICOLON
     )
   ),
 
@@ -93,10 +94,11 @@ module.exports = {
     )
   ),
 
+  // TODO: What is DER, CODE, EQUALITY, INITIAL?
   identifier: $ => choice(
     $.IDENT,
     $.DER,
-    $.CODE,
+    //$.CODE,
     $.EQUALITY,
     $.INITIAL
   ),
@@ -122,9 +124,9 @@ module.exports = {
       optional(
         field("identList",
           seq(
-          $.LESS,
+          $._LESS,
           $.ident_list,
-          $.GREATER,
+          $._GREATER,
           )
         )
       ),
@@ -134,7 +136,7 @@ module.exports = {
       field("endIdentifier", $.identifier)
     ),
     seq(
-      $.EQUALS,
+      $._EQUALS,
       field("basePrefix", $.base_prefix),
       field("typeSpecifier", $.type_specifier),
       optional(
@@ -143,42 +145,42 @@ module.exports = {
       field("comment", optional($.comment))
     ),
     seq(
-      $.EQUALS,
+      $._EQUALS,
       field("enumeration", $.enumeration)
     ),
     seq(
-      $.EQUALS,
+      $._EQUALS,
       field("pder", $.pder)
     ),
     seq(
-      $.EQUALS,
+      $._EQUALS,
       field("overloading", $.overloading)
     )
   ),
 
   pder: $ => seq(
     $.DER,
-    $.LPAR,
+    $._LPAR,
     field("namePath", $.name_path),
-    $.COMMA,
+    $._COMMA,
     $.ident_list,
-    $.RPAR,
+    $._RPAR,
     field("comment", optional($.comment))
   ),
 
   ident_list: $ => seq(
     field("ident", $.IDENT),
     repeat(seq(
-      $.COMMA,
+      $._COMMA,
       field("ident", $.IDENT)
     ))
   ),
 
   overloading: $ => seq(
     $.OVERLOAD,
-    $.LPAR,
+    $._LPAR,
     $.name_list,
-    $.RPAR,
+    $._RPAR,
     field("comment", optional($.comment))
   ),
 
@@ -187,26 +189,26 @@ module.exports = {
   name_list: $ => seq(
     field("namePath", $.name_path),
     repeat(seq(
-      $.COMMA,
+      $._COMMA,
       field("namePath", $.name_path),
     ))
   ),
 
   enumeration: $ => seq(
     $.ENUMERATION,
-    $.LPAR,
+    $._LPAR,
     choice(
       $.enum_list,
-      $.COLON
+      $._COLON
     ),
-    $.RPAR,
+    $._RPAR,
     field("comment", optional($.comment))
   ),
 
   enum_list: $ => seq(
     field("enumerationLiteral", $.enumeration_literal),
     repeat(seq(
-      $.COMMA,
+      $._COMMA,
       field("enumerationLiteral", $.enumeration_literal),
     ))
   ),
@@ -263,22 +265,22 @@ module.exports = {
       seq(
         optional(seq(
           field("componentReference", $.component_reference),
-          $.EQUALS
+          $._EQUALS
         )),
         $.IDENT,
-        $.LPAR,
+        $._LPAR,
         optional($.expression_list),
-        $.RPAR
+        $._RPAR
       )
     ),
     optional($.annotation),
-    $.SEMICOLON,
+    $._SEMICOLON,
     optional(field("externalAnnotation", $.external_annotation))
   ),
 
   external_annotation: $ => seq(
     field("externalAnnotation", $.annotation),
-    $.SEMICOLON
+    $._SEMICOLON
   ),
 
   public_element_list: $ => seq(
@@ -293,7 +295,7 @@ module.exports = {
 
   language_specification: $ => seq(
     $.STRING,
-    $.SEMICOLON
+    $._SEMICOLON
   ),
 
   // element_list could be empty
@@ -303,7 +305,7 @@ module.exports = {
         field("element", $.element),
         field("annotation", $.annotation)
       ),
-      $.SEMICOLON
+      $._SEMICOLON
     )
   ),
 
@@ -341,12 +343,13 @@ module.exports = {
     field("comment", optional($.comment))
   ),
 
+  // TODO: What is CODE?
   explicit_import_name: $ => seq(
     choice(
       $.IDENT,
-      $.CODE
+      //$.CODE
     ),
-    $.EQUALS,
+    $._EQUALS,
     field("namePath", $.name_path)
   ),
 

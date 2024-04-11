@@ -40,14 +40,15 @@
 module.exports = grammar({
   name: "metamodelica",
 
-  extras: $ => [
-    $.COMMENT,
-    $.BLOCK_COMMENT,
-    $._SPACE
-  ],
+  //extras: $ => [
+  //  $.COMMENT,
+  //  $.BLOCK_COMMENT,
+  //  $._SPACE
+  //],
+
+  //word: $ => $.IDENT,
 
   rules: {
-    ...require("./rules/a0-lexicalConventions"),
     ...require("./rules/a1-classAndMainGrammar"),
     ...require("./rules/a2-extends"),
     ...require("./rules/a3-modification"),
@@ -55,8 +56,9 @@ module.exports = grammar({
     ...require("./rules/a5-expressions"),
     ...require("./rules/a6-metamodelicaExtensions"),
     ...require("./rules/keywords"),
+    ...require("./rules/lexicalConventions"),
 
-    CODE: $ => "undefined",
-    EQUALITY: $ => "undefined",
+    //CODE: $ => "undefined",
+    //EQUALITY: $ => "undefined",
   }
 });

@@ -2,9 +2,9 @@
 A.0.1 Lexical Conventions – Model
 =================================
 
-model M
-end M;
+model MyModel
+end MyModel;
 
 ---
 
-(IDENT)
+(stored_definitions)

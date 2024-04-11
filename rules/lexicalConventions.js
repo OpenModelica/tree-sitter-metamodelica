@@ -42,6 +42,7 @@
 module.exports = {
   BOM: $ => /\u00EF\u00BB\u00BF/,
 
+  /*
   IDENT: $ => token(
     choice(
       // NON-DIGIT { DIGIT | NON-DIGIT }
@@ -72,6 +73,15 @@ module.exports = {
       )
     )
   ),
+  */
+
+  IDENT: $ => token(choice(
+    seq(/[_a-zA-Z]/, repeat(choice(/[0-9]/, /[_a-zA-Z]/))),
+    seq("’", repeat(choice(
+        /[_a-zA-Z]/, /[0-9]/, "!", "#", "$", "%", "&", "(", ")",
+        "*", "+", ",", "-", ".", "/", ":", ";", "<", ">", "=",
+        "?", "@", "[", "]", "^", "{", "}", "|", "~", " ", "\"",
+        seq("\\", choice("’", "'", "\"", "?", "\\", "a", "b", "f", "n", "r", "t", "v")))), "’"))),
 
   STRING: $ => token(
     seq(
@@ -154,5 +164,5 @@ module.exports = {
     )
   ),
 
-  _SPACE: $ => /\s+/
+  _SPACE: $ => /\s+/,
 };

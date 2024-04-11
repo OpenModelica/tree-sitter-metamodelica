@@ -41,17 +41,46 @@
 // https://liu.diva-portal.org/smash/record.jsf?pid=diva2%3A418188&dswid=-9758
 
 module.exports = {
-  // TODO: What the heck is `{ ... }?` ?
-  // I'm just removing it
+  // TODO: Do look ahead
+  //{ LA(2) == EQUATION }?
+  // Look ahead two and that one must be EQUATION
   initial_equation_clause: $ => seq(
     $.INITIAL,
     $.EQUATION,
-    repeat($.equation_annotation_list)
+    // LA and recursion from equation_annotation_list
+    repeat(
+      seq(
+        $.equation_annotation_list,
+        choice(
+          $.T_END,
+          $.CONSTRAINT,
+          $.EQUATION,
+          $.T_ALGORITHM,
+          $.INITIAL,
+          $.PROTECTED,
+          $.PUBLIC
+        )
+      )
+    )
   ),
 
   equation_clause: $ => seq(
     $.EQUATION,
-    repeat($.equation_annotation_list)
+    // LA and recursion from equation_annotation_list
+    repeat(
+      seq(
+        $.equation_annotation_list,
+        choice(
+          $.T_END,
+          $.CONSTRAINT,
+          $.EQUATION,
+          $.T_ALGORITHM,
+          $.INITIAL,
+          $.PROTECTED,
+          $.PUBLIC
+        )
+      )
+    )
   ),
 
   constraint_clause: $ => seq(
@@ -59,15 +88,18 @@ module.exports = {
     repeat($.constraint_annotation_list)
   ),
 
-  // TODO: What the heck is `{ ... }?` ?
+  // TODO: Do look ahead
+  // Is this done correctly in initial_equation_clause and equation_clause ?
+  //{ LA(1) == T_END || LA(1) == CONSTRAINT || LA(1) == EQUATION || LA(1) == T_ALGORITHM ||
+  //  LA(1) == INITIAL || LA(1) == PROTECTED || LA(1) == PUBLIC }?
   equation_annotation_list: $ => choice(
     seq(
       $.equation,
-      $.SEMICOLON
+      $._SEMICOLON
     ),
     seq(
       $.annotation,
-      $.SEMICOLON
+      $._SEMICOLON
     )
   ),
 
@@ -75,11 +107,11 @@ module.exports = {
   constraint_annotation_list: $ => choice(
     seq(
       $.equation,
-      $.SEMICOLON
+      $._SEMICOLON
     ),
     seq(
       $.annotation,
-      $.SEMICOLON
+      $._SEMICOLON
     )
   ),
 
@@ -99,11 +131,11 @@ module.exports = {
   algorithm_annotation_list: $ => choice(
     seq(
       $.algorithm,
-      $.SEMICOLON
+      $._SEMICOLON
     ),
     seq(
       $.annotation,
-      $.SEMICOLON
+      $._SEMICOLON
     )
   ),
 
@@ -117,17 +149,17 @@ module.exports = {
       $.when_clause_e,
       seq(
         $.FAILURE,
-        $.LPAR,
+        $._LPAR,
         field("equation", $.equation),
-        $.RPAR
+        $._RPAR
       ),
       seq(
         $.EQUALITY,
-        $.LPAR,
+        $._LPAR,
         field("leftExpression", $.expression),
-        $.EQUALS,
+        $._EQUALS,
         field("rightExpression", $.expression),
-        $.RPAR
+        $._RPAR
       )
     ),
     optional($.comment)
@@ -142,17 +174,17 @@ module.exports = {
       $.when_clause_e,
       seq(
         $.FAILURE,
-        $.LPAR,
+        $._LPAR,
         $.equation,
-        $.RPAR
+        $._RPAR
       ),
       seq(
         $.EQUALITY,
-        $.LPAR,
+        $._LPAR,
         $.expression,
-        $.EQUALS,
+        $._EQUALS,
         $.expression,
-        $.RPAR
+        $._RPAR
       )
     ),
     optional($.comment)
@@ -169,17 +201,17 @@ module.exports = {
       $.RETURN,
       seq(
         $.FAILURE,
-        $.LPAR,
+        $._LPAR,
         $.algorithm,
-        $.RPAR
+        $._RPAR
       ),
       seq(
         $.EQUALITY,
-        $.LPAR,
+        $._LPAR,
         $.expression,
-        $.ASSIGN,
+        $._ASSIGN,
         $.expression,
-        $.RPAR
+        $._RPAR
       )
     ),
     optional($.comment)
@@ -191,8 +223,8 @@ module.exports = {
     optional(
       seq(
         choice(
-          $.ASSIGN,
-          $.EQUALS
+          $._ASSIGN,
+          $._EQUALS
         ),
       $.expression
     ))
@@ -202,8 +234,8 @@ module.exports = {
   equality_or_noretcall_equation: $ => seq(
     $.simple_expression,
     choice(
-      $.EQUALS,
-      $.ASSIGN
+      $._EQUALS,
+      $._ASSIGN
     ),
     $.expression
   ),
@@ -335,7 +367,7 @@ module.exports = {
   // TODO: recursion
   equation_list_then: $ => seq(
     $.equation,
-    $.SEMICOLON,
+    $._SEMICOLON,
     $.equation_list_then
   ),
 
@@ -344,7 +376,7 @@ module.exports = {
   // TODO: How to distinguish from equation_list_then?
   equation_list: $ => seq(
     $.equation,
-    $.SEMICOLON,
+    $._SEMICOLON,
     $.equation_list
   ),
 
@@ -352,16 +384,16 @@ module.exports = {
   // TODO: recursion
   algorithm_list: $ => seq(
     $.algorithm,
-    $.SEMICOLON,
+    $._SEMICOLON,
     $.algorithm_list
   ),
 
   connect_clause: $ => seq(
     $.CONNECT,
-    $.LPAR,
+    $._LPAR,
     $.component_reference,
-    $.COMMA,
+    $._COMMA,
     $.component_reference,
-    $.RPAR
+    $._RPAR
   )
 };

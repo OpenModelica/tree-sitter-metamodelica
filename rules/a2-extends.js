@@ -40,7 +40,6 @@
 // https://liu.diva-portal.org/smash/record.jsf?pid=diva2%3A418188&dswid=-9758
 
 module.exports = {
-
   // Extends
   extends_clause: $ => seq(
     $.EXTENDS,
@@ -93,9 +92,9 @@ module.exports = {
   type_specifier: $ => seq(
     field("namePath", $.name_path),
     optional(seq(
-      $.LESS,
+      $._LESS,
       $.type_specifier_list,
-      $.GREATER
+      $._GREATER
     )),
     optional($.array_subscripts)
   ),
@@ -103,7 +102,7 @@ module.exports = {
   type_specifier_list: $ => seq(
     field("typeSpecifier", $.type_specifier),
     optional(seq(
-      $.COMMA,
+      $._COMMA,
       $.type_specifier_list
     ))
   ),
@@ -111,7 +110,7 @@ module.exports = {
   component_list: $ => seq(
     field("componentDeclaration", $.component_declaration),
     optional(seq(
-      $.COMMA,
+      $._COMMA,
       $.component_list
     ))
   ),

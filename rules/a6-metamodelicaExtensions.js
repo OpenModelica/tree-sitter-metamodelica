@@ -84,7 +84,7 @@ module.exports = {
       $.THEN
     )),
     $.expression,
-    $.SEMICOLON
+    $._SEMICOLON
   ),
 
   onecase: $ => seq(
@@ -97,7 +97,7 @@ module.exports = {
     )),
     $.THEN,
     $.expression,
-    $.SEMICOLON
+    $._SEMICOLON
   ),
 
   // TODO: e=expression ???

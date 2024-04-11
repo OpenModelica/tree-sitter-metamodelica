@@ -1,0 +1,14 @@
+=======
+Comment
+=======
+
+// This is a comment
+
+/* This is a block comment
+ *
+ */
+
+---
+
+(COMMENT)
+(BLOCK_COMMENT)
