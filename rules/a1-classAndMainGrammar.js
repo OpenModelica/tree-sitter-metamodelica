@@ -42,7 +42,6 @@
 module.exports = {
   stored_definitions: $ => seq(
     optional($.BOM),  // TODO: Remove?
-
     optional(
       field("withinClause",
         seq(
@@ -106,7 +105,7 @@ module.exports = {
   class_specifier: $ => choice(
     seq(
       field("identifier", $.identifier),
-      $.class_specifier2
+      $._class_specifier2
     ),
     seq(
       $.EXTENDS,
@@ -119,7 +118,7 @@ module.exports = {
     )
   ),
 
-  class_specifier2: $ => choice(
+  _class_specifier2: $ => choice(
     seq(
       optional(
         field("identList",

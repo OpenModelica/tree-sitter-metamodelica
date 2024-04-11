@@ -7,4 +7,14 @@ end MyModel;
 
 ---
 
-(stored_definitions)
+(stored_definitions
+  (class_definition_list
+    (class_definition
+      (class_type
+        (MODEL))
+      (class_specifier
+        (identifier
+          (IDENT))
+        (T_END)
+        (identifier
+          (IDENT))))))

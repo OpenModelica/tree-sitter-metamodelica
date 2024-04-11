@@ -215,7 +215,7 @@ module.exports = {
     ))
   ),
 
-  primary: $ => choice(
+  primary: $ => prec.right(choice(
     $.UNSIGNED_INTEGER,
     $.UNSIGNED_REAL,
     $.STRING,
@@ -241,7 +241,7 @@ module.exports = {
       $._RBRACE
     ),
     $.T_END
-  ),
+  )),
 
   // TODO: recursive
   matrix_expression_list: $ => seq(

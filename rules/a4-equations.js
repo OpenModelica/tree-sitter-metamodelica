@@ -42,56 +42,26 @@
 
 module.exports = {
   // TODO: Do look ahead
-  //{ LA(2) == EQUATION }?
-  // Look ahead two and that one must be EQUATION
-  initial_equation_clause: $ => seq(
+  initial_equation_clause: $ => prec.right(seq(
     $.INITIAL,
     $.EQUATION,
-    // LA and recursion from equation_annotation_list
-    repeat(
-      seq(
-        $.equation_annotation_list,
-        choice(
-          $.T_END,
-          $.CONSTRAINT,
-          $.EQUATION,
-          $.T_ALGORITHM,
-          $.INITIAL,
-          $.PROTECTED,
-          $.PUBLIC
-        )
-      )
-    )
-  ),
-
-  equation_clause: $ => seq(
-    $.EQUATION,
-    // LA and recursion from equation_annotation_list
-    repeat(
-      seq(
-        $.equation_annotation_list,
-        choice(
-          $.T_END,
-          $.CONSTRAINT,
-          $.EQUATION,
-          $.T_ALGORITHM,
-          $.INITIAL,
-          $.PROTECTED,
-          $.PUBLIC
-        )
-      )
-    )
-  ),
-
-  constraint_clause: $ => seq(
-    $.CONSTRAINT,
-    repeat($.constraint_annotation_list)
-  ),
+    repeat($.equation_annotation_list)
+  )),
 
   // TODO: Do look ahead
-  // Is this done correctly in initial_equation_clause and equation_clause ?
-  //{ LA(1) == T_END || LA(1) == CONSTRAINT || LA(1) == EQUATION || LA(1) == T_ALGORITHM ||
-  //  LA(1) == INITIAL || LA(1) == PROTECTED || LA(1) == PUBLIC }?
+  equation_clause: $ => prec.right(seq(
+    $.EQUATION,
+    repeat($.equation_annotation_list)
+  )),
+
+  // TODO: Ask Adrian if this is correct with LA of constraint_annotation_list
+  // TODO: Do look ahead
+  constraint_clause: $ => prec.right(seq(
+    $.CONSTRAINT,
+    repeat($.constraint_annotation_list)
+  )),
+
+  // TODO: Do look ahead
   equation_annotation_list: $ => choice(
     seq(
       $.equation,
@@ -104,6 +74,7 @@ module.exports = {
   ),
 
   // TODO: What the heck is `{ ... }?` ?
+  // TODO: Do look ahead
   constraint_annotation_list: $ => choice(
     seq(
       $.equation,
@@ -115,17 +86,17 @@ module.exports = {
     )
   ),
 
-  algorithm_clause: $ => seq(
+  algorithm_clause: $ => prec.right(seq(
     $.T_ALGORITHM,
     repeat($.algorithm_annotation_list)
-  ),
+  )),
 
   // TODO: What the heck is `{ ... }?` ?
-  initial_algorithm_clause: $ => seq(
+  initial_algorithm_clause: $ => prec.right(seq(
     $.INITIAL,
     $.T_ALGORITHM,
     repeat($.algorithm_annotation_list)
-  ),
+  )),
 
   // TODO: What the heck is `{ ... }?` ?
   algorithm_annotation_list: $ => choice(

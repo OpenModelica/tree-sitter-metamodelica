@@ -40,13 +40,13 @@
 module.exports = grammar({
   name: "metamodelica",
 
-  //extras: $ => [
-  //  $.COMMENT,
-  //  $.BLOCK_COMMENT,
-  //  $._SPACE
-  //],
+  extras: $ => [
+    $.COMMENT,
+    $.BLOCK_COMMENT,
+    $._SPACE
+  ],
 
-  //word: $ => $.IDENT,
+  word: $ => $.IDENT,
 
   rules: {
     ...require("./rules/a1-classAndMainGrammar"),
