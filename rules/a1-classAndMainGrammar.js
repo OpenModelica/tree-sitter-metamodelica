@@ -40,7 +40,7 @@
 // https://liu.diva-portal.org/smash/record.jsf?pid=diva2%3A418188&dswid=-9758
 
 module.exports = {
-  stored_definitions: $ => seq(
+  stored_definition: $ => seq(
     optional($.BOM),  // TODO: Remove?
     optional(
       field("withinClause",
@@ -50,7 +50,7 @@ module.exports = {
         )
       )
     ),
-    field("classDefinitionList", $.class_definition_list)
+    field("classDefinitionList", repeat($.class_definition_list))
   ),
 
   within_clause: $ => seq(
@@ -58,12 +58,10 @@ module.exports = {
     optional(field("namePath", $.name_path))
   ),
 
-  class_definition_list: $ => repeat1(
-    seq(
-      optional(field("final", $.FINAL)),
-      field("classDefinition", $.class_definition),
-      $._SEMICOLON
-    )
+  class_definition_list: $ => seq(
+    optional(field("final", $.FINAL)),
+    field("classDefinition", $.class_definition),
+    $._SEMICOLON
   ),
 
   class_definition: $ => seq(

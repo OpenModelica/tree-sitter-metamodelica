@@ -6,7 +6,7 @@ within a091234;
 
 ---
 
-(stored_definitions
+(stored_definition
   (within_clause
     (WITHIN)
     (name_path

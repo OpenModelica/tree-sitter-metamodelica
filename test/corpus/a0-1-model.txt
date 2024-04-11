@@ -7,7 +7,7 @@ end MyModel;
 
 ---
 
-(stored_definitions
+(stored_definition
   (class_definition_list
     (class_definition
       (class_type

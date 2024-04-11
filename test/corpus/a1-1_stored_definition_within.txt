@@ -6,6 +6,6 @@ within;
 
 ---
 
-(stored_definitions
+(stored_definition
   (within_clause
     (WITHIN)))

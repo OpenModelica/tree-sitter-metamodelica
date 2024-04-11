@@ -60,5 +60,23 @@ module.exports = grammar({
 
     //CODE: $ => "undefined",
     //EQUALITY: $ => "undefined",
+    //class_definition: $ => "foo0",
+    //class_modification: $ => "foo1",
+    //string_comment: $ => "foo2",
+    //type_specifier: $ => "foo3",
+    //comment: $ => "foo4",
+    //type_prefix: $ => "foo5",
+    //initial_equation_clause: $ => "foo6",
+    //initial_algorithm_clause: $ => "foo7",
+    //equation_clause: $ => "foo8",
+    //constraint_clause: $ => "foo9",
+    //algorithm_clause: $ => "foo10",
+    //component_reference: $ => "foo11",
+    //expression_list: $ => "foo12",
+    //annotation: $ => "foo13",
+    //extends_clause: $ => "foo14",
+    //component_clause: $ => "foo15",
+    //constraining_clause_comment: $ => "foo16",
+    //name_path_star: $ => "foo17",
   }
 });

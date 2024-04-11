@@ -19,3 +19,19 @@ encapsulated package Main
 end Main;
 
 ---
+
+(stored_definition
+  (BLOCK_COMMENT)
+  (class_definition_list
+    (class_definition
+      (ENCAPSULATED)
+      (class_type
+        (PACKAGE))
+      (class_specifier
+        (identifier
+          (IDENT))
+        (string_comment
+          (STRING))
+        (T_END)
+        (identifier
+          (IDENT))))))

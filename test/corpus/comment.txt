@@ -10,5 +10,6 @@ Comment
 
 ---
 
-(COMMENT)
-(BLOCK_COMMENT)
+(stored_definition
+  (COMMENT)
+  (BLOCK_COMMENT))

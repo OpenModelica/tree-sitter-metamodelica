@@ -6,7 +6,7 @@ within PackageA.PackageB.PackageC.PackageD;
 
 ---
 
-(stored_definitions
+(stored_definition
   (within_clause
     (WITHIN)
     (name_path
