@@ -26,7 +26,11 @@
 
 
 ;;; Types
-(type_specifier) @type.builtin  ;; >Real< x
+(type_specifier (name_path (IDENT) @type )) ;; >A<.>MyType< x
+(type_specifier (T_REAL)  @type.builtin )     ;; >Real< x
+(type_specifier (T_INTEGER)  @type.builtin )     ;; >Integer< x
+(type_specifier (T_BOOLEAN)  @type.builtin )     ;; >Boolean< x
+(type_specifier (T_STRING)  @type.builtin )     ;; >String< x
 
 
 ;;; Variables
