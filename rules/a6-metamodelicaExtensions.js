@@ -89,7 +89,7 @@ module.exports = {
 
   onecase: $ => seq(
     $.CASE,
-    $.pattern,
+    $._pattern,
     optional($.string_comment),
     optional(seq(
       $.EQUATION,
@@ -101,7 +101,7 @@ module.exports = {
   ),
 
   // TODO: e=expression ???
-  pattern: $ => seq(
+  _pattern: $ => seq(
     $.expression
   )
 };

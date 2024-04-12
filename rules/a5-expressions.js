@@ -237,7 +237,7 @@ module.exports = {
     ),
     seq(
       $.LBRACE,
-      $._for_or__expression_list,
+      $._for_or_expression_list,
       $.RBRACE
     ),
     $.T_END
@@ -325,25 +325,30 @@ module.exports = {
     ))
   ),
 
+  //TODO: Can function_arguments be optional?
   function_call: $ => seq(
     $.LPAR,
     $.function_arguments,
     $.RPAR
   ),
 
-  function_arguments: $ => seq(
-    $._for_or__expression_list,
-    optional($.named_arguments)
+  // Not sure, but _for_or_expression_list should be optional
+  function_arguments: $ => choice(
+    seq(
+      $._for_or_expression_list,
+      optional($._named_arguments)
+    ),
+    $._named_arguments
   ),
 
-  // TODO: What is `{ }?` ?
-  _for_or__expression_list: $ => seq(
+  // TODO: Do look ahead
+  _for_or_expression_list: $ => seq(
     $.expression,
     optional(choice(
-      seq(
+      repeat1(seq(
         $.COMMA,
-        $._for_or__expression_list2
-      ),
+        $.expression
+      )),
       seq(
         $.FOR,
         $.for_indices
@@ -351,22 +356,13 @@ module.exports = {
     )),
   ),
 
-  // TODO: What is `{ }?` ?
-  // TODO: recursion
-  _for_or__expression_list2: $ => seq(
-    $.expression,
-    optional(seq(
-      $.COMMA,
-      $._for_or__expression_list2
-    ))
-  ),
+  //_for_or_expression_list2
 
-  // TODO: recursive
-  named_arguments: $ => seq(
+  _named_arguments: $ => seq(
     $.named_argument,
-    optional(seq(
+    repeat(seq(
       $.COMMA,
-      $.named_arguments
+      $.named_argument
     ))
   ),
 
