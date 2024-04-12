@@ -90,7 +90,10 @@ module.exports = {
   ),
 
   type_specifier: $ => seq(
-    field("namePath", $.name_path),
+    choice(
+      $._builtin_types,
+      field("namePath", $.name_path),
+    ),
     optional(seq(
       $.LESS,
       $._type_specifier_list,

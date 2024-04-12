@@ -1,0 +1,33 @@
+===============================
+A.1 class_definition function 2
+===============================
+
+public function foo
+"foo documentation"
+  input Type inx;
+  output Type x;
+algorithm
+  x := new();
+end foo;
+
+---
+
+(stored_definition
+  (class_definition
+    (class_type
+      (FUNCTION))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (composition
+        (element
+          (component_clause
+            (type_specifier
+              (name_path
+                (IDENT)))
+            (component_declaration
+              (declaration
+                (IDENT))))))
+      (T_END)
+      (identifier
+        (IDENT)))))

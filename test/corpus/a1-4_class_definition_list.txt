@@ -1,5 +1,5 @@
 =========================
-A.2 class_definition_list
+A.1 class_definition_list
 =========================
 
 package PackageA
