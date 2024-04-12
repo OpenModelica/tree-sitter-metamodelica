@@ -26,49 +26,40 @@
 
 
 ;;; Types
-(type_specifier (name_path (IDENT) @type )) ;; >A<.>MyType< x
+(type_specifier (name_path (IDENT) @type ))   ;; >A<.>MyType< x
 (type_specifier (T_REAL)  @type.builtin )     ;; >Real< x
-(type_specifier (T_INTEGER)  @type.builtin )     ;; >Integer< x
-(type_specifier (T_BOOLEAN)  @type.builtin )     ;; >Boolean< x
-(type_specifier (T_STRING)  @type.builtin )     ;; >String< x
+(type_specifier (T_INTEGER)  @type.builtin )  ;; >Integer< x
+(type_specifier (T_BOOLEAN)  @type.builtin )  ;; >Boolean< x
+(type_specifier (T_STRING)  @type.builtin )   ;; >String< x
+(type_specifier (T_LIST)  @type.builtin )     ;; >List<<Real> x
+(type_specifier (T_OPTION)  @type.builtin )   ;; >Option< <Real> x
+(type_specifier (T_TUPLE)  @type.builtin )    ;; >Tuple< <T1, T2, T3> x
 
 
 ;;; Variables
 (declaration (IDENT) @variable.parameter) ;; Real >x<
+(component_reference (IDENT) @variable.parameter) ;; >x<
 
 
 ;;; Classes
-(class_type package: (PACKAGE))(class_specifier (identifier) @module)     ;; package >A< end >A<;
-(class_type class: (CLASS))(class_specifier (identifier) @module)
-(class_type function: (FUNCTION))(class_specifier (identifier) @function)
+(class_type class: (CLASS))(class_specifier (identifier) @module)               ;; class >A< end >A<;
+(class_type optimization: (OPTIMIZATION))(class_specifier (identifier) @module) ;; optimization >A< end >A<;
+(class_type model: (MODEL))(class_specifier (identifier) @module)               ;; model >A< end >A<;
+(class_type record: (RECORD))(class_specifier (identifier) @type)               ;; record >R< end >R<;
+(class_type connector: (CONNECTOR))(class_specifier (identifier) @module)       ;; connector >C< end >C<;
+(class_type type: (TYPE))(class_specifier (identifier) @type)                   ;; type >T< end >T<;
+(class_type package: (PACKAGE))(class_specifier (identifier) @module)           ;; package >A< end >A<;
+(class_type function: (FUNCTION))(class_specifier (identifier) @function)       ;; function >foo< end >foo<;
+(class_type uniontype: (UNIONTYPE))(class_specifier (identifier) @type)         ;; uniontype >T< end >T<;
 
-
-;    field("class", $.CLASS),
-;    field("optimization", $.OPTIMIZATION),
-;    field("model", $.MODEL),
-;    field("record", $.RECORD),
-;    field("block", $.BLOCK),
-;    seq(
-;      optional($.EXPANDABLE),
-;      field("connector", $.CONNECTOR)
-;    ),
-;    field("type", $.TYPE),
-;    field("package", $.PACKAGE),
-;    field("function", $.FUNCTION),
-;    field("uniontype", $.UNIONTYPE),
-;    seq(
-;      field("operator", $.OPERATOR),
-;      optional(choice($.FUNCTION, $.RECORD))
-;    )
-;  ),
 
 ;;; Within
 (within_clause namePath: (name_path (IDENT) @module)) ;; withing >PackageA<.>PackageB<;
 
 ;;; Import
-(explicit_import_name (IDENT) @module)                                  ;; import >A< = PackageA;
-(explicit_import_name namePath: (name_path (IDENT) @module))            ;; import B = >PackageA<.>PackageB<;
-(implicit_import_name namePathStar: (name_path_star (IDENT) @module))   ;; import >PackageA<.>PackageB<.*;
+(explicit_import_name (IDENT) @module)                                            ;; import >A< = PackageA;
+(explicit_import_name namePath: (name_path (IDENT) @module))                      ;; import B = >PackageA<.>PackageB<;
+(implicit_import_name namePathStar: (name_path_star identifier: (IDENT) @module)) ;; import >PackageA<.>PackageB<.*;
 
 ;;; Function Builtins
 (EQUALITY) @function.builtin  ;; >equality<(id = id2);

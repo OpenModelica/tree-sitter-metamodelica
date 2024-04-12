@@ -280,15 +280,26 @@ module.exports = {
   ),
 
   // TODO: Fix look ahead
+
   _name_path_star2: $ => choice(
     seq(
-      $.IDENT,
+      field("identifier", $.IDENT),
       optional($.STAR_EW)
     ),
     seq(
-      $.IDENT,
+      field("identifier", $.IDENT),
       $.DOT,
       $._name_path_star2
+    ),
+    // Modification for import like `import A.{foo,bar}`
+    seq(
+      $.LBRACE,
+      optional($.IDENT),
+      repeat(seq(
+        $.COMMA,
+        $.IDENT
+      )),
+      $.RBRACE
     )
   ),
 

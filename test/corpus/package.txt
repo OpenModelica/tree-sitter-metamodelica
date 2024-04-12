@@ -18,6 +18,7 @@ encapsulated package PackageA
 public
 import B = PackageB;
 import PackageC.PackageD.*;
+import PackageE.{foo,bar};
 
 end PackageA;
 
@@ -53,7 +54,19 @@ end PackageA;
                 (IDENT)
                 (DOT)
                 (IDENT)
-                (STAR_EW))))))
+                (STAR_EW)))))
+        (element
+          (import_clause
+            (IMPORT)
+            (implicit_import_name
+              (name_path_star
+                (IDENT)
+                (DOT)
+                (LBRACE)
+                (IDENT)
+                (COMMA)
+                (IDENT)
+                (RBRACE))))))
       (T_END)
       (identifier
         (IDENT)))))
