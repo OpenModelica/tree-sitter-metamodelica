@@ -37,8 +37,11 @@
 
 
 ;;; Variables
-(declaration (IDENT) @variable.parameter) ;; Real >x<
-(component_reference (IDENT) @variable.parameter) ;; >x<
+(declaration (IDENT) @variable.parameter)         ;; Real >x<
+(component_reference_function_call componentReference: (component_reference) @variable.parameter) ;; >x<
+
+;;; Function calls
+(component_reference_function_call functionName: (component_reference) @function)
 
 
 ;;; Classes
@@ -132,6 +135,7 @@
   (T_OUTPUT)
   (T_TRUE)
   (THEN)
+  (TRY)
   (TYPE)
   (UNIONTYPE)
   (WHEN)

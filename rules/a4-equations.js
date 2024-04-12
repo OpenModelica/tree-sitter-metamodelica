@@ -168,6 +168,7 @@ module.exports = {
       $.conditional_equation_a,
       $.for_clause_a,
       $.while_clause,
+      $.try_clause,
       $.when_clause_a,
       $.BREAK,
       $.RETURN,

@@ -221,7 +221,7 @@ module.exports = {
     $.STRING,
     $.T_FALSE,
     $.T_TRUE,
-    $._component_reference_function_call,
+    $.component_reference_function_call,
     seq(
       $.DER,
       $.function_call
@@ -252,11 +252,12 @@ module.exports = {
     ))
   ),
 
-  _component_reference_function_call: $ => choice(
+  component_reference_function_call: $ => choice(
     seq(
-      $.component_reference,
-      optional($.function_call)
+      field("functionName", $.component_reference),
+      $.function_call
     ),
+    field("componentReference", $.component_reference),
     seq(
       $.INITIAL,
       $.LPAR,

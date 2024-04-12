@@ -66,8 +66,9 @@ end makeDebugResult;
           (algorithm
             (assign_clause_a
               (simple_expression
-                (component_reference
-                  (IDENT)))
+                (component_reference_function_call
+                  (component_reference
+                    (IDENT))))
               (ASSIGN)
               (expression
                 (match_expression
@@ -77,13 +78,15 @@ end makeDebugResult;
                       (LPAR)
                       (expression
                         (simple_expression
-                          (component_reference
-                            (IDENT))))
+                          (component_reference_function_call
+                            (component_reference
+                              (IDENT)))))
                       (COMMA)
                       (expression
                         (simple_expression
-                          (component_reference
-                            (IDENT))))
+                          (component_reference_function_call
+                            (component_reference
+                              (IDENT)))))
                       (RPAR)))
                   (string_comment
                     (STRING))
@@ -112,26 +115,29 @@ end makeDebugResult;
                           (LPAR)
                           (expression
                             (simple_expression
-                              (component_reference
-                                (IDENT)
-                                (DOT)
-                                (IDENT))
-                              (function_call
-                                (LPAR)
-                                (function_arguments
-                                  (named_argument
-                                    (IDENT)
-                                    (EQUALS)
-                                    (expression
-                                      (simple_expression
-                                        (component_reference
-                                          (IDENT))))))
-                                (RPAR))))
+                              (component_reference_function_call
+                                (component_reference
+                                  (IDENT)
+                                  (DOT)
+                                  (IDENT))
+                                (function_call
+                                  (LPAR)
+                                  (function_arguments
+                                    (named_argument
+                                      (IDENT)
+                                      (EQUALS)
+                                      (expression
+                                        (simple_expression
+                                          (component_reference_function_call
+                                            (component_reference
+                                              (IDENT)))))))
+                                  (RPAR)))))
                           (COMMA)
                           (expression
                             (simple_expression
-                              (component_reference
-                                (WILD))))
+                              (component_reference_function_call
+                                (component_reference
+                                  (WILD)))))
                           (RPAR)))
                       (EQUATION)
                       (equation
@@ -140,32 +146,36 @@ end makeDebugResult;
                         (EQUALS)
                         (expression
                           (simple_expression
-                            (component_reference
-                              (IDENT)
-                              (DOT)
-                              (IDENT))
-                            (function_call
-                              (LPAR)
-                              (function_arguments
-                                (expression
-                                  (simple_expression
-                                    (component_reference
-                                      (IDENT)))))
-                              (RPAR)))))
+                            (component_reference_function_call
+                              (component_reference
+                                (IDENT)
+                                (DOT)
+                                (IDENT))
+                              (function_call
+                                (LPAR)
+                                (function_arguments
+                                  (expression
+                                    (simple_expression
+                                      (component_reference_function_call
+                                        (component_reference
+                                          (IDENT))))))
+                                (RPAR))))))
                       (equation
                         (simple_expression
-                          (component_reference
-                            (IDENT)))
+                          (component_reference_function_call
+                            (component_reference
+                              (IDENT))))
                         (EQUALS)
                         (expression
                           (simple_expression
-                            (component_reference
-                              (IDENT)
-                              (DOT)
-                              (IDENT))
-                            (function_call
-                              (LPAR)
-                              (RPAR)))))
+                            (component_reference_function_call
+                              (component_reference
+                                (IDENT)
+                                (DOT)
+                                (IDENT))
+                              (function_call
+                                (LPAR)
+                                (RPAR))))))
                       (equation
                         (component_reference
                           (IDENT))
@@ -179,14 +189,16 @@ end makeDebugResult;
                       (THEN)
                       (expression
                         (simple_expression
-                          (component_reference
-                            (IDENT)))))
+                          (component_reference_function_call
+                            (component_reference
+                              (IDENT))))))
                     (elsecase
                       (ELSE)
                       (expression
                         (simple_expression
-                          (component_reference
-                            (IDENT))))))
+                          (component_reference_function_call
+                            (component_reference
+                              (IDENT)))))))
                   (T_END)
                   (MATCHCONTINUE)))))))
       (T_END)

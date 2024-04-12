@@ -103,5 +103,14 @@ module.exports = {
   // TODO: e=expression ???
   _pattern: $ => seq(
     $.expression
-  )
+  ),
+
+  try_clause: $ => seq(
+    $.TRY,
+    repeat($._algorithm_list),
+    $.ELSE,
+    repeat($._algorithm_list),
+    $.T_END,
+    $.TRY
+  ),
 };
