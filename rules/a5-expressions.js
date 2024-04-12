@@ -228,7 +228,7 @@ module.exports = {
     ),
     seq(
       $.LPAR,
-      $._output__expression_list
+      $._output_expression_list
     ),
     seq(
       $.LBRACK,
@@ -376,18 +376,18 @@ module.exports = {
   ),
 
   // TODO: recursion
-  _output__expression_list: $ => choice(
+  _output_expression_list: $ => choice(
     $.RPAR,
     seq(
       $.COMMA,
-      $._output__expression_list
+      $._output_expression_list
     ),
     seq(
       $.expression,
       choice(
         seq(
           $.COMMA,
-          $._output__expression_list
+          $._output_expression_list
         ),
         $.RPAR
       )

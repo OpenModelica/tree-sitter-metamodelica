@@ -69,17 +69,17 @@ module.exports = {
   ),
 
   cases: $ => seq(
-    repeat1($.onecase),
-    $.cases2
+    field("case", repeat($.onecase)),
+    field("elsecase", $.elsecase)
   ),
 
-  cases2: $ => seq(
+  elsecase: $ => seq(
     $.ELSE,
     optional(seq(
       optional($.string_comment),
       optional(seq(
         $.EQUATION,
-        $._equation_list_then
+        repeat($._equation_list_then)
       )),
       $.THEN
     )),
@@ -93,7 +93,7 @@ module.exports = {
     optional($.string_comment),
     optional(seq(
       $.EQUATION,
-      $._equation_list_then
+      repeat($._equation_list_then)
     )),
     $.THEN,
     $.expression,
