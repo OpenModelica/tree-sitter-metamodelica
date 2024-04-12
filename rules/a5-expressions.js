@@ -64,7 +64,7 @@ module.exports = {
     $.expression
   ),
 
-  //elseif_expression_list
+  //elseif__expression_list
 
   elseif_expression: $ => seq(
     $.ELSEIF,
@@ -228,27 +228,27 @@ module.exports = {
     ),
     seq(
       $.LPAR,
-      $.output_expression_list
+      $._output__expression_list
     ),
     seq(
       $.LBRACK,
-      $.matrix_expression_list,
+      $._matrix__expression_list,
       $.RBRACK
     ),
     seq(
       $.LBRACE,
-      $.for_or_expression_list,
+      $._for_or__expression_list,
       $.RBRACE
     ),
     $.T_END
   )),
 
   // TODO: recursive
-  matrix_expression_list: $ => seq(
-    $.expression_list,
+  _matrix__expression_list: $ => seq(
+    $._expression_list,
     optional(seq(
       $._SEMICOLON,
-      $.matrix_expression_list
+      $._matrix__expression_list
     ))
   ),
 
@@ -321,17 +321,17 @@ module.exports = {
   ),
 
   function_arguments: $ => seq(
-    $.for_or_expression_list,
+    $._for_or__expression_list,
     optional($.named_arguments)
   ),
 
   // TODO: What is `{ }?` ?
-  for_or_expression_list: $ => seq(
+  _for_or__expression_list: $ => seq(
     $.expression,
     optional(choice(
       seq(
         $.COMMA,
-        $.for_or_expression_list2
+        $._for_or__expression_list2
       ),
       seq(
         $.FOR,
@@ -342,11 +342,11 @@ module.exports = {
 
   // TODO: What is `{ }?` ?
   // TODO: recursion
-  for_or_expression_list2: $ => seq(
+  _for_or__expression_list2: $ => seq(
     $.expression,
     optional(seq(
       $.COMMA,
-      $.for_or_expression_list2
+      $._for_or__expression_list2
     ))
   ),
 
@@ -369,44 +369,44 @@ module.exports = {
   ),
 
   // TODO: recursion
-  output_expression_list: $ => choice(
+  _output__expression_list: $ => choice(
     $.RPAR,
     seq(
       $.COMMA,
-      $.output_expression_list
+      $._output__expression_list
     ),
     seq(
       $.expression,
       choice(
         seq(
           $.COMMA,
-          $.output_expression_list
+          $._output__expression_list
         ),
         $.RPAR
       )
     )
   ),
 
-  expression_list: $ => seq(
+  _expression_list: $ => seq(
     $.expression,
     optional(seq(
       $.COMMA,
-      $.expression_list
+      $._expression_list
     ))
   ),
 
   array_subscripts: $ => seq(
     $.LBRACK,
-    $.subscript_list,
+    $._subscript_list,
     $.RBRACK
   ),
 
   // TODO: Recursion
-  subscript_list: $ => seq(
+  _subscript_list: $ => seq(
     $.subscript,
     optional(seq(
       $.COMMA,
-      $.subscript_list
+      $._subscript_list
     ))
   ),
 

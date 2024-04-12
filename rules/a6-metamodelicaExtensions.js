@@ -62,10 +62,10 @@ module.exports = {
     )
   ),
 
-  // TODO: el=element_list ??
+  // TODO: el=_element_list ??
   local_clause: $ => seq(
     $.LOCAL,
-    repeat($.element_list)
+    repeat($._element_list)
   ),
 
   cases: $ => seq(
@@ -79,7 +79,7 @@ module.exports = {
       optional($.string_comment),
       optional(seq(
         $.EQUATION,
-        $.equation_list_then
+        $._equation_list_then
       )),
       $.THEN
     )),
@@ -93,7 +93,7 @@ module.exports = {
     optional($.string_comment),
     optional(seq(
       $.EQUATION,
-      $.equation_list_then
+      $._equation_list_then
     )),
     $.THEN,
     $.expression,

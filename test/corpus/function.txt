@@ -1,0 +1,30 @@
+========
+Function
+========
+
+
+function foo
+  Real x;
+end foo;
+
+---
+
+(stored_definition
+  (class_definition
+    (class_type
+      (FUNCTION))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (composition
+        (element
+          (component_clause
+            (type_specifier
+              (name_path
+                (IDENT)))
+            (component_declaration
+              (declaration
+                (IDENT))))))
+      (T_END)
+      (identifier
+        (IDENT)))))

@@ -68,9 +68,9 @@ module.exports = {
 
   // Component clause
   component_clause: $ => seq(
-    field("typePrefix", $.type_prefix),
+    field("typePrefix", optional($.type_prefix)),
     field("typeSpecifier", $.type_specifier),
-    $.component_list,
+    $._component_list,
   ),
 
   type_prefix: $ => seq(
@@ -93,25 +93,25 @@ module.exports = {
     field("namePath", $.name_path),
     optional(seq(
       $.LESS,
-      $.type_specifier_list,
+      $._type_specifier_list,
       $.GREATER
     )),
     optional($.array_subscripts)
   ),
 
-  type_specifier_list: $ => seq(
+  _type_specifier_list: $ => seq(
     field("typeSpecifier", $.type_specifier),
     optional(seq(
       $.COMMA,
-      $.type_specifier_list
+      $._type_specifier_list
     ))
   ),
 
-  component_list: $ => seq(
+  _component_list: $ => seq(
     field("componentDeclaration", $.component_declaration),
     optional(seq(
       $.COMMA,
-      $.component_list
+      $._component_list
     ))
   ),
 
@@ -128,7 +128,7 @@ module.exports = {
 
   declaration: $ => seq(
     choice(
-      $.IDENT,
+      field("identifier", $.IDENT),
       $.OPERATOR
     ),
     optional($.array_subscripts),

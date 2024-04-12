@@ -61,15 +61,15 @@ module.exports = {
 
   class_modification: $ => seq(
     $.LPAR,
-    optional($.argument_list),
+    optional($._argument_list),
     $.RPAR
   ),
 
-  argument_list: $ => seq(
+  _argument_list: $ => seq(
     field("argument", $.argument),
     optional(seq(
       $.COMMA,
-      $.argument_list
+      $._argument_list
     ))
   ),
 

@@ -45,24 +45,24 @@ module.exports = {
   initial_equation_clause: $ => prec.right(seq(
     $.INITIAL,
     $.EQUATION,
-    repeat($.equation_annotation_list)
+    repeat($._equation_annotation_list)
   )),
 
   // TODO: Do look ahead
   equation_clause: $ => prec.right(seq(
     $.EQUATION,
-    repeat($.equation_annotation_list)
+    repeat($._equation_annotation_list)
   )),
 
-  // TODO: Ask Adrian if this is correct with LA of constraint_annotation_list
+  // TODO: Ask Adrian if this is correct with LA of _constraint_annotation_list
   // TODO: Do look ahead
   constraint_clause: $ => prec.right(seq(
     $.CONSTRAINT,
-    repeat($.constraint_annotation_list)
+    repeat($._constraint_annotation_list)
   )),
 
   // TODO: Do look ahead
-  equation_annotation_list: $ => choice(
+  _equation_annotation_list: $ => choice(
     seq(
       $.equation,
       $._SEMICOLON
@@ -75,7 +75,7 @@ module.exports = {
 
   // TODO: What the heck is `{ ... }?` ?
   // TODO: Do look ahead
-  constraint_annotation_list: $ => choice(
+  _constraint_annotation_list: $ => choice(
     seq(
       $.equation,
       $._SEMICOLON
@@ -88,18 +88,18 @@ module.exports = {
 
   algorithm_clause: $ => prec.right(seq(
     $.T_ALGORITHM,
-    repeat($.algorithm_annotation_list)
+    repeat($._algorithm_annotation_list)
   )),
 
   // TODO: What the heck is `{ ... }?` ?
   initial_algorithm_clause: $ => prec.right(seq(
     $.INITIAL,
     $.T_ALGORITHM,
-    repeat($.algorithm_annotation_list)
+    repeat($._algorithm_annotation_list)
   )),
 
   // TODO: What the heck is `{ ... }?` ?
-  algorithm_annotation_list: $ => choice(
+  _algorithm_annotation_list: $ => choice(
     seq(
       $.algorithm,
       $._SEMICOLON
@@ -215,11 +215,11 @@ module.exports = {
     $.IF,
     $.expression,
     $.THEN,
-    $.equation_list,
-    optional($.equation_elseif_list),
+    $._equation_list,
+    optional($._equation_elseif_list),
     optional(seq(
       $.ELSE,
-      $.equation_list
+      $._equation_list
     )),
     $.T_END,
     $.IF
@@ -229,11 +229,11 @@ module.exports = {
     $.IF,
     $.expression,
     $.THEN,
-    $.algorithm_list,
-    optional($.algorithm_elseif_list),
+    $._algorithm_list,
+    optional($._algorithm_elseif_list),
     optional(seq(
       $.ELSE,
-      $.algorithm_list
+      $._algorithm_list
     )),
     $.T_END,
     $.IF
@@ -243,7 +243,7 @@ module.exports = {
     $.FOR,
     $.for_indices,
     $.LOOP,
-    $.equation_list,
+    $._equation_list,
     $.T_END,
     $.FOR
   ),
@@ -252,7 +252,7 @@ module.exports = {
     $.FOR,
     $.for_indices,
     $.LOOP,
-    $.algorithm_list,
+    $._algorithm_list,
     $.T_END,
     $.FOR
   ),
@@ -261,7 +261,7 @@ module.exports = {
     $.WHILE,
     $.expression,
     $.LOOP,
-    $.algorithm_list,
+    $._algorithm_list,
     $.T_END,
     $.WHILE
   ),
@@ -270,93 +270,93 @@ module.exports = {
     $.WHEN,
     $.expression,
     $.THEN,
-    $.equation_list,
-    optional($.else_when_e_list),
+    $._equation_list,
+    optional($._else_when_e_list),
     $.T_END,
     $.WHEN
   ),
 
-  else_when_e_list: $ => seq(
+  _else_when_e_list: $ => seq(
     $.else_when_e,
-    optional($.else_when_e_list)
+    optional($._else_when_e_list)
   ),
 
   else_when_e: $ => seq(
     $.ELSEWHEN,
     $.expression,
     $.THEN,
-    $.equation_list
+    $._equation_list
   ),
 
   when_clause_a: $ => seq(
     $.WHEN,
     $.expression,
     $.THEN,
-    $.algorithm_list,
-    optional($.else_when_a_list),
+    $._algorithm_list,
+    optional($._else_when_a_list),
     $.T_END,
     $.WHEN
   ),
 
-  else_when_a_list: $ => seq(
+  _else_when_a_list: $ => seq(
     $.else_when_a,
-    optional($.else_when_a_list)
+    optional($._else_when_a_list)
   ),
 
   else_when_a: $ => seq(
     $.ELSEWHEN,
     $.expression,
     $.THEN,
-    $.algorithm_list
+    $._algorithm_list
   ),
 
-  equation_elseif_list: $ => seq(
+  _equation_elseif_list: $ => seq(
     $.equation_elseif,
-    optional($.equation_elseif_list)
+    optional($._equation_elseif_list)
   ),
 
   equation_elseif: $ => seq(
     $.ELSEIF,
     $.expression,
     $.THEN,
-    $.equation_list
+    $._equation_list
   ),
 
-  algorithm_elseif_list: $ => seq(
+  _algorithm_elseif_list: $ => seq(
     $.algorithm_elseif,
-    optional($.algorithm_elseif_list)
+    optional($._algorithm_elseif_list)
   ),
 
   algorithm_elseif: $ => seq(
     $.ELSEIF,
     $.expression,
     $.THEN,
-    $.algorithm_list
+    $._algorithm_list
   ),
 
   // TODO: What the heck is `{ ... }?` ?
   // TODO: recursion
-  equation_list_then: $ => seq(
+  _equation_list_then: $ => seq(
     $.equation,
     $._SEMICOLON,
-    $.equation_list_then
+    $._equation_list_then
   ),
 
   // TODO: What the heck is `{ ... }?` ?
   // TODO: recursion
-  // TODO: How to distinguish from equation_list_then?
-  equation_list: $ => seq(
+  // TODO: How to distinguish from _equation_list_then?
+  _equation_list: $ => seq(
     $.equation,
     $._SEMICOLON,
-    $.equation_list
+    $._equation_list
   ),
 
   // TODO: What the heck is `{ ... }?` ?
   // TODO: recursion
-  algorithm_list: $ => seq(
+  _algorithm_list: $ => seq(
     $.algorithm,
     $._SEMICOLON,
-    $.algorithm_list
+    $._algorithm_list
   ),
 
   connect_clause: $ => seq(

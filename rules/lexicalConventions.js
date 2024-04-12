@@ -40,8 +40,7 @@
 // https://specification.modelica.org/master/modelica-concrete-syntax.html
 
 module.exports = {
-  BOM: $ => /\u00EF\u00BB\u00BF/,
-
+  // TODO: Remove or use this one
   /*
   IDENT: $ => token(
     choice(

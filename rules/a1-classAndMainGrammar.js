@@ -41,7 +41,6 @@
 
 module.exports = {
   stored_definition: $ => seq(
-    optional($.BOM),  // TODO: Remove?
     optional(
       field("withinClause",
         seq(
@@ -50,7 +49,7 @@ module.exports = {
         )
       )
     ),
-    field("classDefinitionList", repeat($.class_definition_list))
+    field("classDefinitionList", repeat($._class_definition_list))
   ),
 
   within_clause: $ => seq(
@@ -58,10 +57,11 @@ module.exports = {
     optional(field("namePath", $.name_path))
   ),
 
-  class_definition_list: $ => seq(
+  // TODO: Or use left?
+  _class_definition_list: $ => seq(
     optional(field("final", $.FINAL)),
     field("classDefinition", $.class_definition),
-    $._SEMICOLON
+    $._SEMICOLON,
   ),
 
   class_definition: $ => seq(
@@ -95,7 +95,6 @@ module.exports = {
   identifier: $ => choice(
     $.IDENT,
     $.DER,
-    //$.CODE,
     $.EQUALITY,
     $.INITIAL
   ),
@@ -122,7 +121,7 @@ module.exports = {
         field("identList",
           seq(
           $.LESS,
-          $.ident_list,
+          $._ident_list,
           $.GREATER,
           )
         )
@@ -160,12 +159,12 @@ module.exports = {
     $.LPAR,
     field("namePath", $.name_path),
     $.COMMA,
-    $.ident_list,
+    $._ident_list,
     $.RPAR,
     field("comment", optional($.comment))
   ),
 
-  ident_list: $ => seq(
+  _ident_list: $ => seq(
     field("ident", $.IDENT),
     repeat(seq(
       $.COMMA,
@@ -176,14 +175,14 @@ module.exports = {
   overloading: $ => seq(
     $.OVERLOAD,
     $.LPAR,
-    $.name_list,
+    $._name_list,
     $.RPAR,
     field("comment", optional($.comment))
   ),
 
   base_prefix: $ => $.type_prefix,
 
-  name_list: $ => seq(
+  _name_list: $ => seq(
     field("namePath", $.name_path),
     repeat(seq(
       $.COMMA,
@@ -195,14 +194,14 @@ module.exports = {
     $.ENUMERATION,
     $.LPAR,
     choice(
-      $.enum_list,
+      $._enum_list,
       $.COLON
     ),
     $.RPAR,
     field("comment", optional($.comment))
   ),
 
-  enum_list: $ => seq(
+  _enum_list: $ => seq(
     field("enumerationLiteral", $.enumeration_literal),
     repeat(seq(
       $.COMMA,
@@ -217,11 +216,11 @@ module.exports = {
 
   composition: $ => choice(
     seq(
-      repeat1($.element_list),
+      repeat1($._element_list),
       optional($._composition2)
     ),
     seq(
-      repeat($.element_list),
+      repeat($._element_list),
       $._composition2
     )
   ),
@@ -230,8 +229,8 @@ module.exports = {
     choice(
       repeat1(
         choice(
-          $.public_element_list,
-          $.protected_element_list,
+          $._public__element_list,
+          $._protected__element_list,
           $.initial_equation_clause,
           $.initial_algorithm_clause,
           $.equation_clause,
@@ -243,8 +242,8 @@ module.exports = {
     ),
     repeat1(
       choice(
-        $.public_element_list,
-        $.protected_element_list,
+        $._public__element_list,
+        $._protected__element_list,
         $.initial_equation_clause,
         $.initial_algorithm_clause,
         $.equation_clause,
@@ -266,7 +265,7 @@ module.exports = {
         )),
         $.IDENT,
         $.LPAR,
-        optional($.expression_list),
+        optional($._expression_list),
         $.RPAR
       )
     ),
@@ -280,14 +279,14 @@ module.exports = {
     $._SEMICOLON
   ),
 
-  public_element_list: $ => seq(
+  _public__element_list: $ => seq(
     $.PUBLIC,
-    repeat($.element_list)
+    repeat($._element_list)
   ),
 
-  protected_element_list: $ => seq(
+  _protected__element_list: $ => seq(
     $.PROTECTED,
-    repeat($.element_list)
+    repeat($._element_list)
   ),
 
   language_specification: $ => seq(
@@ -295,8 +294,8 @@ module.exports = {
     $._SEMICOLON
   ),
 
-  // element_list could be empty list, use repeat(element_list) everywhere
-  element_list: $ => seq(
+  // _element_list could be empty list, use repeat(_element_list) everywhere
+  _element_list: $ => seq(
     choice(
       field("element", $.element),
       field("annotation", $.annotation)
@@ -345,5 +344,5 @@ module.exports = {
     field("namePath", $.name_path)
   ),
 
-  implicit_import_name: $ => $.name_path_star
+  implicit_import_name: $ => field("namePathStar", $.name_path_star)
 };
