@@ -73,15 +73,33 @@ module.exports = {
     $._component_list,
   ),
 
-  type_prefix: $ => seq(
-    choice(
-      $.FLOW,
-      $.STREAM
+  // Can be empty, so it's this mess
+  type_prefix: $ => choice(
+    seq(
+      choice(
+        $.FLOW,
+        $.STREAM
+      ),
+      optional(choice(
+        $.DISCRETE,
+        $.PARAMETER,
+        $.CONSTANT
+      )),
+      optional(choice(
+        $.T_INPUT,
+        $.T_OUTPUT
+      ))
     ),
-    choice(
-      $.DISCRETE,
-      $.PARAMETER,
-      $.CONSTANT
+    seq(
+      choice(
+        $.DISCRETE,
+        $.PARAMETER,
+        $.CONSTANT
+      ),
+      optional(choice(
+        $.T_INPUT,
+        $.T_OUTPUT
+      ))
     ),
     choice(
       $.T_INPUT,

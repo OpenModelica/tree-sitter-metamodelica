@@ -118,7 +118,7 @@ module.exports = {
   ),
 
   component_clause1: $ => seq(
-    field("basePrefix", $.base_prefix),
+    field("basePrefix", optional(alias($.type_prefix, $.base_prefix))),
     field("typeSpecifier", $.type_specifier),
     $.component_declaration1
   ),

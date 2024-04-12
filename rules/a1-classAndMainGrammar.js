@@ -133,7 +133,7 @@ module.exports = {
     ),
     seq(
       $.EQUALS,
-      field("basePrefix", $.base_prefix),
+      field("basePrefix", optional(alias($.type_prefix, $.base_prefix))),
       field("typeSpecifier", $.type_specifier),
       optional(
         field("classModifier", $.class_modification)
@@ -180,7 +180,7 @@ module.exports = {
     field("comment", optional($.comment))
   ),
 
-  base_prefix: $ => $.type_prefix,
+  //base_prefix: $ => $.type_prefix,
 
   _name_list: $ => seq(
     field("namePath", $.name_path),
