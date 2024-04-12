@@ -203,29 +203,19 @@ module.exports = {
   ),
 
   // TODO: Do look ahead
-  //_equality_or_noretcall_equation: $ => choice(
-  //  field("equalityEquation", seq(
-  //    $.simple_expression,
-  //    choice(
-  //      $.EQUALS,
-  //      $.ASSIGN
-  //    ),
-  //    $.expression
-  //  )),
-  //  field("noReturnCallEquation", seq(
-  //      $.component_reference,
-  //      $.function_call
-  //  ))
-  //),
-
-  // TODO: What the heck is `{ ... }?` ?
-  _equality_or_noretcall_equation: $ => seq(
-    $.simple_expression,
-    choice(
-      $.EQUALS,
-      $.ASSIGN
-    ),
-    $.expression
+  _equality_or_noretcall_equation: $ => choice(
+    field("equalityEquation", seq(
+      $.simple_expression,
+      choice(
+        $.EQUALS,
+        $.ASSIGN
+      ),
+      $.expression
+    )),
+    field("noReturnCallEquation", seq(
+        $.component_reference,
+        $.function_call
+    ))
   ),
 
   conditional_equation_e: $ => seq(

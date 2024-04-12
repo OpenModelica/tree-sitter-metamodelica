@@ -327,7 +327,7 @@ module.exports = {
   //TODO: Can function_arguments be optional?
   function_call: $ => seq(
     $.LPAR,
-    $.function_arguments,
+    optional($.function_arguments),
     $.RPAR
   ),
 
