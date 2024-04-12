@@ -113,7 +113,7 @@ module.exports = {
   // TODO: Recursive equation
   equation: $ => seq(
     choice(
-      $.equality_or_noretcall_equation,
+      $._equality_or_noretcall_equation,
       $.conditional_equation_e,
       $.for_clause_e,
       $.connect_clause,
@@ -138,7 +138,7 @@ module.exports = {
 
   constraint: $ => seq(
     choice(
-      $.equality_or_noretcall_equation,
+      $._equality_or_noretcall_equation,
       $.conditional_equation_e,
       $.for_clause_e,
       $.connect_clause,
@@ -202,8 +202,24 @@ module.exports = {
     ))
   ),
 
+  // TODO: Do look ahead
+  //_equality_or_noretcall_equation: $ => choice(
+  //  field("equalityEquation", seq(
+  //    $.simple_expression,
+  //    choice(
+  //      $.EQUALS,
+  //      $.ASSIGN
+  //    ),
+  //    $.expression
+  //  )),
+  //  field("noReturnCallEquation", seq(
+  //      $.component_reference,
+  //      $.function_call
+  //  ))
+  //),
+
   // TODO: What the heck is `{ ... }?` ?
-  equality_or_noretcall_equation: $ => seq(
+  _equality_or_noretcall_equation: $ => seq(
     $.simple_expression,
     choice(
       $.EQUALS,

@@ -221,7 +221,7 @@ module.exports = {
     $.STRING,
     $.T_FALSE,
     $.T_TRUE,
-    $._component_reference__function_call,
+    $._component_reference_function_call,
     seq(
       $.DER,
       $.function_call
@@ -232,7 +232,7 @@ module.exports = {
     ),
     seq(
       $.LBRACK,
-      $._matrix__expression_list,
+      $._matrix_expression_list,
       $.RBRACK
     ),
     seq(
@@ -244,16 +244,15 @@ module.exports = {
   )),
 
   // TODO: recursive
-  _matrix__expression_list: $ => seq(
+  _matrix_expression_list: $ => seq(
     $._expression_list,
     optional(seq(
       $._SEMICOLON,
-      $._matrix__expression_list
+      $._matrix_expression_list
     ))
   ),
 
-  // TODO: Why `__`?
-  _component_reference__function_call: $ => choice(
+  _component_reference_function_call: $ => choice(
     seq(
       $.component_reference,
       optional($.function_call)
