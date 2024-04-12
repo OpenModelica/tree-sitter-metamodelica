@@ -1,0 +1,23 @@
+================================
+A.4 algorithm_clause algorithm 1
+================================
+
+function sum
+algorithm
+end sum;
+
+---
+
+(stored_definition
+  (class_definition
+    (class_type
+      (FUNCTION))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (composition
+        (algorithm_clause
+          (T_ALGORITHM)))
+      (T_END)
+      (identifier
+        (IDENT)))))

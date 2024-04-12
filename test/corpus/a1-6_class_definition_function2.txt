@@ -4,8 +4,8 @@ A.1 class_definition function 2
 
 function foo
   "foo documentation"
-    discrete input Type inx;
-    output Type x;
+  discrete input Type inx;
+  output Type x;
 end foo;
 
 ---

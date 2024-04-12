@@ -42,21 +42,21 @@
 
 module.exports = {
   // TODO: Do look ahead
-  initial_equation_clause: $ => prec.right(seq(
+  initial_equation_clause: $ => prec.left(seq(
     $.INITIAL,
     $.EQUATION,
     repeat($._equation_annotation_list)
   )),
 
   // TODO: Do look ahead
-  equation_clause: $ => prec.right(seq(
+  equation_clause: $ => prec.left(seq(
     $.EQUATION,
     repeat($._equation_annotation_list)
   )),
 
   // TODO: Ask Adrian if this is correct with LA of _constraint_annotation_list
   // TODO: Do look ahead
-  constraint_clause: $ => prec.right(seq(
+  constraint_clause: $ => prec.left(seq(
     $.CONSTRAINT,
     repeat($._constraint_annotation_list)
   )),
@@ -86,19 +86,19 @@ module.exports = {
     )
   ),
 
-  algorithm_clause: $ => prec.right(seq(
+  algorithm_clause: $ => prec.left(seq(
     $.T_ALGORITHM,
     repeat($._algorithm_annotation_list)
   )),
 
-  // TODO: What the heck is `{ ... }?` ?
-  initial_algorithm_clause: $ => prec.right(seq(
+  // TODO: Do look ahead
+  initial_algorithm_clause: $ => prec.left(seq(
     $.INITIAL,
     $.T_ALGORITHM,
     repeat($._algorithm_annotation_list)
   )),
 
-  // TODO: What the heck is `{ ... }?` ?
+  // TODO: Do look ahead
   _algorithm_annotation_list: $ => choice(
     seq(
       $.algorithm,

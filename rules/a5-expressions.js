@@ -96,7 +96,7 @@ module.exports = {
   // TODO: recursion?
   simple_expression: $ => choice(
     seq(
-      $.simple_expr,
+      $._simple_expr,
       optional(seq(
         $.COLONCOLON,
         $.simple_expression
@@ -109,42 +109,42 @@ module.exports = {
     )
   ),
 
-  simple_expr: $ => seq(
-    $.logical_expression,
+  _simple_expr: $ => seq(
+    $._logical_expression,
     optional(seq(
       $.COLON,
-      $.logical_expression
+      $._logical_expression
     )),
     optional(seq(
       $.COLON,
-      $.logical_expression
+      $._logical_expression
     ))
   ),
 
   // TODO: What is `( )*` ?
-  logical_expression: $ => seq(
-    $.logical_term,
+  _logical_expression: $ => seq(
+    $._logical_term,
     repeat(seq(
       $.T_OR,
-      $.logical_term
+      $._logical_term
     ))
   ),
 
-  logical_term: $ => seq(
-    $.logical_factor,
+  _logical_term: $ => seq(
+    $._logical_factor,
     repeat(seq(
       $.T_AND,
-      $.logical_factor
+      $._logical_factor
     ))
   ),
 
-  logical_factor: $ => seq(
+  _logical_factor: $ => seq(
     optional($.T_NOT),
-    $.relation
+    $._relation
   ),
 
-  relation: $ => seq(
-    $.arithmetic_expression,
+  _relation: $ => seq(
+    $._arithmetic_expression,
     optional(seq(
       choice(
         $.LESS,
@@ -154,12 +154,12 @@ module.exports = {
         $.EQEQ,
         $.LESSGT
       ),
-      $.arithmetic_expression
+      $._arithmetic_expression
     ))
   ),
 
-  arithmetic_expression: $ => seq(
-    $.unary_arithmetic_expression,
+  _arithmetic_expression: $ => seq(
+    $._unary_arithmetic_expression,
     repeat(seq(
       choice(
         $.PLUS,
@@ -167,32 +167,32 @@ module.exports = {
         $.PLUS_EW,
         $.MINUS_EW
       ),
-      $.term
+      $._term
     ))
   ),
 
-  unary_arithmetic_expression: $ => choice(
+  _unary_arithmetic_expression: $ => choice(
     seq(
       $.PLUS,
-      $.term
+      $._term
     ),
     seq(
       $.MINUS,
-      $.term
+      $._term
     ),
     seq(
       $.PLUS_EW,
-      $.term
+      $._term
     ),
     seq(
       $.MINUS_EW,
-      $.term
+      $._term
     ),
-    $.term
+    $._term
   ),
 
-  term: $ => seq(
-    $.factor,
+  _term: $ => seq(
+    $._factor,
     repeat(seq(
       choice(
         $.STAR,
@@ -200,28 +200,28 @@ module.exports = {
         $.STAR_EW,
         $.SLASH_EW
       ),
-      $.factor
+      $._factor
     ))
   ),
 
-  factor: $ => seq(
-    $.primary,
+  _factor: $ => seq(
+    $._primary,
     optional(seq(
       choice(
         $.POWER,
         $.POWER_EW
       ),
-      $.primary
+      $._primary
     ))
   ),
 
-  primary: $ => prec.right(choice(
+  _primary: $ => prec.left(choice(
     $.UNSIGNED_INTEGER,
     $.UNSIGNED_REAL,
     $.STRING,
     $.T_FALSE,
     $.T_TRUE,
-    $.component_reference__function_call,
+    $._component_reference__function_call,
     seq(
       $.DER,
       $.function_call
@@ -253,7 +253,7 @@ module.exports = {
   ),
 
   // TODO: Why `__`?
-  component_reference__function_call: $ => choice(
+  _component_reference__function_call: $ => choice(
     seq(
       $.component_reference,
       optional($.function_call)
@@ -295,14 +295,14 @@ module.exports = {
   component_reference: $ => choice(
     seq(
       optional($.DOT),
-      $.component_reference2
+      $._component_reference2
     ),
     $.ALLWILD,
     $.WILD
   ),
 
   // TODO: recursion
-  component_reference2: $ => seq(
+  _component_reference2: $ => seq(
     choice(
       $.IDENT,
       $.OPERATOR
@@ -310,7 +310,7 @@ module.exports = {
     optional($.array_subscripts),
     optional(seq(
       $.DOT,
-      $.component_reference2
+      $._component_reference2
     ))
   ),
 
