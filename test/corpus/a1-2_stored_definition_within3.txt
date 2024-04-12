@@ -11,6 +11,9 @@ within PackageA.PackageB.PackageC.PackageD;
     (WITHIN)
     (name_path
       (IDENT)
+      (DOT)
       (IDENT)
+      (DOT)
       (IDENT)
+      (DOT)
       (IDENT))))

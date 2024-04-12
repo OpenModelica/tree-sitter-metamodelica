@@ -1,6 +1,6 @@
 ;;;;; Highlights in the examples happen between these symbols: >...<
 
-
+;;;; Errors
 (ERROR) @error  ;; when something is placed wrong
 ; error has to be added to the config.json file to be shown correctly ;;"error": {"color": "red", "bold": true, "underline": true}
 

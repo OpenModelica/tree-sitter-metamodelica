@@ -276,17 +276,20 @@ module.exports = {
 
   name_path_star: $ => seq(
     optional($.DOT),
-    $.name_path_star2
+    $._name_path_star2
   ),
 
-  // TODO: What is `{ }?` ?
-  name_path_star2: $ => seq(
-    choice(
+  // TODO: Fix look ahead
+  _name_path_star2: $ => choice(
+    seq(
       $.IDENT,
-      //$.CODE
+      optional($.STAR_EW)
     ),
-    $.DOT,
-    $.name_path_star2
+    seq(
+      $.IDENT,
+      $.DOT,
+      $._name_path_star2
+    )
   ),
 
   component_reference: $ => choice(

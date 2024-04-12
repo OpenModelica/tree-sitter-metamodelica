@@ -217,16 +217,16 @@ module.exports = {
 
   composition: $ => choice(
     seq(
-      $.element_list1,
-      optional($.composition2)
+      repeat1($.element_list),
+      optional($._composition2)
     ),
     seq(
-      optional($.element_list1),
-      $.composition2
+      repeat($.element_list),
+      $._composition2
     )
   ),
 
-  composition2: $ => choice(
+  _composition2: $ => choice(
     choice(
       repeat1(
         choice(
@@ -282,12 +282,12 @@ module.exports = {
 
   public_element_list: $ => seq(
     $.PUBLIC,
-    optional($.element_list1)
+    repeat($.element_list)
   ),
 
   protected_element_list: $ => seq(
     $.PROTECTED,
-    optional($.element_list1)
+    repeat($.element_list)
   ),
 
   language_specification: $ => seq(
@@ -295,15 +295,13 @@ module.exports = {
     $._SEMICOLON
   ),
 
-  // element_list could be empty
-  element_list1: $ => repeat1(
-    seq(
-      choice(
-        field("element", $.element),
-        field("annotation", $.annotation)
-      ),
-      $._SEMICOLON
-    )
+  // element_list could be empty list, use repeat(element_list) everywhere
+  element_list: $ => seq(
+    choice(
+      field("element", $.element),
+      field("annotation", $.annotation)
+    ),
+    $._SEMICOLON
   ),
 
   element: $ => choice(
@@ -342,10 +340,7 @@ module.exports = {
 
   // TODO: What is CODE?
   explicit_import_name: $ => seq(
-    choice(
-      $.IDENT,
-      //$.CODE
-    ),
+    $.IDENT,
     $.EQUALS,
     field("namePath", $.name_path)
   ),

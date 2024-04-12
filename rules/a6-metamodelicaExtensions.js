@@ -65,7 +65,7 @@ module.exports = {
   // TODO: el=element_list ??
   local_clause: $ => seq(
     $.LOCAL,
-    optional($.element_list1)
+    repeat($.element_list)
   ),
 
   cases: $ => seq(

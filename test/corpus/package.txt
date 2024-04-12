@@ -6,17 +6,20 @@ Package
  * This is a comment over multiple lines
  */
 
-encapsulated package Main
-" file:        Main.mo
-  package:     Main
-  description: Modelica main program
+encapsulated package PackageA
+" file:        PackageA.mo
+  package:     PackageA
+  description: PackageA stuff
 
+  This is the PackageA that does nothing
+  but has a lot of comments."
 
-  This is the main program in the Modelica specification.
-  It either translates a file given as a command line argument
-  or starts a server loop communicating through CORBA or sockets
-  (The Win32 implementation only implements CORBA)"
-end Main;
+// public imports
+public
+import B = PackageB;
+import PackageC.PackageD.*;
+
+end PackageA;
 
 ---
 
@@ -32,6 +35,29 @@ end Main;
           (IDENT))
         (string_comment
           (STRING))
+        (COMMENT)
+        (composition
+          (public_element_list
+            (PUBLIC)
+            (element_list
+              (element
+                (import_clause
+                  (IMPORT)
+                  (explicit_import_name
+                    (IDENT)
+                    (EQUALS)
+                    (name_path
+                      (IDENT))))))
+            (element_list
+              (element
+                (import_clause
+                  (IMPORT)
+                  (implicit_import_name
+                    (name_path_star
+                      (IDENT)
+                      (DOT)
+                      (IDENT)
+                      (STAR_EW))))))))
         (T_END)
         (identifier
           (IDENT))))))
