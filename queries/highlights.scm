@@ -42,15 +42,15 @@
 
 
 ;;; Classes
-(class_type class: (CLASS))(class_specifier (identifier) @module)               ;; class >A< end >A<;
-(class_type optimization: (OPTIMIZATION))(class_specifier (identifier) @module) ;; optimization >A< end >A<;
-(class_type model: (MODEL))(class_specifier (identifier) @module)               ;; model >A< end >A<;
-(class_type record: (RECORD))(class_specifier (identifier) @type)               ;; record >R< end >R<;
-(class_type connector: (CONNECTOR))(class_specifier (identifier) @module)       ;; connector >C< end >C<;
-(class_type type: (TYPE))(class_specifier (identifier) @type)                   ;; type >T< end >T<;
-(class_type package: (PACKAGE))(class_specifier (identifier) @module)           ;; package >A< end >A<;
-(class_type function: (FUNCTION))(class_specifier (identifier) @function)       ;; function >foo< end >foo<;
-(class_type uniontype: (UNIONTYPE))(class_specifier (identifier) @type)         ;; uniontype >T< end >T<;
+(class_definition (class_type class: (CLASS))(class_specifier (identifier) @module))                ;; class >A< end >A<;
+(class_definition (class_type optimization: (OPTIMIZATION))(class_specifier (identifier) @module))  ;; optimization >A< end >A<;
+(class_definition (class_type model: (MODEL))(class_specifier (identifier) @module))                ;; model >A< end >A<;
+(class_definition (class_type record: (RECORD))(class_specifier (identifier) @type))                ;; record >R< end >R<;
+(class_definition (class_type connector: (CONNECTOR))(class_specifier (identifier) @module))        ;; connector >C< end >C<;
+(class_definition (class_type type: (TYPE))(class_specifier (identifier) @type))                    ;; type >T< end >T<;
+(class_definition (class_type package: (PACKAGE))(class_specifier (identifier) @module))            ;; package >A< end >A<;
+(class_definition (class_type function: (FUNCTION))(class_specifier (identifier) @function))        ;; function >foo< end >foo<;
+(class_definition (class_type uniontype: (UNIONTYPE))(class_specifier (identifier) @type))          ;; uniontype >T< end >T<;
 
 
 ;;; Within
