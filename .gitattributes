@@ -1,1 +1,2 @@
 package-lock.json -diff linguist-generated=true
+*.mo linguist-language=MetaModelica
