@@ -91,10 +91,16 @@ module.exports = {
     $.CASE,
     $._pattern,
     optional($.string_comment),
-    optional(seq(
-      $.EQUATION,
-      repeat($._equation_list_then)
-    )),
+    choice(
+      optional(seq(
+        $.EQUATION,
+        repeat($._equation_list_then)
+      )),
+      optional(seq(
+        $.ALGORITHM,
+        repeat($._algorithm_annotation_list)
+      )),
+    ),
     $.THEN,
     $.expression,
     $._SEMICOLON

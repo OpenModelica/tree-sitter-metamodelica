@@ -70,6 +70,7 @@ module.exports = {
   WILD: $ => "_",
 
   // keywords
+  ALGORITHM: $ => "algorithm",
   AS: $ => "as",
   BLOCK: $ => "block",
   BREAK: $ => "break",

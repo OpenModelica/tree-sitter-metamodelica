@@ -167,11 +167,15 @@ module.exports = {
       $.assign_clause_a,
       $.conditional_equation_a,
       $.for_clause_a,
+      // TODO: add parfor_clause_a
+      //$.parfor_clause_a,
       $.while_clause,
       $.try_clause,
       $.when_clause_a,
       $.BREAK,
       $.RETURN,
+      // TODO: add CONTINUE
+      // $.CONTINUE,
       seq(
         $.FAILURE,
         $.LPAR,

@@ -252,7 +252,7 @@ module.exports = {
     ))
   ),
 
-  component_reference_function_call: $ => choice(
+  component_reference_function_call: $ => prec(2,choice(
     seq(
       field("functionName", $.component_reference),
       $.function_call
@@ -263,7 +263,7 @@ module.exports = {
       $.LPAR,
       $.RPAR
     )
-  ),
+  )),
 
   name_path: $ => seq(
     optional($.DOT),
