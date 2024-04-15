@@ -33,7 +33,7 @@
  *
  */
 
-// Buildin types and functions
+// Builtin types and functions
 //
 // From Towards Modelica 4 Meta-Programming and Language Modeling with MetaModelica 2.0
 // Section 5.1.2 Predefined Types and Type Constructors
