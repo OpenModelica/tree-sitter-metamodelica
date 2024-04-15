@@ -40,7 +40,6 @@
 // https://specification.modelica.org/master/modelica-concrete-syntax.html
 
 module.exports = {
-  // TODO: Remove or use this one
   IDENT: $ => token(
     choice(
       // NON-DIGIT { DIGIT | NON-DIGIT }
