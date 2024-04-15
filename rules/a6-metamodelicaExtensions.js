@@ -69,8 +69,8 @@ module.exports = {
   ),
 
   cases: $ => seq(
-    field("case", repeat($.onecase)),
-    field("elsecase", $.elsecase)
+    field("case", repeat1($.onecase)),
+    field("elsecase", optional($.elsecase))
   ),
 
   elsecase: $ => seq(
