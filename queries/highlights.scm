@@ -14,9 +14,8 @@
 [
   (BLOCK_COMMENT)   ;; >/* comment */<
   (COMMENT)         ;; >// comment<
-  (string_comment)  ;; model foo >"description"<
-] @comment
-
+]
+(string_comment (STRING) @comment)  ;; model foo >"description"<
 
 ;;; Numbers
 [
@@ -24,25 +23,22 @@
   (UNSIGNED_REAL)     ;; >3.14159<
 ] @number
 
-
 ;;; Types
 (type_specifier (name_path (IDENT) @type ))   ;; >A<.>MyType< x
-(type_specifier (T_REAL)  @type.builtin )     ;; >Real< x
-(type_specifier (T_INTEGER)  @type.builtin )  ;; >Integer< x
-(type_specifier (T_BOOLEAN)  @type.builtin )  ;; >Boolean< x
-(type_specifier (T_STRING)  @type.builtin )   ;; >String< x
-(type_specifier (T_LIST)  @type.builtin )     ;; >List<<Real> x
-(type_specifier (T_OPTION)  @type.builtin )   ;; >Option< <Real> x
-(type_specifier (T_TUPLE)  @type.builtin )    ;; >Tuple< <T1, T2, T3> x
-
+(T_REAL) @type.builtin      ;; >Real< x
+(T_INTEGER)  @type.builtin  ;; >Integer< x
+(T_BOOLEAN)  @type.builtin  ;; >Boolean< x
+(T_STRING)  @type.builtin   ;; >String< x
+(T_LIST)  @type.builtin     ;; >List<<Real> x
+(T_OPTION)  @type.builtin   ;; >Option< <Real> x
+(T_TUPLE)  @type.builtin    ;; >Tuple< <T1, T2, T3> x
 
 ;;; Variables
-(declaration (IDENT) @variable.parameter)         ;; Real >x<
+(declaration (IDENT) @variable.parameter) ;; Real >x<
 (component_reference_function_call componentReference: (component_reference) @variable.parameter) ;; >x<
 
 ;;; Function calls
 (component_reference_function_call functionName: (component_reference) @function)
-
 
 ;;; Classes
 (class_definition (class_type class: (CLASS))(class_specifier (identifier) @module))                ;; class >A< end >A<;
@@ -54,7 +50,6 @@
 (class_definition (class_type package: (PACKAGE))(class_specifier (identifier) @module))            ;; package >A< end >A<;
 (class_definition (class_type function: (FUNCTION))(class_specifier (identifier) @function))        ;; function >foo< end >foo<;
 (class_definition (class_type uniontype: (UNIONTYPE))(class_specifier (identifier) @type))          ;; uniontype >T< end >T<;
-
 
 ;;; Within
 (within_clause namePath: (name_path (IDENT) @module)) ;; withing >PackageA<.>PackageB<;

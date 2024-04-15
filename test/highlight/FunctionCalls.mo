@@ -1,6 +1,12 @@
 function foo
 //<- keyword
 //       ^ function
+  input list<String> args "List of arguments";
+//^ keyword
+//      ^ type
+//           ^ type.builtin
+//                   ^ variable.parameter
+//                        ^ comment
 protected
 //<- keyword
   String s;
@@ -8,7 +14,7 @@ protected
 //       ^ variable.parameter
 algorithm
 //<- keyword
-  s := bar1(bar2("hello", "World"));
+  s := bar1(bar2("hello", "World", args));
 //^ variable.parameter
 //  ^ operator
 //     ^ function
