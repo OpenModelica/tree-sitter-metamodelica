@@ -1,0 +1,52 @@
+================
+FunkyIdentifiers
+================
+
+model FunkyIdentifiers
+  Real x;
+  Real 'x';
+  Real 'x"y z';
+  Real 'x\'y //z';
+end FunkyIdentifiers;
+
+---
+
+(stored_definition
+  (class_definition
+    (class_type
+      (MODEL))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (composition
+        (element
+          (component_clause
+            (type_specifier
+              (T_REAL))
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (element
+          (component_clause
+            (type_specifier
+              (T_REAL))
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (element
+          (component_clause
+            (type_specifier
+              (T_REAL))
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (element
+          (component_clause
+            (type_specifier
+              (T_REAL))
+            (component_declaration
+              (declaration
+                (IDENT))))))
+      (T_END)
+      (identifier
+        (IDENT)))))

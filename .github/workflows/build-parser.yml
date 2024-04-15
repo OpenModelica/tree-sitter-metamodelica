@@ -2,7 +2,6 @@ name: Build
 run-name: Build tree-sitter-metamodelica
 
 on:
-  pull_request:
   push:
     branches:
       - main
