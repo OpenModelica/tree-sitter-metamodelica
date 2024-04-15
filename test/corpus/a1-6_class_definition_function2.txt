@@ -1,0 +1,46 @@
+===============================
+A.1 class_definition function 2
+===============================
+
+function foo
+  "foo documentation"
+  discrete input Type inx;
+  output Type x;
+end foo;
+
+---
+
+(stored_definition
+  (class_definition
+    (class_type
+      (FUNCTION))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (string_comment
+        (STRING))
+      (composition
+        (element
+          (component_clause
+            (type_prefix
+              (DISCRETE)
+              (T_INPUT))
+            (type_specifier
+              (name_path
+                (IDENT)))
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (element
+          (component_clause
+            (type_prefix
+              (T_OUTPUT))
+            (type_specifier
+              (name_path
+                (IDENT)))
+            (component_declaration
+              (declaration
+                (IDENT))))))
+      (T_END)
+      (identifier
+        (IDENT)))))

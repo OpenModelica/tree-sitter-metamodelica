@@ -1,0 +1,96 @@
+=======
+A.6 try
+=======
+
+function foo
+  input Real x;
+  input Real y;
+protected
+  Real res;
+algorithm
+  try
+    res := x/y;
+    break;
+  else
+    print("Divided by zero");
+  end try;
+end foo;
+
+---
+
+(stored_definition
+  (class_definition
+    (class_type
+      (FUNCTION))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (composition
+        (element
+          (component_clause
+            (type_prefix
+              (T_INPUT))
+            (type_specifier
+              (T_REAL))
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (element
+          (component_clause
+            (type_prefix
+              (T_INPUT))
+            (type_specifier
+              (T_REAL))
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (PROTECTED)
+        (element
+          (component_clause
+            (type_specifier
+              (T_REAL))
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (algorithm_clause
+          (T_ALGORITHM)
+          (algorithm
+            (try_clause
+              (TRY)
+              (algorithm
+                (assign_clause_a
+                  (simple_expression
+                    (component_reference_function_call
+                      (component_reference
+                        (IDENT))))
+                  (ASSIGN)
+                  (expression
+                    (simple_expression
+                      (component_reference_function_call
+                        (component_reference
+                          (IDENT)))
+                      (SLASH)
+                      (component_reference_function_call
+                        (component_reference
+                          (IDENT)))))))
+              (algorithm
+                (BREAK))
+              (ELSE)
+              (algorithm
+                (assign_clause_a
+                  (simple_expression
+                    (component_reference_function_call
+                      (component_reference
+                        (IDENT))
+                      (function_call
+                        (LPAR)
+                        (function_arguments
+                          (expression
+                            (simple_expression
+                              (STRING))))
+                        (RPAR))))))
+              (T_END)
+              (TRY)))))
+      (T_END)
+      (identifier
+        (IDENT)))))

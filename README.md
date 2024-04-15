@@ -2,9 +2,7 @@
 
 # tree-sitter-metamodelica
 
-An [open-source](OSMC-License.txt) MetaModelica ([Meta-Programming and Language
-Modeling with MetaModelica
-1.0 Appendix A](https://www.researchgate.net/publication/272070589_Meta-Programming_and_Language_Modeling_with_MetaModelica_10))
+An [open-source](OSMC-License.txt) MetaModelica ([MetaModelica 2.0](https://liu.diva-portal.org/smash/record.jsf?pid=diva2%3A418188&dswid=-9758))
 grammar and highlighting-query for
 [tree-sitter](https://github.com/tree-sitter/tree-sitter).
 
@@ -39,9 +37,8 @@ npx tree-sitter parse examples/Main.mo
 
 ## Highlighting
 
-There is also a highlighting query included. Make sure that the [tree-sitter
-per-user
-configuration](https://tree-sitter.github.io/tree-sitter/syntax-highlighting#per-user-configuration)
+There is also a highlighting query included. Make sure that the
+[tree-sitter per-user configuration](https://tree-sitter.github.io/tree-sitter/syntax-highlighting#per-user-configuration)
 are pointing to the parent directory of `tree-sitter-metamodelica`. So if this
 directory is in `/home/USER/workspace/tree-sitter-metamodelica` add
 `/home/USER/workspace` to the parser directories:
@@ -63,8 +60,7 @@ npx tree-sitter highlight examples/Main.mo
 
 ## Usage
 
-Use [Web
-Tree-sitter](https://github.com/tree-sitter/tree-sitter/blob/master/lib/binding_web/README.md)
+Use [Web Tree-sitter](https://github.com/tree-sitter/tree-sitter/blob/master/lib/binding_web/README.md)
 `tree-sitter-metamodelica.wasm` in your application:
 
 ```typescript
@@ -73,8 +69,8 @@ import * as Parser from 'web-tree-sitter'
 await Parser.init()
 const parser = new Parser
 
-const Modelica = await Parser.Language.load(`tree-sitter-metamodelica.wasm`)
-parser.setLanguage(Modelica)
+const MetaModelica = await Parser.Language.load(`tree-sitter-metamodelica.wasm`)
+parser.setLanguage(MetaModelica)
 ```
 
 ## Current Status

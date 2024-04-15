@@ -1,0 +1,55 @@
+=========================
+A.1 class_definition_list
+=========================
+
+package PackageA
+end PackageA;
+
+function foo
+end foo;
+
+model MyModel
+end MyModel;
+
+class C
+end C;
+
+---
+
+(stored_definition
+  (class_definition
+    (class_type
+      (PACKAGE))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (T_END)
+      (identifier
+        (IDENT))))
+  (class_definition
+    (class_type
+      (FUNCTION))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (T_END)
+      (identifier
+        (IDENT))))
+  (class_definition
+    (class_type
+      (MODEL))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (T_END)
+      (identifier
+        (IDENT))))
+  (class_definition
+    (class_type
+      (CLASS))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (T_END)
+      (identifier
+        (IDENT)))))

@@ -1,0 +1,192 @@
+======================
+A.6 match_expression 3
+======================
+
+function makeDebugResult
+  input Flags.DebugFlag inFlag;
+  input String res;
+algorithm
+  _ := matchcontinue (inFlag,res)
+    "this is a string_comment"
+    local
+      String debugstr,res_with_debug,flagstr;
+      Boolean isSet;
+    case (Flags.DEBUG_FLAG(name = flagstr),_)
+      algorithm
+        debugstr := res_with_debug;
+        debugstr := Print.getString();
+        print("Hello World");
+      then res_with_debug;
+  end matchcontinue;
+end makeDebugResult;
+
+---
+
+(stored_definition
+  (class_definition
+    (class_type
+      (FUNCTION))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (composition
+        (element
+          (component_clause
+            (type_prefix
+              (T_INPUT))
+            (type_specifier
+              (name_path
+                (IDENT)
+                (DOT)
+                (IDENT)))
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (element
+          (component_clause
+            (type_prefix
+              (T_INPUT))
+            (type_specifier
+              (T_STRING))
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (algorithm_clause
+          (T_ALGORITHM)
+          (algorithm
+            (assign_clause_a
+              (simple_expression
+                (component_reference_function_call
+                  (component_reference
+                    (WILD))))
+              (ASSIGN)
+              (expression
+                (match_expression
+                  (MATCHCONTINUE)
+                  (expression
+                    (simple_expression
+                      (LPAR)
+                      (expression
+                        (simple_expression
+                          (component_reference_function_call
+                            (component_reference
+                              (IDENT)))))
+                      (COMMA)
+                      (expression
+                        (simple_expression
+                          (component_reference_function_call
+                            (component_reference
+                              (IDENT)))))
+                      (RPAR)))
+                  (string_comment
+                    (STRING))
+                  (local_clause
+                    (LOCAL)
+                    (element
+                      (component_clause
+                        (type_specifier
+                          (T_STRING))
+                        (component_declaration
+                          (declaration
+                            (IDENT)))
+                        (COMMA)
+                        (component_declaration
+                          (declaration
+                            (IDENT)))
+                        (COMMA)
+                        (component_declaration
+                          (declaration
+                            (IDENT)))))
+                    (element
+                      (component_clause
+                        (type_specifier
+                          (T_BOOLEAN))
+                        (component_declaration
+                          (declaration
+                            (IDENT))))))
+                  (cases
+                    (onecase
+                      (CASE)
+                      (expression
+                        (simple_expression
+                          (LPAR)
+                          (expression
+                            (simple_expression
+                              (component_reference_function_call
+                                (component_reference
+                                  (IDENT)
+                                  (DOT)
+                                  (IDENT))
+                                (function_call
+                                  (LPAR)
+                                  (function_arguments
+                                    (named_argument
+                                      (IDENT)
+                                      (EQUALS)
+                                      (expression
+                                        (simple_expression
+                                          (component_reference_function_call
+                                            (component_reference
+                                              (IDENT)))))))
+                                  (RPAR)))))
+                          (COMMA)
+                          (expression
+                            (simple_expression
+                              (component_reference_function_call
+                                (component_reference
+                                  (WILD)))))
+                          (RPAR)))
+                      (ALGORITHM)
+                      (algorithm
+                        (assign_clause_a
+                          (simple_expression
+                            (component_reference_function_call
+                              (component_reference
+                                (IDENT))))
+                          (ASSIGN)
+                          (expression
+                            (simple_expression
+                              (component_reference_function_call
+                                (component_reference
+                                  (IDENT)))))))
+                      (algorithm
+                        (assign_clause_a
+                          (simple_expression
+                            (component_reference_function_call
+                              (component_reference
+                                (IDENT))))
+                          (ASSIGN)
+                          (expression
+                            (simple_expression
+                              (component_reference_function_call
+                                (component_reference
+                                  (IDENT)
+                                  (DOT)
+                                  (IDENT))
+                                (function_call
+                                  (LPAR)
+                                  (RPAR)))))))
+                      (algorithm
+                        (assign_clause_a
+                          (simple_expression
+                            (component_reference_function_call
+                              (component_reference
+                                (IDENT))
+                              (function_call
+                                (LPAR)
+                                (function_arguments
+                                  (expression
+                                    (simple_expression
+                                      (STRING))))
+                                (RPAR))))))
+                      (THEN)
+                      (expression
+                        (simple_expression
+                          (component_reference_function_call
+                            (component_reference
+                              (IDENT)))))))
+                  (T_END)
+                  (MATCHCONTINUE)))))))
+      (T_END)
+      (identifier
+        (IDENT)))))

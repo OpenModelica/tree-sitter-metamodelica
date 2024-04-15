@@ -1,0 +1,13 @@
+===============================
+A.1 Stored Definition – Within2
+===============================
+
+within a091234;
+
+---
+
+(stored_definition
+  (within_clause
+    (WITHIN)
+    (name_path
+      (IDENT))))

@@ -57,7 +57,8 @@
       "scope": "source.metamodelica",
       "file-types": [
         "mo"
-      ]
+      ],
+      "highlights": "queries/highlights.scm"
     }
   ]
 }

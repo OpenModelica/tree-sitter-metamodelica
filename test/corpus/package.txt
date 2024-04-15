@@ -1,0 +1,72 @@
+=======
+Package
+=======
+
+/*
+ * This is a comment over multiple lines
+ */
+
+encapsulated package PackageA
+" file:        PackageA.mo
+  package:     PackageA
+  description: PackageA stuff
+
+  This is the PackageA that does nothing
+  but has a lot of comments."
+
+// public imports
+public
+import B = PackageB;
+import PackageC.PackageD.*;
+import PackageE.{foo,bar};
+
+end PackageA;
+
+---
+
+(stored_definition
+  (BLOCK_COMMENT)
+  (class_definition
+    (ENCAPSULATED)
+    (class_type
+      (PACKAGE))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (string_comment
+        (STRING))
+      (COMMENT)
+      (composition
+        (PUBLIC)
+        (element
+          (import_clause
+            (IMPORT)
+            (explicit_import_name
+              (IDENT)
+              (EQUALS)
+              (name_path
+                (IDENT)))))
+        (element
+          (import_clause
+            (IMPORT)
+            (implicit_import_name
+              (name_path_star
+                (IDENT)
+                (DOT)
+                (IDENT)
+                (STAR_EW)))))
+        (element
+          (import_clause
+            (IMPORT)
+            (implicit_import_name
+              (name_path_star
+                (IDENT)
+                (DOT)
+                (LBRACE)
+                (IDENT)
+                (COMMA)
+                (IDENT)
+                (RBRACE))))))
+      (T_END)
+      (identifier
+        (IDENT)))))

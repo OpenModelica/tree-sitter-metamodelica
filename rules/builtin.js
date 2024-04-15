@@ -33,30 +33,35 @@
  *
  */
 
-/**
- * @author AnHeuermann
- */
+// Buildin types and functions
+//
+// From Towards Modelica 4 Meta-Programming and Language Modeling with MetaModelica 2.0
+// Section 5.1.2 Predefined Types and Type Constructors
+// https://liu.diva-portal.org/smash/record.jsf?pid=diva2%3A418188&dswid=-9758
 
-module.exports = grammar({
-  name: "metamodelica",
+module.exports = {
 
-  extras: $ => [
-    $.COMMENT,
-    $.BLOCK_COMMENT,
-    $._SPACE
-  ],
+  _builtin_types: $ => choice(
+    $.T_REAL,
+    $.T_INTEGER,
+    $.T_BOOLEAN,
+    $.T_STRING,
+    $.T_LIST,
+    $.T_OPTION,
+    $.T_TUPLE,
+    $.T_SEQUENCE,
+    $.T_ANY,
+  ),
 
-  word: $ => $.IDENT,
+  // Types
+  T_REAL: $ => "Real",
+  T_INTEGER: $ => "Integer",
+  T_BOOLEAN: $ => "Boolean",
+  T_STRING: $ => "String",
 
-  rules: {
-    ...require("./rules/a1-classAndMainGrammar"),
-    ...require("./rules/a2-extends"),
-    ...require("./rules/a3-modification"),
-    ...require("./rules/a4-equations"),
-    ...require("./rules/a5-expressions"),
-    ...require("./rules/a6-metamodelicaExtensions"),
-    ...require("./rules/builtin"),
-    ...require("./rules/keywords"),
-    ...require("./rules/lexicalConventions"),
-  }
-});
+  T_LIST: $ => "List",
+  T_OPTION: $ => "Option",
+  T_TUPLE: $ => "Tuple",
+  T_SEQUENCE: $ => "Sequence",
+  T_ANY: $ => "Any",
+};

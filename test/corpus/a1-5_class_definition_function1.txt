@@ -1,0 +1,40 @@
+===============================
+A.1 class_definition function 1
+===============================
+
+
+function foo
+  Real x;
+  A.MyType y;
+end foo;
+
+---
+
+(stored_definition
+  (class_definition
+    (class_type
+      (FUNCTION))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (composition
+        (element
+          (component_clause
+            (type_specifier
+              (T_REAL))
+            (component_declaration
+              (declaration
+                    (IDENT)))))
+        (element
+          (component_clause
+            (type_specifier
+              (name_path
+                (IDENT)
+                (DOT)
+                (IDENT)))
+            (component_declaration
+              (declaration
+              (IDENT))))))
+      (T_END)
+      (identifier
+        (IDENT)))))

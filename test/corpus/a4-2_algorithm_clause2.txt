@@ -1,0 +1,70 @@
+================================
+A.4 algorithm_clause algorithm 2
+================================
+
+function sum
+  input Integer a;
+  input Integer b;
+  output Integer sum;
+algorithm
+  sum := a + b;
+end sum;
+
+---
+
+(stored_definition
+  (class_definition
+    (class_type
+      (FUNCTION))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (composition
+        (element
+          (component_clause
+            (type_prefix
+              (T_INPUT))
+            (type_specifier
+              (T_INTEGER))
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (element
+          (component_clause
+            (type_prefix
+              (T_INPUT))
+            (type_specifier
+              (T_INTEGER))
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (element
+          (component_clause
+            (type_prefix
+              (T_OUTPUT))
+            (type_specifier
+              (T_INTEGER))
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (algorithm_clause
+          (T_ALGORITHM)
+          (algorithm
+            (assign_clause_a
+              (simple_expression
+                (component_reference_function_call
+                  (component_reference
+                    (IDENT))))
+              (ASSIGN)
+              (expression
+                (simple_expression
+                  (component_reference_function_call
+                    (component_reference
+                      (IDENT)))
+                  (PLUS)
+                  (component_reference_function_call
+                    (component_reference
+                      (IDENT)))))))))
+      (T_END)
+      (identifier
+        (IDENT)))))
