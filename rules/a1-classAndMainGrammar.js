@@ -244,8 +244,8 @@ module.exports = {
     choice(
       repeat1(
         choice(
-          $._public__element_list,
-          $._protected__element_list,
+          $._public_element_list,
+          $._protected_element_list,
           $.initial_equation_clause,
           $.initial_algorithm_clause,
           $.equation_clause,
@@ -257,8 +257,8 @@ module.exports = {
     ),
     repeat1(
       choice(
-        $._public__element_list,
-        $._protected__element_list,
+        $._public_element_list,
+        $._protected_element_list,
         $.initial_equation_clause,
         $.initial_algorithm_clause,
         $.equation_clause,
@@ -294,12 +294,12 @@ module.exports = {
     $._SEMICOLON
   ),
 
-  _public__element_list: $ => seq(
+  _public_element_list: $ => seq(
     $.PUBLIC,
     repeat($._element_list)
   ),
 
-  _protected__element_list: $ => seq(
+  _protected_element_list: $ => seq(
     $.PROTECTED,
     repeat($._element_list)
   ),
