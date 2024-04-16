@@ -6,8 +6,9 @@ function foo
 algorithm
   res := match(x, y)
     case (_, z) guard bar1(bar2(x))
-      then
-        listReverse(x::z);
+      then listReverse(x::z);
+    case ({},_)
+      then listReverse(x::z);
   end match;
 end foo;
 
@@ -90,6 +91,42 @@ end foo;
                                                   (IDENT))))))
                                         (RPAR))))))
                               (RPAR)))))
+                      (THEN)
+                      (expression
+                        (simple_expression
+                          (component_reference_function_call
+                            (component_reference
+                              (IDENT))
+                            (function_call
+                              (LPAR)
+                              (function_arguments
+                                (expression
+                                  (simple_expression
+                                    (component_reference_function_call
+                                      (component_reference
+                                        (IDENT)))
+                                    (COLONCOLON)
+                                    (simple_expression
+                                      (component_reference_function_call
+                                        (component_reference
+                                          (IDENT)))))))
+                              (RPAR))))))
+                    (onecase
+                      (CASE)
+                      (expression
+                        (simple_expression
+                          (LPAR)
+                          (expression
+                            (simple_expression
+                              (LBRACE)
+                              (RBRACE)))
+                          (COMMA)
+                          (expression
+                            (simple_expression
+                              (component_reference_function_call
+                                (component_reference
+                                  (WILD)))))
+                          (RPAR)))
                       (THEN)
                       (expression
                         (simple_expression

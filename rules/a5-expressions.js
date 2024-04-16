@@ -229,9 +229,16 @@ module.exports = {
       $.DER,
       $.function_call
     ),
+    // TODO: Add PURE function_call
+    //seq(
+    //  $.PURE,
+    //  $.function_call
+    //),
     seq(
       $.LPAR,
-      $._output_expression_list
+      $._output_expression_list,
+      // TODO: Add (array_subscripts)?
+      //optional($.array_subscripts)
     ),
     seq(
       $.LBRACK,
@@ -240,7 +247,8 @@ module.exports = {
     ),
     seq(
       $.LBRACE,
-      $._for_or_expression_list,
+      // TODO: Is this correct?
+      optional($._for_or_expression_list),
       $.RBRACE
     ),
     $.T_END
