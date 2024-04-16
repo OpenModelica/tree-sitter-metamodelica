@@ -224,7 +224,7 @@ module.exports = {
     $.STRING,
     $.T_FALSE,
     $.T_TRUE,
-    $.component__reference_function_call,
+    $.component_reference__function_call,
     seq(
       $.DER,
       $.function_call
@@ -263,7 +263,7 @@ module.exports = {
     ))
   ),
 
-  component__reference_function_call: $ => prec.right(choice(
+  component_reference__function_call: $ => prec.right(choice(
     seq(
       field("functionName", $.component_reference),
       field("polymorphicType", $.polymorphic_type_specifier),

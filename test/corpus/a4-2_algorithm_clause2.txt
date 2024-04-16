@@ -52,17 +52,17 @@ end sum;
           (algorithm
             (assign_clause_a
               (simple_expression
-                (component__reference_function_call
+                (component_reference__function_call
                   (component_reference
                     (IDENT))))
               (ASSIGN)
               (expression
                 (simple_expression
-                  (component__reference_function_call
+                  (component_reference__function_call
                     (component_reference
                       (IDENT)))
                   (PLUS)
-                  (component__reference_function_call
+                  (component_reference__function_call
                     (component_reference
                       (IDENT)))))))))
       (T_END)

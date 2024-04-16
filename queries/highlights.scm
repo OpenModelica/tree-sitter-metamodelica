@@ -37,10 +37,10 @@
 
 ;;; Variables
 (declaration (IDENT) @variable.parameter) ;; Real >x<
-(component__reference_function_call componentReference: (component_reference) @variable.parameter) ;; >x<
+(component_reference__function_call componentReference: (component_reference) @variable.parameter) ;; >x<
 
 ;;; Function calls
-(component__reference_function_call functionName: (component_reference) @function)
+(component_reference__function_call functionName: (component_reference) @function)
 
 ;;; Classes
 (class_definition (class_type class: (CLASS))(class_specifier (identifier) @module))                ;; class >A< end >A<;

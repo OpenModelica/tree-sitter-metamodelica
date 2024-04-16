@@ -47,13 +47,13 @@ end foo;
           (algorithm
             (assign_clause_a
               (simple_expression
-                (component__reference_function_call
+                (component_reference__function_call
                   (component_reference
                     (IDENT))))
               (ASSIGN)
               (expression
                 (simple_expression
-                  (component__reference_function_call
+                  (component_reference__function_call
                     (component_reference
                       (IDENT))
                     (function_call
@@ -61,7 +61,7 @@ end foo;
                       (function_arguments
                         (expression
                           (simple_expression
-                            (component__reference_function_call
+                            (component_reference__function_call
                               (component_reference
                                 (IDENT)
                                 (DOT)
@@ -71,12 +71,12 @@ end foo;
                                 (function_arguments
                                   (expression
                                     (simple_expression
-                                      (component__reference_function_call
+                                      (component_reference__function_call
                                         (component_reference
                                           (IDENT))))))
                                 (RPAR)))
                             (EQEQ)
-                            (component__reference_function_call
+                            (component_reference__function_call
                               (component_reference
                                 (IDENT)
                                 (DOT)
@@ -86,7 +86,7 @@ end foo;
                                 (function_arguments
                                   (expression
                                     (simple_expression
-                                      (component__reference_function_call
+                                      (component_reference__function_call
                                         (component_reference
                                           (IDENT))))))
                                 (RPAR)))))
@@ -98,7 +98,7 @@ end foo;
                             (T_IN)
                             (expression
                               (simple_expression
-                                (component__reference_function_call
+                                (component_reference__function_call
                                   (component_reference
                                     (IDENT))))))
                           (COMMA)
@@ -108,7 +108,7 @@ end foo;
                               (T_IN)
                               (expression
                                 (simple_expression
-                                  (component__reference_function_call
+                                  (component_reference__function_call
                                     (component_reference
                                       (IDENT)))))))))
                       (RPAR)))))))))
