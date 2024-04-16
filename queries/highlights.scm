@@ -132,6 +132,7 @@
   (T_OUTPUT)
   (T_TRUE)
   (THEN)
+  (THREADED)
   (TRY)
   (TYPE)
   (UNIONTYPE)

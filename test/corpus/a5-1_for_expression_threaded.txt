@@ -1,0 +1,117 @@
+================================
+A.5 for_expression threaded for
+================================
+
+function foo
+  input Scope scope1,scope2;
+  output Boolean eq;
+algorithm
+  eq := min(PacketA.bar(r1)==PacketA.bar(r2) threaded for r1 in scope1, r2 in scope2);
+end foo;
+
+---
+
+(stored_definition
+  (class_definition
+    (class_type
+      (FUNCTION))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (composition
+        (element
+          (component_clause
+            (type_prefix
+              (T_INPUT))
+            (type_specifier
+              (name_path
+                (IDENT)))
+            (component_declaration
+              (declaration
+                (IDENT)))
+            (COMMA)
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (element
+          (component_clause
+            (type_prefix
+              (T_OUTPUT))
+            (type_specifier
+              (T_BOOLEAN))
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (algorithm_clause
+          (T_ALGORITHM)
+          (algorithm
+            (assign_clause_a
+              (simple_expression
+                (component_reference_function_call
+                  (component_reference
+                    (IDENT))))
+              (ASSIGN)
+              (expression
+                (simple_expression
+                  (component_reference_function_call
+                    (component_reference
+                      (IDENT))
+                    (function_call
+                      (LPAR)
+                      (function_arguments
+                        (expression
+                          (simple_expression
+                            (component_reference_function_call
+                              (component_reference
+                                (IDENT)
+                                (DOT)
+                                (IDENT))
+                              (function_call
+                                (LPAR)
+                                (function_arguments
+                                  (expression
+                                    (simple_expression
+                                      (component_reference_function_call
+                                        (component_reference
+                                          (IDENT))))))
+                                (RPAR)))
+                            (EQEQ)
+                            (component_reference_function_call
+                              (component_reference
+                                (IDENT)
+                                (DOT)
+                                (IDENT))
+                              (function_call
+                                (LPAR)
+                                (function_arguments
+                                  (expression
+                                    (simple_expression
+                                      (component_reference_function_call
+                                        (component_reference
+                                          (IDENT))))))
+                                (RPAR)))))
+                        (THREADED)
+                        (FOR)
+                        (for_indices
+                          (for_index
+                            (IDENT)
+                            (T_IN)
+                            (expression
+                              (simple_expression
+                                (component_reference_function_call
+                                  (component_reference
+                                    (IDENT))))))
+                          (COMMA)
+                          (for_indices
+                            (for_index
+                              (IDENT)
+                              (T_IN)
+                              (expression
+                                (simple_expression
+                                  (component_reference_function_call
+                                    (component_reference
+                                      (IDENT)))))))))
+                      (RPAR)))))))))
+      (T_END)
+      (identifier
+        (IDENT)))))

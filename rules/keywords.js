@@ -137,6 +137,7 @@ module.exports = {
   T_OUTPUT: $ => "output",
   T_TRUE: $ => "true",
   THEN: $ => "then",
+  THREADED: $ => "threaded",
   TRY: $ => "try",
   TYPE: $ => "type",
   UNIONTYPE: $ => "uniontype",

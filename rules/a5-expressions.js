@@ -350,6 +350,7 @@ module.exports = {
         $.expression
       )),
       seq(
+        optional($.THREADED),
         $.FOR,
         $.for_indices
       )
