@@ -1,0 +1,79 @@
+============
+A.1 external
+============
+
+function threadData
+  output ThreadData threadData;
+protected
+  record ThreadData
+  end ThreadData;
+external "builtin";
+annotation(Documentation(info="<html>
+<p>Used to access thread-specific data in external functions.</p>
+</html>"));
+end threadData;
+
+
+---
+
+(stored_definition
+  (class_definition
+    (class_type
+      (FUNCTION))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (composition
+        (element
+          (component_clause
+            (type_prefix
+              (T_OUTPUT))
+            (type_specifier
+              (name_path
+                (IDENT)))
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (PROTECTED)
+        (element
+          (class_definition
+            (class_type
+              (RECORD))
+            (class_specifier
+              (identifier
+                (IDENT))
+              (T_END)
+              (identifier
+                (IDENT)))))
+        (external_clause
+          (EXTERNAL)
+          (language_specification
+            (STRING))
+          (external_annotation
+            (annotation
+              (T_ANNOTATION)
+              (class_modification
+                (LPAR)
+                (argument
+                  (element_modification_or_replaceable
+                    (element_modification
+                      (component_reference
+                        (IDENT))
+                      (modification
+                        (class_modification
+                          (LPAR)
+                          (argument
+                            (element_modification_or_replaceable
+                              (element_modification
+                                (component_reference
+                                  (IDENT))
+                                (modification
+                                  (EQUALS)
+                                  (expression
+                                    (simple_expression
+                                      (STRING)))))))
+                          (RPAR))))))
+                (RPAR))))))
+      (T_END)
+      (identifier
+        (IDENT)))))

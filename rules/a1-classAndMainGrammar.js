@@ -241,7 +241,7 @@ module.exports = {
   ),
 
   _composition2: $ => choice(
-    choice(
+    seq(
       repeat1(
         choice(
           $._public_element_list,
