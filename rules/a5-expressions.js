@@ -263,7 +263,7 @@ module.exports = {
     ))
   ),
 
-  component_reference__function_call: $ => prec.right(choice(
+  component_reference__function_call: $ => choice(
     seq(
       field("functionName", $.component_reference),
       field("polymorphicType", $.polymorphic_type_specifier),
@@ -271,7 +271,8 @@ module.exports = {
     ),
     seq(
       field("functionName", $.component_reference),
-      $.function_call,  // TODO: Make optional?
+      $.function_call,
+      // TODO: Add DOT expression?
       //optional(seq(
       //    $.DOT,
       //    $.expression
@@ -283,7 +284,7 @@ module.exports = {
       $.LPAR,
       $.RPAR
     )
-  )),
+  ),
 
   polymorphic_type_specifier: $ => seq(
       $.LESS,
