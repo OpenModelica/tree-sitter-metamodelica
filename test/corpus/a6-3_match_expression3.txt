@@ -17,6 +17,10 @@ algorithm
         debugstr := Print.getString();
         print("Hello World");
       then res_with_debug;
+    else
+      algorithm
+        print("This is the else case");
+      then res_with_debug;
   end matchcontinue;
 end makeDebugResult;
 
@@ -166,6 +170,28 @@ end makeDebugResult;
                                 (function_call
                                   (LPAR)
                                   (RPAR)))))))
+                      (algorithm
+                        (assign_clause_a
+                          (simple_expression
+                            (component_reference_function_call
+                              (component_reference
+                                (IDENT))
+                              (function_call
+                                (LPAR)
+                                (function_arguments
+                                  (expression
+                                    (simple_expression
+                                      (STRING))))
+                                (RPAR))))))
+                      (THEN)
+                      (expression
+                        (simple_expression
+                          (component_reference_function_call
+                            (component_reference
+                              (IDENT))))))
+                    (cases2
+                      (ELSE)
+                      (ALGORITHM)
                       (algorithm
                         (assign_clause_a
                           (simple_expression

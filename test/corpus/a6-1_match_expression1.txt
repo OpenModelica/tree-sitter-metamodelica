@@ -130,7 +130,7 @@ end A;
                               (expression
                                 (simple_expression
                                   (STRING))))
-                            (elsecase
+                            (cases2
                               (ELSE)
                               (expression
                                 (simple_expression

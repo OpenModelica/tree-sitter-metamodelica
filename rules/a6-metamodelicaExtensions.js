@@ -70,17 +70,25 @@ module.exports = {
 
   cases: $ => seq(
     field("case", repeat1($.onecase)),
-    field("elsecase", optional($.elsecase))
+    field("elsecase", optional($.cases2))
   ),
 
-  elsecase: $ => seq(
+  cases2: $ => seq(
     $.ELSE,
     optional(seq(
       optional($.string_comment),
-      optional(seq(
-        $.EQUATION,
-        repeat($._equation_list_then)
-      )),
+      // TODO: Add local clause?
+      //$.local_clause,
+      choice(
+        optional(seq(
+          $.EQUATION,
+          repeat($._equation_list_then)
+        )),
+        optional(seq(
+          $.ALGORITHM,
+          repeat($._algorithm_annotation_list)
+        )),
+      ),
       $.THEN
     )),
     $.expression,
