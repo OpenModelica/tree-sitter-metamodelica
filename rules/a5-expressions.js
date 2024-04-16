@@ -229,11 +229,10 @@ module.exports = {
       $.DER,
       $.function_call
     ),
-    // TODO: Add PURE function_call
-    //seq(
-    //  $.PURE,
-    //  $.function_call
-    //),
+    seq(
+      $.PURE,
+      $.function_call
+    ),
     seq(
       $.LPAR,
       $._output_expression_list,

@@ -83,7 +83,18 @@ module.exports = {
     ),
     field("type", $.TYPE),
     field("package", $.PACKAGE),
-    field("function", $.FUNCTION),
+    seq(
+      optional(choice(
+        $.PURE,
+        $.IMPURE
+      )),
+      //optional(choice(
+      //  $.OPERATOR,
+      //  $.T_PARALLEL,
+      //  $.T_KERNEL
+      //)),
+      field("function", $.FUNCTION),
+    ),
     field("uniontype", $.UNIONTYPE),
     seq(
       field("operator", $.OPERATOR),
@@ -267,7 +278,7 @@ module.exports = {
           field("componentReference", $.component_reference),
           $.EQUALS
         )),
-        $.IDENT,
+        field("functionName", $.IDENT),
         $.LPAR,
         optional($._expression_list),
         $.RPAR
