@@ -305,8 +305,7 @@ module.exports = {
   ),
 
   language_specification: $ => seq(
-    $.STRING,
-    $._SEMICOLON
+    $.STRING
   ),
 
   // _element_list could be empty list, use repeat(_element_list) everywhere
