@@ -151,6 +151,10 @@ module.exports = {
     seq(
       $.EQUALS,
       field("overloading", $.overloading)
+    ),
+    seq(
+      $.SUBTYPEOF,
+      $.type_specifier
     )
   ),
 

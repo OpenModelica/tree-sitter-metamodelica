@@ -123,6 +123,7 @@ module.exports = {
   REPLACEABLE: $ => "replaceable",
   RETURN: $ => "return",
   STREAM: $ => "stream",
+  SUBTYPEOF: $ => "subtypeof",
   T_ALGORITHM: $ => "algorithm",
   T_AND: $ => "and",
   T_ANNOTATION: $ => "annotation",

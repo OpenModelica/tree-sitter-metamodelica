@@ -26,12 +26,13 @@
 ;;; Types
 (type_specifier (name_path (IDENT) @type ))   ;; >A<.>MyType< x
 (T_REAL) @type.builtin      ;; >Real< x
-(T_INTEGER)  @type.builtin  ;; >Integer< x
-(T_BOOLEAN)  @type.builtin  ;; >Boolean< x
-(T_STRING)  @type.builtin   ;; >String< x
-(T_LIST)  @type.builtin     ;; >List<<Real> x
-(T_OPTION)  @type.builtin   ;; >Option< <Real> x
-(T_TUPLE)  @type.builtin    ;; >Tuple< <T1, T2, T3> x
+(T_INTEGER) @type.builtin   ;; >Integer< x
+(T_BOOLEAN) @type.builtin   ;; >Boolean< x
+(T_STRING) @type.builtin    ;; >String< x
+(T_LIST) @type.builtin      ;; >List<<Real> x
+(T_OPTION) @type.builtin    ;; >Option< <Real> x
+(T_TUPLE) @type.builtin     ;; >Tuple< <T1, T2, T3> x
+(T_ANY) @type.builtin       ;; subtypeof >Any<
 
 ;;; Variables
 (declaration (IDENT) @variable.parameter) ;; Real >x<
@@ -117,6 +118,7 @@
   (REPLACEABLE)
   (RETURN)
   (STREAM)
+  (SUBTYPEOF)
   (T_ALGORITHM)
   (T_AND)
   (T_ANNOTATION)
