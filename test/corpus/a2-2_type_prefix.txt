@@ -1,0 +1,51 @@
+============================
+A.2 type_prefix input output
+============================
+
+function foo
+  input Integer x;
+  output Integer y;
+  input output Integer z;
+end foo;
+
+---
+
+(stored_definition
+  (class_definition
+    (class_type
+      (FUNCTION))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (composition
+        (element
+          (component_clause
+            (type_prefix
+              (T_INPUT))
+            (type_specifier
+              (T_INTEGER))
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (element
+          (component_clause
+            (type_prefix
+              (T_OUTPUT))
+            (type_specifier
+              (T_INTEGER))
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (element
+          (component_clause
+            (type_prefix
+              (T_INPUT)
+              (T_OUTPUT))
+            (type_specifier
+              (T_INTEGER))
+            (component_declaration
+              (declaration
+                (IDENT))))))
+      (T_END)
+      (identifier
+        (IDENT)))))
