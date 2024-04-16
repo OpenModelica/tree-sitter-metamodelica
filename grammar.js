@@ -46,6 +46,11 @@ module.exports = grammar({
     $._SPACE
   ],
 
+  conflicts: $ => [
+    [$._for_or_expression_list],
+    [$.for_indices]
+  ],
+
   word: $ => $.IDENT,
 
   rules: {
