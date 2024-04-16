@@ -1,0 +1,117 @@
+==========================
+A.6 match_expression guard
+==========================
+
+function foo
+algorithm
+  res := match(x, y)
+    case (_, z) guard bar1(bar2(x))
+      then
+        listReverse(x::z);
+  end match;
+end foo;
+
+---
+
+(stored_definition
+  (class_definition
+    (class_type
+      (FUNCTION))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (composition
+        (algorithm_clause
+          (T_ALGORITHM)
+          (algorithm
+            (assign_clause_a
+              (simple_expression
+                (component_reference_function_call
+                  (component_reference
+                    (IDENT))))
+              (ASSIGN)
+              (expression
+                (match_expression
+                  (MATCH)
+                  (expression
+                    (simple_expression
+                      (LPAR)
+                      (expression
+                        (simple_expression
+                          (component_reference_function_call
+                            (component_reference
+                              (IDENT)))))
+                      (COMMA)
+                      (expression
+                        (simple_expression
+                          (component_reference_function_call
+                            (component_reference
+                              (IDENT)))))
+                      (RPAR)))
+                  (cases
+                    (onecase
+                      (CASE)
+                      (expression
+                        (simple_expression
+                          (LPAR)
+                          (expression
+                            (simple_expression
+                              (component_reference_function_call
+                                (component_reference
+                                  (WILD)))))
+                          (COMMA)
+                          (expression
+                            (simple_expression
+                              (component_reference_function_call
+                                (component_reference
+                                  (IDENT)))))
+                          (RPAR)))
+                      (GUARD)
+                      (expression
+                        (simple_expression
+                          (component_reference_function_call
+                            (component_reference
+                              (IDENT))
+                            (function_call
+                              (LPAR)
+                              (function_arguments
+                                (expression
+                                  (simple_expression
+                                    (component_reference_function_call
+                                      (component_reference
+                                        (IDENT))
+                                      (function_call
+                                        (LPAR)
+                                        (function_arguments
+                                          (expression
+                                            (simple_expression
+                                              (component_reference_function_call
+                                                (component_reference
+                                                  (IDENT))))))
+                                        (RPAR))))))
+                              (RPAR)))))
+                      (THEN)
+                      (expression
+                        (simple_expression
+                          (component_reference_function_call
+                            (component_reference
+                              (IDENT))
+                            (function_call
+                              (LPAR)
+                              (function_arguments
+                                (expression
+                                  (simple_expression
+                                    (component_reference_function_call
+                                      (component_reference
+                                        (IDENT)))
+                                    (COLONCOLON)
+                                    (simple_expression
+                                      (component_reference_function_call
+                                        (component_reference
+                                          (IDENT)))))))
+                              (RPAR)))))))
+                  (T_END)
+                  (MATCH)))))))
+      (T_END)
+      (identifier
+        (IDENT)))))

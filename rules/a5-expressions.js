@@ -85,7 +85,10 @@ module.exports = {
     $.IDENT,
     optional(seq(
       optional(seq(
-        $.GUARD,
+        choice(
+          $.IF,
+          $.GUARD,
+        ),
         $.expression
       )),
       $.T_IN,

@@ -90,6 +90,13 @@ module.exports = {
   onecase: $ => seq(
     $.CASE,
     $._pattern,
+    optional(seq(
+      choice(
+        $.IF,
+        $.GUARD,
+      ),
+      $.expression
+    )),
     optional($.string_comment),
     choice(
       optional(seq(
