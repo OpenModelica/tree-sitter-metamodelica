@@ -263,15 +263,12 @@ module.exports = {
     ))
   ),
 
-  component__reference_function_call: $ => prec(2,choice(
-    // TODO: Add function polymorphism
-    //seq(
-    //  field("functionName", $.component_reference),
-    //  $.LESS,
-    //  $._name_list,
-    //  $.GREATER,
-    //  $.function_call
-    //),
+  component__reference_function_call: $ => prec.right(choice(
+    seq(
+      field("functionName", $.component_reference),
+      field("polymorphicType", $.polymorphic_type_specifier),
+      $.function_call
+    ),
     seq(
       field("functionName", $.component_reference),
       $.function_call,  // TODO: Make optional?
@@ -287,6 +284,12 @@ module.exports = {
       $.RPAR
     )
   )),
+
+  polymorphic_type_specifier: $ => seq(
+      $.LESS,
+      $._name_list,
+      $.GREATER,
+  ),
 
   name_path: $ => seq(
     optional($.DOT),

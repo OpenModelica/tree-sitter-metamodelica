@@ -33,13 +33,14 @@
 (T_OPTION) @type.builtin    ;; >Option< <Real> x
 (T_TUPLE) @type.builtin     ;; >Tuple< <T1, T2, T3> x
 (T_ANY) @type.builtin       ;; subtypeof >Any<
+(polymorphic_type_specifier (name_path)@type)
 
 ;;; Variables
 (declaration (IDENT) @variable.parameter) ;; Real >x<
-(component_reference_function_call componentReference: (component_reference) @variable.parameter) ;; >x<
+(component__reference_function_call componentReference: (component_reference) @variable.parameter) ;; >x<
 
 ;;; Function calls
-(component_reference_function_call functionName: (component_reference) @function)
+(component__reference_function_call functionName: (component_reference) @function)
 
 ;;; Classes
 (class_definition (class_type class: (CLASS))(class_specifier (identifier) @module))                ;; class >A< end >A<;

@@ -1,0 +1,92 @@
+==============================
+A.5 polymorphic_type_specifier
+==============================
+
+function foo
+algorithm
+  fn_cache := new<T1>(a, b);
+  fn_cache := new<T1, T2>(a, b);
+end foo;
+
+---
+
+(stored_definition
+  (class_definition
+    (class_type
+      (FUNCTION))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (composition
+        (algorithm_clause
+          (T_ALGORITHM)
+          (algorithm
+            (assign_clause_a
+              (simple_expression
+                (component__reference_function_call
+                  (component_reference
+                    (IDENT))))
+              (ASSIGN)
+              (expression
+                (simple_expression
+                  (component__reference_function_call
+                    (component_reference
+                      (IDENT))
+                    (polymorphic_type_specifier
+                      (LESS)
+                      (name_path
+                        (IDENT))
+                      (GREATER))
+                    (function_call
+                      (LPAR)
+                      (function_arguments
+                        (expression
+                          (simple_expression
+                            (component__reference_function_call
+                              (component_reference
+                                (IDENT)))))
+                        (COMMA)
+                        (expression
+                          (simple_expression
+                            (component__reference_function_call
+                              (component_reference
+                                (IDENT))))))
+                      (RPAR)))))))
+          (algorithm
+            (assign_clause_a
+              (simple_expression
+                (component__reference_function_call
+                  (component_reference
+                    (IDENT))))
+              (ASSIGN)
+              (expression
+                (simple_expression
+                  (component__reference_function_call
+                    (component_reference
+                      (IDENT))
+                    (polymorphic_type_specifier
+                      (LESS)
+                      (name_path
+                        (IDENT))
+                      (COMMA)
+                      (name_path
+                        (IDENT))
+                      (GREATER))
+                    (function_call
+                      (LPAR)
+                      (function_arguments
+                        (expression
+                          (simple_expression
+                            (component__reference_function_call
+                              (component_reference
+                                (IDENT)))))
+                        (COMMA)
+                        (expression
+                          (simple_expression
+                            (component__reference_function_call
+                              (component_reference
+                                (IDENT))))))
+                      (RPAR)))))))))
+      (T_END)
+      (identifier
+        (IDENT)))))
