@@ -224,7 +224,7 @@ module.exports = {
     $.STRING,
     $.T_FALSE,
     $.T_TRUE,
-    $.component_reference_function_call,
+    $.component__reference_function_call,
     seq(
       $.DER,
       $.function_call
@@ -263,10 +263,22 @@ module.exports = {
     ))
   ),
 
-  component_reference_function_call: $ => prec(2,choice(
+  component__reference_function_call: $ => prec(2,choice(
+    // TODO: Add function polymorphism
+    //seq(
+    //  field("functionName", $.component_reference),
+    //  $.LESS,
+    //  $._name_list,
+    //  $.GREATER,
+    //  $.function_call
+    //),
     seq(
       field("functionName", $.component_reference),
-      $.function_call
+      $.function_call,  // TODO: Make optional?
+      //optional(seq(
+      //    $.DOT,
+      //    $.expression
+      //))
     ),
     field("componentReference", $.component_reference),
     seq(
@@ -347,7 +359,10 @@ module.exports = {
   function_arguments: $ => choice(
     seq(
       $._for_or_expression_list,
-      optional($._named_arguments)
+      optional(seq(
+        $.COMMA,
+        $._named_arguments
+      ))
     ),
     $._named_arguments
   ),

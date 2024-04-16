@@ -60,7 +60,7 @@ end makeDebugResult;
           (algorithm
             (assign_clause_a
               (simple_expression
-                (component_reference_function_call
+                (component__reference_function_call
                   (component_reference
                     (WILD))))
               (ASSIGN)
@@ -72,13 +72,13 @@ end makeDebugResult;
                       (LPAR)
                       (expression
                         (simple_expression
-                          (component_reference_function_call
+                          (component__reference_function_call
                             (component_reference
                               (IDENT)))))
                       (COMMA)
                       (expression
                         (simple_expression
-                          (component_reference_function_call
+                          (component__reference_function_call
                             (component_reference
                               (IDENT)))))
                       (RPAR)))
@@ -116,7 +116,7 @@ end makeDebugResult;
                           (LPAR)
                           (expression
                             (simple_expression
-                              (component_reference_function_call
+                              (component__reference_function_call
                                 (component_reference
                                   (IDENT)
                                   (DOT)
@@ -129,14 +129,14 @@ end makeDebugResult;
                                       (EQUALS)
                                       (expression
                                         (simple_expression
-                                          (component_reference_function_call
+                                          (component__reference_function_call
                                             (component_reference
                                               (IDENT)))))))
                                   (RPAR)))))
                           (COMMA)
                           (expression
                             (simple_expression
-                              (component_reference_function_call
+                              (component__reference_function_call
                                 (component_reference
                                   (WILD)))))
                           (RPAR)))
@@ -144,25 +144,25 @@ end makeDebugResult;
                       (algorithm
                         (assign_clause_a
                           (simple_expression
-                            (component_reference_function_call
+                            (component__reference_function_call
                               (component_reference
                                 (IDENT))))
                           (ASSIGN)
                           (expression
                             (simple_expression
-                              (component_reference_function_call
+                              (component__reference_function_call
                                 (component_reference
                                   (IDENT)))))))
                       (algorithm
                         (assign_clause_a
                           (simple_expression
-                            (component_reference_function_call
+                            (component__reference_function_call
                               (component_reference
                                 (IDENT))))
                           (ASSIGN)
                           (expression
                             (simple_expression
-                              (component_reference_function_call
+                              (component__reference_function_call
                                 (component_reference
                                   (IDENT)
                                   (DOT)
@@ -173,7 +173,7 @@ end makeDebugResult;
                       (algorithm
                         (assign_clause_a
                           (simple_expression
-                            (component_reference_function_call
+                            (component__reference_function_call
                               (component_reference
                                 (IDENT))
                               (function_call
@@ -186,7 +186,7 @@ end makeDebugResult;
                       (THEN)
                       (expression
                         (simple_expression
-                          (component_reference_function_call
+                          (component__reference_function_call
                             (component_reference
                               (IDENT))))))
                     (cases2
@@ -195,7 +195,7 @@ end makeDebugResult;
                       (algorithm
                         (assign_clause_a
                           (simple_expression
-                            (component_reference_function_call
+                            (component__reference_function_call
                               (component_reference
                                 (IDENT))
                               (function_call
@@ -208,7 +208,7 @@ end makeDebugResult;
                       (THEN)
                       (expression
                         (simple_expression
-                          (component_reference_function_call
+                          (component__reference_function_call
                             (component_reference
                               (IDENT)))))))
                   (T_END)
