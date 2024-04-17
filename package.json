@@ -58,7 +58,8 @@
       "file-types": [
         "mo"
       ],
-      "highlights": "queries/highlights.scm"
+      "highlights": "queries/highlights.scm",
+      "tags": "queries/tags.scm"
     }
   ]
 }
