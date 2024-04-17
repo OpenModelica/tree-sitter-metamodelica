@@ -26,19 +26,21 @@
 ;;; Types
 (type_specifier (name_path (IDENT) @type ))   ;; >A<.>MyType< x
 (T_REAL) @type.builtin      ;; >Real< x
-(T_INTEGER)  @type.builtin  ;; >Integer< x
-(T_BOOLEAN)  @type.builtin  ;; >Boolean< x
-(T_STRING)  @type.builtin   ;; >String< x
-(T_LIST)  @type.builtin     ;; >List<<Real> x
-(T_OPTION)  @type.builtin   ;; >Option< <Real> x
-(T_TUPLE)  @type.builtin    ;; >Tuple< <T1, T2, T3> x
+(T_INTEGER) @type.builtin   ;; >Integer< x
+(T_BOOLEAN) @type.builtin   ;; >Boolean< x
+(T_STRING) @type.builtin    ;; >String< x
+(T_LIST) @type.builtin      ;; >List<<Real> x
+(T_OPTION) @type.builtin    ;; >Option< <Real> x
+(T_TUPLE) @type.builtin     ;; >Tuple< <T1, T2, T3> x
+(T_ANY) @type.builtin       ;; subtypeof >Any<
+(polymorphic_type_specifier (name_path)@type)
 
 ;;; Variables
 (declaration (IDENT) @variable.parameter) ;; Real >x<
-(component_reference_function_call componentReference: (component_reference) @variable.parameter) ;; >x<
+(component_reference__function_call componentReference: (component_reference) @variable.parameter) ;; >x<
 
 ;;; Function calls
-(component_reference_function_call functionName: (component_reference) @function)
+(component_reference__function_call functionName: (component_reference) @function)
 
 ;;; Classes
 (class_definition (class_type class: (CLASS))(class_specifier (identifier) @module))                ;; class >A< end >A<;
@@ -97,6 +99,7 @@
   (GUARD)
   (IF)
   (IMPORT)
+  (IMPURE)
   (INITIAL)
   (INNER)
   (LOCAL)
@@ -112,11 +115,13 @@
   (PARTIAL)
   (PROTECTED)
   (PUBLIC)
+  (PURE)
   (RECORD)
   (REDECLARE)
   (REPLACEABLE)
   (RETURN)
   (STREAM)
+  (SUBTYPEOF)
   (T_ALGORITHM)
   (T_AND)
   (T_ANNOTATION)
@@ -130,6 +135,7 @@
   (T_OUTPUT)
   (T_TRUE)
   (THEN)
+  (THREADED)
   (TRY)
   (TYPE)
   (UNIONTYPE)

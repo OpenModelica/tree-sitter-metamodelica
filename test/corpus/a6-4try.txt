@@ -60,17 +60,17 @@ end foo;
               (algorithm
                 (assign_clause_a
                   (simple_expression
-                    (component_reference_function_call
+                    (component_reference__function_call
                       (component_reference
                         (IDENT))))
                   (ASSIGN)
                   (expression
                     (simple_expression
-                      (component_reference_function_call
+                      (component_reference__function_call
                         (component_reference
                           (IDENT)))
                       (SLASH)
-                      (component_reference_function_call
+                      (component_reference__function_call
                         (component_reference
                           (IDENT)))))))
               (algorithm
@@ -79,7 +79,7 @@ end foo;
               (algorithm
                 (assign_clause_a
                   (simple_expression
-                    (component_reference_function_call
+                    (component_reference__function_call
                       (component_reference
                         (IDENT))
                       (function_call

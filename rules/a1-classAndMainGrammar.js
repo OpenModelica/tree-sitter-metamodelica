@@ -83,7 +83,18 @@ module.exports = {
     ),
     field("type", $.TYPE),
     field("package", $.PACKAGE),
-    field("function", $.FUNCTION),
+    seq(
+      optional(choice(
+        $.PURE,
+        $.IMPURE
+      )),
+      //optional(choice(
+      //  $.OPERATOR,
+      //  $.T_PARALLEL,
+      //  $.T_KERNEL
+      //)),
+      field("function", $.FUNCTION),
+    ),
     field("uniontype", $.UNIONTYPE),
     seq(
       field("operator", $.OPERATOR),
@@ -95,6 +106,7 @@ module.exports = {
   identifier: $ => choice(
     $.IDENT,
     $.DER,
+    $.CODE,
     $.EQUALITY,
     $.INITIAL
   ),
@@ -151,6 +163,10 @@ module.exports = {
     seq(
       $.EQUALS,
       field("overloading", $.overloading)
+    ),
+    seq(
+      $.SUBTYPEOF,
+      $.type_specifier
     )
   ),
 
@@ -226,11 +242,11 @@ module.exports = {
   ),
 
   _composition2: $ => choice(
-    choice(
+    seq(
       repeat1(
         choice(
-          $._public__element_list,
-          $._protected__element_list,
+          $._public_element_list,
+          $._protected_element_list,
           $.initial_equation_clause,
           $.initial_algorithm_clause,
           $.equation_clause,
@@ -242,8 +258,8 @@ module.exports = {
     ),
     repeat1(
       choice(
-        $._public__element_list,
-        $._protected__element_list,
+        $._public_element_list,
+        $._protected_element_list,
         $.initial_equation_clause,
         $.initial_algorithm_clause,
         $.equation_clause,
@@ -263,7 +279,7 @@ module.exports = {
           field("componentReference", $.component_reference),
           $.EQUALS
         )),
-        $.IDENT,
+        field("functionName", $.IDENT),
         $.LPAR,
         optional($._expression_list),
         $.RPAR
@@ -279,19 +295,18 @@ module.exports = {
     $._SEMICOLON
   ),
 
-  _public__element_list: $ => seq(
+  _public_element_list: $ => seq(
     $.PUBLIC,
     repeat($._element_list)
   ),
 
-  _protected__element_list: $ => seq(
+  _protected_element_list: $ => seq(
     $.PROTECTED,
     repeat($._element_list)
   ),
 
   language_specification: $ => seq(
-    $.STRING,
-    $._SEMICOLON
+    $.STRING
   ),
 
   // _element_list could be empty list, use repeat(_element_list) everywhere
@@ -339,7 +354,10 @@ module.exports = {
 
   // TODO: What is CODE?
   explicit_import_name: $ => seq(
-    $.IDENT,
+    choice(
+      $.IDENT,
+      $.CODE
+    ),
     $.EQUALS,
     field("namePath", $.name_path)
   ),

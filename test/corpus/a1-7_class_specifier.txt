@@ -1,0 +1,103 @@
+=============================
+A.1 class_specifier subtypeof
+=============================
+
+function foo
+  input Option<Type_a> inTypeAOption;
+  input FuncTypeType_aToString inFuncTypeTypeAToString;
+  output String outString;
+  replaceable type Type_a subtypeof Any;
+  partial function FuncTypeType_aToString
+    input Type_a inTypeA;
+    output String outString;
+  end FuncTypeType_aToString;
+end foo;
+
+---
+
+(stored_definition
+  (class_definition
+    (class_type
+      (FUNCTION))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (composition
+        (element
+          (component_clause
+            (type_prefix
+              (T_INPUT))
+            (type_specifier
+              (T_OPTION)
+              (LESS)
+              (type_specifier
+                (name_path
+                  (IDENT)))
+              (GREATER))
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (element
+          (component_clause
+            (type_prefix
+              (T_INPUT))
+            (type_specifier
+              (name_path
+                (IDENT)))
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (element
+          (component_clause
+            (type_prefix
+              (T_OUTPUT))
+            (type_specifier
+              (T_STRING))
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (element
+          (REPLACEABLE)
+          (class_definition
+            (class_type
+              (TYPE))
+            (class_specifier
+              (identifier
+                (IDENT))
+              (SUBTYPEOF)
+              (type_specifier
+                (T_ANY)))))
+        (element
+          (class_definition
+            (PARTIAL)
+            (class_type
+              (FUNCTION))
+            (class_specifier
+              (identifier
+                (IDENT))
+              (composition
+                (element
+                  (component_clause
+                    (type_prefix
+                      (T_INPUT))
+                    (type_specifier
+                      (name_path
+                        (IDENT)))
+                    (component_declaration
+                      (declaration
+                        (IDENT)))))
+                (element
+                  (component_clause
+                    (type_prefix
+                      (T_OUTPUT))
+                    (type_specifier
+                      (T_STRING))
+                    (component_declaration
+                      (declaration
+                        (IDENT))))))
+              (T_END)
+              (identifier
+                (IDENT))))))
+      (T_END)
+      (identifier
+        (IDENT)))))

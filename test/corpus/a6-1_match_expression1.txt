@@ -74,7 +74,7 @@ end A;
                   (algorithm
                     (assign_clause_a
                       (simple_expression
-                        (component_reference_function_call
+                        (component_reference__function_call
                           (component_reference
                             (IDENT))))
                       (ASSIGN)
@@ -86,13 +86,13 @@ end A;
                               (LPAR)
                               (expression
                                 (simple_expression
-                                  (component_reference_function_call
+                                  (component_reference__function_call
                                     (component_reference
                                       (IDENT)))))
                               (COMMA)
                               (expression
                                 (simple_expression
-                                  (component_reference_function_call
+                                  (component_reference__function_call
                                     (component_reference
                                       (IDENT)))))
                               (RPAR)))
@@ -104,7 +104,7 @@ end A;
                                   (LPAR)
                                   (expression
                                     (simple_expression
-                                      (component_reference_function_call
+                                      (component_reference__function_call
                                         (component_reference
                                           (IDENT)
                                           (DOT)
@@ -122,7 +122,7 @@ end A;
                                   (COMMA)
                                   (expression
                                     (simple_expression
-                                      (component_reference_function_call
+                                      (component_reference__function_call
                                         (component_reference
                                           (WILD)))))
                                   (RPAR)))
@@ -130,11 +130,11 @@ end A;
                               (expression
                                 (simple_expression
                                   (STRING))))
-                            (elsecase
+                            (cases2
                               (ELSE)
                               (expression
                                 (simple_expression
-                                  (component_reference_function_call
+                                  (component_reference__function_call
                                     (component_reference
                                       (IDENT)))))))
                           (T_END)

@@ -1,0 +1,113 @@
+=====================
+A.1 class_type impure
+=====================
+
+impure function subSampleExpression<__Any>
+  input __Any u;
+  parameter input Integer factor(min=0)=0 annotation(__OpenModelica_functionVariability=true);
+  output __Any y;
+  external "builtin" y=subSample(u,factor);
+end subSampleExpression;
+
+---
+
+(stored_definition
+  (class_definition
+    (class_type
+      (IMPURE)
+      (FUNCTION))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (LESS)
+      (IDENT)
+      (GREATER)
+      (composition
+        (element
+          (component_clause
+            (type_prefix
+              (T_INPUT))
+            (type_specifier
+              (name_path
+                (IDENT)))
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (element
+          (component_clause
+            (type_prefix
+              (PARAMETER)
+              (T_INPUT))
+            (type_specifier
+              (T_INTEGER))
+            (component_declaration
+              (declaration
+                (IDENT)
+                (modification
+                  (class_modification
+                    (LPAR)
+                    (argument
+                      (element_modification_or_replaceable
+                        (element_modification
+                          (component_reference
+                            (IDENT))
+                          (modification
+                            (EQUALS)
+                            (expression
+                              (simple_expression
+                                (UNSIGNED_INTEGER)))))))
+                    (RPAR))
+                  (EQUALS)
+                  (expression
+                    (simple_expression
+                      (UNSIGNED_INTEGER)))))
+              (comment
+                (annotation
+                  (T_ANNOTATION)
+                  (class_modification
+                    (LPAR)
+                    (argument
+                      (element_modification_or_replaceable
+                        (element_modification
+                          (component_reference
+                            (IDENT))
+                          (modification
+                            (EQUALS)
+                            (expression
+                              (simple_expression
+                                (T_TRUE)))))))
+                    (RPAR)))))))
+        (element
+          (component_clause
+            (type_prefix
+              (T_OUTPUT))
+            (type_specifier
+              (name_path
+                (IDENT)))
+            (component_declaration
+              (declaration
+                (IDENT)))))
+        (external_clause
+          (EXTERNAL)
+          (language_specification
+            (STRING))
+          (component_reference
+            (IDENT))
+          (EQUALS)
+          (IDENT)
+          (LPAR)
+          (expression
+            (simple_expression
+              (component_reference__function_call
+                (component_reference
+                  (IDENT)))))
+          (COMMA)
+          (expression
+            (simple_expression
+              (component_reference__function_call
+                (component_reference
+                  (IDENT)))))
+          (RPAR)))
+      (T_END)
+      (identifier
+        (IDENT)))))

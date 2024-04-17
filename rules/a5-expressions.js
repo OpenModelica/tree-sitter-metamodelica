@@ -85,7 +85,10 @@ module.exports = {
     $.IDENT,
     optional(seq(
       optional(seq(
-        $.GUARD,
+        choice(
+          $.IF,
+          $.GUARD,
+        ),
         $.expression
       )),
       $.T_IN,
@@ -221,14 +224,21 @@ module.exports = {
     $.STRING,
     $.T_FALSE,
     $.T_TRUE,
-    $.component_reference_function_call,
+    $.component_reference__function_call,
     seq(
       $.DER,
       $.function_call
     ),
+    // TODO: omc isn't using this construct
+    //seq(
+    //  $.PURE,
+    //  $.function_call
+    //),
     seq(
       $.LPAR,
-      $._output_expression_list
+      $._output_expression_list,
+      // TODO: Add (array_subscripts)?
+      //optional($.array_subscripts)
     ),
     seq(
       $.LBRACK,
@@ -237,7 +247,8 @@ module.exports = {
     ),
     seq(
       $.LBRACE,
-      $._for_or_expression_list,
+      // TODO: Is this correct?
+      optional($._for_or_expression_list),
       $.RBRACE
     ),
     $.T_END
@@ -252,10 +263,20 @@ module.exports = {
     ))
   ),
 
-  component_reference_function_call: $ => prec(2,choice(
+  component_reference__function_call: $ => choice(
     seq(
       field("functionName", $.component_reference),
+      field("polymorphicType", $.polymorphic_type_specifier),
       $.function_call
+    ),
+    seq(
+      field("functionName", $.component_reference),
+      $.function_call,
+      // TODO: Add DOT expression?
+      //optional(seq(
+      //    $.DOT,
+      //    $.expression
+      //))
     ),
     field("componentReference", $.component_reference),
     seq(
@@ -263,14 +284,26 @@ module.exports = {
       $.LPAR,
       $.RPAR
     )
-  )),
+  ),
+
+  polymorphic_type_specifier: $ => seq(
+      $.LESS,
+      $._name_list,
+      $.GREATER,
+  ),
 
   name_path: $ => seq(
     optional($.DOT),
-    $.IDENT,
+    choice(
+      field("identifier", $.IDENT),
+      $.CODE
+    ),
     repeat(seq(
       $.DOT,
-      $.IDENT
+      choice(
+        field("identifier", $.IDENT),
+        $.CODE
+      )
     ))
   ),
 
@@ -283,11 +316,17 @@ module.exports = {
 
   _name_path_star2: $ => choice(
     seq(
-      field("identifier", $.IDENT),
+      choice(
+        field("identifier", $.IDENT),
+        $.CODE
+      ),
       optional($.STAR_EW)
     ),
     seq(
-      field("identifier", $.IDENT),
+      choice(
+        field("identifier", $.IDENT),
+        $.CODE
+      ),
       $.DOT,
       $._name_path_star2
     ),
@@ -336,7 +375,10 @@ module.exports = {
   function_arguments: $ => choice(
     seq(
       $._for_or_expression_list,
-      optional($._named_arguments)
+      optional(seq(
+        $.COMMA,
+        $._named_arguments
+      ))
     ),
     $._named_arguments
   ),
@@ -350,6 +392,7 @@ module.exports = {
         $.expression
       )),
       seq(
+        optional($.THREADED),
         $.FOR,
         $.for_indices
       )
@@ -445,5 +488,8 @@ module.exports = {
   annotation: $ => seq(
     $.T_ANNOTATION,
     $.class_modification
-  )
+  ),
+
+  // TODO: Add code_expression
+
 };

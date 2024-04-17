@@ -1,0 +1,64 @@
+============
+A.1 overload
+============
+
+function interval = $overload(OpenModelica.Internal.intervalInferred, OpenModelica.Internal.intervalExpression)
+   "Returns the interval between the previous and present tick of the clock of its argument"
+  annotation(Documentation(info="<html>
+  See <a href=\"modelica://ModelicaReference.Operators.'interval()'\">interval()</a>
+</html>"));
+
+---
+
+(stored_definition
+  (class_definition
+    (class_type
+      (FUNCTION))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (EQUALS)
+      (overloading
+        (OVERLOAD)
+        (LPAR)
+        (name_path
+          (IDENT)
+          (DOT)
+          (IDENT)
+          (DOT)
+          (IDENT))
+        (COMMA)
+        (name_path
+          (IDENT)
+          (DOT)
+          (IDENT)
+          (DOT)
+          (IDENT))
+        (RPAR)
+        (comment
+          (string_comment
+            (STRING))
+          (annotation
+            (T_ANNOTATION)
+            (class_modification
+              (LPAR)
+              (argument
+                (element_modification_or_replaceable
+                  (element_modification
+                    (component_reference
+                      (IDENT))
+                    (modification
+                      (class_modification
+                        (LPAR)
+                        (argument
+                          (element_modification_or_replaceable
+                            (element_modification
+                              (component_reference
+                                (IDENT))
+                              (modification
+                                (EQUALS)
+                                (expression
+                                  (simple_expression
+                                    (STRING)))))))
+                        (RPAR))))))
+              (RPAR))))))))

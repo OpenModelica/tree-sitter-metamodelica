@@ -80,15 +80,22 @@ module.exports = {
         $.FLOW,
         $.STREAM
       ),
+      // TODO: Add T_LOCAL and T_GLOBAL
+      //optional(choice(
+      //  $.T_LOCAL,
+      //  $.T_GLOBAL
+      //)),
       optional(choice(
         $.DISCRETE,
         $.PARAMETER,
         $.CONSTANT
       )),
-      optional(choice(
+      optional(
         $.T_INPUT,
+      ),
+      optional(
         $.T_OUTPUT
-      ))
+      )
     ),
     seq(
       choice(
@@ -96,15 +103,20 @@ module.exports = {
         $.PARAMETER,
         $.CONSTANT
       ),
-      optional(choice(
+      optional(
         $.T_INPUT,
+      ),
+      optional(
         $.T_OUTPUT
-      ))
+      )
     ),
-    choice(
+    seq(
       $.T_INPUT,
-      $.T_OUTPUT
-    )
+      optional(
+        $.T_OUTPUT
+      )
+    ),
+    $.T_OUTPUT
   ),
 
   type_specifier: $ => seq(

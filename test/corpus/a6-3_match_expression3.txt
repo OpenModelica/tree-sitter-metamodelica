@@ -17,6 +17,10 @@ algorithm
         debugstr := Print.getString();
         print("Hello World");
       then res_with_debug;
+    else
+      algorithm
+        print("This is the else case");
+      then res_with_debug;
   end matchcontinue;
 end makeDebugResult;
 
@@ -56,7 +60,7 @@ end makeDebugResult;
           (algorithm
             (assign_clause_a
               (simple_expression
-                (component_reference_function_call
+                (component_reference__function_call
                   (component_reference
                     (WILD))))
               (ASSIGN)
@@ -68,13 +72,13 @@ end makeDebugResult;
                       (LPAR)
                       (expression
                         (simple_expression
-                          (component_reference_function_call
+                          (component_reference__function_call
                             (component_reference
                               (IDENT)))))
                       (COMMA)
                       (expression
                         (simple_expression
-                          (component_reference_function_call
+                          (component_reference__function_call
                             (component_reference
                               (IDENT)))))
                       (RPAR)))
@@ -112,7 +116,7 @@ end makeDebugResult;
                           (LPAR)
                           (expression
                             (simple_expression
-                              (component_reference_function_call
+                              (component_reference__function_call
                                 (component_reference
                                   (IDENT)
                                   (DOT)
@@ -125,14 +129,14 @@ end makeDebugResult;
                                       (EQUALS)
                                       (expression
                                         (simple_expression
-                                          (component_reference_function_call
+                                          (component_reference__function_call
                                             (component_reference
                                               (IDENT)))))))
                                   (RPAR)))))
                           (COMMA)
                           (expression
                             (simple_expression
-                              (component_reference_function_call
+                              (component_reference__function_call
                                 (component_reference
                                   (WILD)))))
                           (RPAR)))
@@ -140,25 +144,25 @@ end makeDebugResult;
                       (algorithm
                         (assign_clause_a
                           (simple_expression
-                            (component_reference_function_call
+                            (component_reference__function_call
                               (component_reference
                                 (IDENT))))
                           (ASSIGN)
                           (expression
                             (simple_expression
-                              (component_reference_function_call
+                              (component_reference__function_call
                                 (component_reference
                                   (IDENT)))))))
                       (algorithm
                         (assign_clause_a
                           (simple_expression
-                            (component_reference_function_call
+                            (component_reference__function_call
                               (component_reference
                                 (IDENT))))
                           (ASSIGN)
                           (expression
                             (simple_expression
-                              (component_reference_function_call
+                              (component_reference__function_call
                                 (component_reference
                                   (IDENT)
                                   (DOT)
@@ -169,7 +173,7 @@ end makeDebugResult;
                       (algorithm
                         (assign_clause_a
                           (simple_expression
-                            (component_reference_function_call
+                            (component_reference__function_call
                               (component_reference
                                 (IDENT))
                               (function_call
@@ -182,7 +186,29 @@ end makeDebugResult;
                       (THEN)
                       (expression
                         (simple_expression
-                          (component_reference_function_call
+                          (component_reference__function_call
+                            (component_reference
+                              (IDENT))))))
+                    (cases2
+                      (ELSE)
+                      (ALGORITHM)
+                      (algorithm
+                        (assign_clause_a
+                          (simple_expression
+                            (component_reference__function_call
+                              (component_reference
+                                (IDENT))
+                              (function_call
+                                (LPAR)
+                                (function_arguments
+                                  (expression
+                                    (simple_expression
+                                      (STRING))))
+                                (RPAR))))))
+                      (THEN)
+                      (expression
+                        (simple_expression
+                          (component_reference__function_call
                             (component_reference
                               (IDENT)))))))
                   (T_END)
