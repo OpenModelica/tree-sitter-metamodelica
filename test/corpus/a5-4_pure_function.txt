@@ -1,0 +1,68 @@
+==============================
+A.5 pure function
+==============================
+
+pure function foo
+algorithm
+  pure := foldExp(fn, function checkPureCall(fn = fn), true);
+end foo;
+
+---
+
+(stored_definition
+  (class_definition
+    (class_type
+      (PURE)
+      (FUNCTION))
+    (class_specifier
+      (identifier
+        (IDENT))
+      (composition
+        (algorithm_clause
+          (T_ALGORITHM)
+          (algorithm
+            (assign_clause_a
+              (simple_expression
+                (component_reference__function_call
+                  (component_reference
+                    (IDENT))))
+              (ASSIGN)
+              (expression
+                (simple_expression
+                  (component_reference__function_call
+                    (component_reference
+                      (IDENT))
+                    (function_call
+                      (LPAR)
+                      (function_arguments
+                        (expression
+                          (simple_expression
+                            (component_reference__function_call
+                              (component_reference
+                                (IDENT)))))
+                        (COMMA)
+                        (expression
+                          (part_eval_function_expression
+                            (FUNCTION)
+                            (component_reference
+                              (IDENT))
+                            (function_call
+                              (LPAR)
+                              (function_arguments
+                                (named_argument
+                                  (IDENT)
+                                  (EQUALS)
+                                  (expression
+                                    (simple_expression
+                                      (component_reference__function_call
+                                        (component_reference
+                                          (IDENT)))))))
+                              (RPAR))))
+                        (COMMA)
+                        (expression
+                          (simple_expression
+                            (T_TRUE))))
+                      (RPAR)))))))))
+      (T_END)
+      (identifier
+        (IDENT)))))

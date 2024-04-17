@@ -229,10 +229,11 @@ module.exports = {
       $.DER,
       $.function_call
     ),
-    seq(
-      $.PURE,
-      $.function_call
-    ),
+    // TODO: omc isn't using this construct
+    //seq(
+    //  $.PURE,
+    //  $.function_call
+    //),
     seq(
       $.LPAR,
       $._output_expression_list,

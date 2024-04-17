@@ -49,7 +49,8 @@ module.exports = grammar({
   conflicts: $ => [
     [$._for_or_expression_list],
     [$.for_indices],
-    [$.component_reference__function_call]    // No way to tell if x< will be function polymorphism or logic compare
+    [$.component_reference__function_call],   // No way to tell if x< will be function polymorphism or logic compare
+    //[$._primary, $.string_comment],
   ],
 
   word: $ => $.IDENT,
