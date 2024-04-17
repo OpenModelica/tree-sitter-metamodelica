@@ -76,6 +76,7 @@ module.exports = {
   BREAK: $ => "break",
   CASE: $ => "case",
   CLASS: $ => "class",
+  CODE: $ => "$Code",
   CONNECT: $ => "connect",
   CONNECTOR: $ => "connector",
   CONSTANT: $ => "constant",

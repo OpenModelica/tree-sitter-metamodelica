@@ -294,10 +294,16 @@ module.exports = {
 
   name_path: $ => seq(
     optional($.DOT),
-    $.IDENT,
+    choice(
+      field("identifier", $.IDENT),
+      $.CODE
+    ),
     repeat(seq(
       $.DOT,
-      $.IDENT
+      choice(
+        field("identifier", $.IDENT),
+        $.CODE
+      )
     ))
   ),
 
@@ -310,11 +316,17 @@ module.exports = {
 
   _name_path_star2: $ => choice(
     seq(
-      field("identifier", $.IDENT),
+      choice(
+        field("identifier", $.IDENT),
+        $.CODE
+      ),
       optional($.STAR_EW)
     ),
     seq(
-      field("identifier", $.IDENT),
+      choice(
+        field("identifier", $.IDENT),
+        $.CODE
+      ),
       $.DOT,
       $._name_path_star2
     ),
@@ -476,5 +488,8 @@ module.exports = {
   annotation: $ => seq(
     $.T_ANNOTATION,
     $.class_modification
-  )
+  ),
+
+  // TODO: Add code_expression
+
 };

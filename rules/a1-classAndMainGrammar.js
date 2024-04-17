@@ -106,6 +106,7 @@ module.exports = {
   identifier: $ => choice(
     $.IDENT,
     $.DER,
+    $.CODE,
     $.EQUALITY,
     $.INITIAL
   ),
@@ -353,7 +354,10 @@ module.exports = {
 
   // TODO: What is CODE?
   explicit_import_name: $ => seq(
-    $.IDENT,
+    choice(
+      $.IDENT,
+      $.CODE
+    ),
     $.EQUALS,
     field("namePath", $.name_path)
   ),
