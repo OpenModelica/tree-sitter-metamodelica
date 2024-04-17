@@ -1,4 +1,6 @@
-; Class definitions
+;;;;; Tagging for code navigation
+
+;;; Class definitions
 
 (class_definition
   (class_type
@@ -152,3 +154,15 @@
   )
   (#strip! @doc "^\\\"|\\\"$")
 ) @definition.uniontype
+
+;;; Variable definitions
+
+(component_declaration
+  declaration: (declaration
+    [
+      identifier: (IDENT) @name
+      (OPERATOR) @name
+    ]
+  )
+  comment: (comment)* @doc
+) @definition.variable

@@ -14,7 +14,7 @@
 [
   (BLOCK_COMMENT)   ;; >/* comment */<
   (COMMENT)         ;; >// comment<
-]
+] @comment
 (string_comment (STRING) @comment)  ;; model foo >"description"<
 
 ;;; Numbers
@@ -36,7 +36,11 @@
 (polymorphic_type_specifier (name_path)@type)
 
 ;;; Variables
-(declaration (IDENT) @variable.parameter) ;; Real >x<
+(declaration [
+  (IDENT)
+  (OPERATOR)
+  ] @variable.parameter
+) ;; Real >x<
 (component_reference__function_call componentReference: (component_reference) @variable.parameter) ;; >x<
 
 ;;; Function calls
@@ -107,7 +111,6 @@
   (MATCH)
   (MATCHCONTINUE)
   (MODEL)
-  (OPERATOR)
   (OPTIMIZATION)
   (OVERLOAD)
   (PACKAGE)
