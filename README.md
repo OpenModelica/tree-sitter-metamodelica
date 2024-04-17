@@ -58,6 +58,17 @@ To test the highlighting configure run:
 npx tree-sitter highlight examples/Main.mo
 ```
 
+## Tags
+
+tree-sitter-metamodelica supports
+[tagging for code navigation systems](https://tree-sitter.github.io/tree-sitter/code-navigation-systems)
+to provide a list of all definitions.
+
+```bash
+npx tree-sitter tags examples/Main.mo
+```
+
+
 ## Usage
 
 Use [Web Tree-sitter](https://github.com/tree-sitter/tree-sitter/blob/master/lib/binding_web/README.md)
@@ -75,11 +86,15 @@ parser.setLanguage(MetaModelica)
 
 ## Current Status
 
-tree-sitter-metamodelica has been tested on a "Save Total" version of the
-[Modelica.Fluid.Examples.DrumBoiler.DrumBoiler](./examples/DrumBoiler.mo) which
-was successfully parsed and highlighted.
+tree-sitter-metamodelica has been tested on all of the MetaModelica files of the
+OpenModelica Compiler and can parse all but the following features:
+
+  - Susan / Template interface packages
+  - `code_equations`
+
 
 ```bash
-npx tree-sitter parse examples/DrumBoiler.mo
-npx tree-sitter highlight examples/DrumBoiler.mo
+npx tree-sitter parse examples/Main.mo
+npx tree-sitter highlight examples/Main.mo
+npx tree-sitter tags examples/Main.mo
 ```
