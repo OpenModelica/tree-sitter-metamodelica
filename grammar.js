@@ -56,14 +56,14 @@ module.exports = grammar({
   word: $ => $.IDENT,
 
   rules: {
-    ...require("./rules/a1-classAndMainGrammar"),
-    ...require("./rules/a2-extends"),
-    ...require("./rules/a3-modification"),
-    ...require("./rules/a4-equations"),
-    ...require("./rules/a5-expressions"),
-    ...require("./rules/a6-metamodelicaExtensions"),
-    ...require("./rules/builtin"),
-    ...require("./rules/keywords"),
-    ...require("./rules/lexicalConventions"),
+    ...require("./src/rules/a1-classAndMainGrammar"),
+    ...require("./src/rules/a2-extends"),
+    ...require("./src/rules/a3-modification"),
+    ...require("./src/rules/a4-equations"),
+    ...require("./src/rules/a5-expressions"),
+    ...require("./src/rules/a6-metamodelicaExtensions"),
+    ...require("./src/rules/builtin"),
+    ...require("./src/rules/keywords"),
+    ...require("./src/rules/lexicalConventions"),
   }
 });
