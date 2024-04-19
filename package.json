@@ -8,9 +8,9 @@
     "example": "examples"
   },
   "scripts": {
-    "build": "tree-sitter generate && tree-sitter build-wasm --docker .",
-    "test": "tree-sitter test",
-    "preinstall": "tree-sitter generate",
+    "build": "npx tree-sitter generate && npx tree-sitter build-wasm --docker .",
+    "test": "npx tree-sitter test",
+    "preinstall": "npx tree-sitter generate",
     "install": "node-gyp-build",
     "prebuildify": "prebuildify --napi --strip"
   },
@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/OpenModelica/tree-sitter-metamodelica#readme",
   "dependencies": {
-    "node-addon-api": "^7.1.0",
+    "node-addon-api": "^8.0.0",
     "node-gyp-build": "^4.8.0"
   },
   "peerDependencies": {
@@ -49,8 +49,9 @@
     }
   },
   "devDependencies": {
-    "prebuildify": "^6.0.0",
-    "tree-sitter-cli": "0.22.1"
+    "npm-check-updates": "^16.14.18",
+    "prebuildify": "^6.0.1",
+    "tree-sitter-cli": "0.22.5"
   },
   "tree-sitter": [
     {
