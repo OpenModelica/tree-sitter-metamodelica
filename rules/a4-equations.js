@@ -61,7 +61,6 @@ module.exports = {
     repeat($._constraint_annotation_list)
   )),
 
-  // TODO: Do look ahead
   _equation_annotation_list: $ => choice(
     seq(
       $.equation,
@@ -73,11 +72,9 @@ module.exports = {
     )
   ),
 
-  // TODO: What the heck is `{ ... }?` ?
-  // TODO: Do look ahead
   _constraint_annotation_list: $ => choice(
     seq(
-      $.equation,
+      $.constraint,
       $._SEMICOLON
     ),
     seq(
