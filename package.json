@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-metamodelica",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "MetaModelica grammar for tree-sitter",
   "main": "index.js",
   "types": "bindings/node",
@@ -8,7 +8,7 @@
     "example": "examples"
   },
   "scripts": {
-    "build": "npx tree-sitter generate && npx tree-sitter build-wasm --docker .",
+    "build": "npx tree-sitter generate && npx tree-sitter build --wasm --docker .",
     "test": "npx tree-sitter test",
     "preinstall": "npx tree-sitter generate",
     "install": "node-gyp-build",
