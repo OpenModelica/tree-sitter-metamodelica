@@ -16,6 +16,8 @@ setup.py
 /src/*
 !/src/rules/
 target/
+go.mod
+CMakelists.txt
 
 # Build artifacts
 *.wasm

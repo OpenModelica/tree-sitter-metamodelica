@@ -1,0 +1,27 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "metamodelica",
+      "camelcase": "MetaModelica",
+      "scope": "source.metamodelica",
+      "file-types": [
+        "mo"
+      ],
+      "highlights": [
+        "queries/highlights.scm"
+      ],
+      "tags": [
+        "queries/tags.scm"
+      ],
+      "injection-regex": "^mo$"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "description": "MetaModelica grammar for tree-sitter",
+    "links": {
+      "repository": "https://github.com/tree-sitter/tree-sitter-metamodelica"
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-metamodelica",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "MetaModelica grammar for tree-sitter",
   "main": "index.js",
   "types": "bindings/node",
@@ -8,9 +8,9 @@
     "example": "examples"
   },
   "scripts": {
-    "build": "npx tree-sitter generate && npx tree-sitter build --wasm --docker .",
+    "build": "npx tree-sitter build --wasm --docker .",
     "test": "npx tree-sitter test",
-    "preinstall": "npx tree-sitter generate",
+    "preinstall": "npx tree-sitter init && npx tree-sitter generate",
     "install": "node-gyp-build",
     "prebuildify": "prebuildify --napi --strip"
   },
@@ -24,6 +24,7 @@
   ],
   "files": [
     "grammar.js",
+    "tree-sitter.json",
     "binding.gyp",
     "prebuilds/**",
     "bindings/node/*",
@@ -41,7 +42,7 @@
     "node-gyp-build": "^4.8.0"
   },
   "peerDependencies": {
-    "tree-sitter": "^0.21.0"
+    "tree-sitter": "^0.22.4"
   },
   "peerDependenciesMeta": {
     "tree_sitter": {
@@ -51,16 +52,6 @@
   "devDependencies": {
     "npm-check-updates": "^16.14.18",
     "prebuildify": "^6.0.1",
-    "tree-sitter-cli": "0.22.5"
-  },
-  "tree-sitter": [
-    {
-      "scope": "source.metamodelica",
-      "file-types": [
-        "mo"
-      ],
-      "highlights": "queries/highlights.scm",
-      "tags": "queries/tags.scm"
-    }
-  ]
+    "tree-sitter-cli": "0.25.2"
+  }
 }
