@@ -50,7 +50,7 @@
     }
   },
   "devDependencies": {
-    "npm-check-updates": "^16.14.18",
+    "npm-check-updates": "^19.3.2",
     "prebuildify": "^6.0.1",
     "tree-sitter-cli": "0.25.2"
   }
